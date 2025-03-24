@@ -1,0 +1,59 @@
+.menu-container {
+    position: fixed;
+    top: 5px;
+    left: 150px;
+    z-index: 1000;
+  }
+  
+  .menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    background: #ff9800;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .side-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Ẩn menu khi chưa mở */
+    width: 250px;
+    height: 100vh;
+    background: #333;
+    color: white;
+    padding-top: 20px;
+    transition: left 0.3s ease-in-out;
+  }
+  
+  .side-menu.open {
+    left: 0; /* Hiện menu khi mở */
+  }
+  
+  .side-menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .side-menu li {
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-bottom: 1px solid #444;
+  }
+  
+  .side-menu li:hover {
+    background: #555;
+  }
+  
+  /* Lớp nền mờ khi menu mở */
+  /* .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+  } */
+  

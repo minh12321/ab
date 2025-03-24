@@ -1,0 +1,21 @@
+<div class="menu-container">
+    <!-- Icon menu -->
+    <div class="menu-icon" (click)="toggleMenu()">
+      &#9776; <!-- Ký hiệu Unicode cho hamburger menu -->
+    </div>
+  
+    <!-- Menu trượt ra -->
+    <div class="side-menu" [class.open]="menuOpen">
+      <ul>
+        <li (click)="closeMenu()">🏠 Trang chủ</li>
+        <li (click)="closeMenu()">📦 Sản phẩm</li>
+        <li (click)="closeMenu()">👤 Tài khoản</li>
+        <li (click)="navigateToadinadin()">👤 Admin</li>
+        <li (click)="closeMenu()">⚙ Cài đặt</li>
+      </ul>
+    </div>
+  
+    <!-- Lớp nền che khi menu mở -->
+    <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()"></div>
+  </div>
+  

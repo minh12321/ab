@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 // import { AccountComponent } from './account/account.component';
 // import { AdminComponent } from './admin/admin.component';
-// import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
         HomeComponent,
         // AccountComponent,
         // AdminComponent,
-        // MenuComponent
+        MenuComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
