@@ -4,9 +4,9 @@ import { NgClass,NgFor,NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NgClass,NgFor,NgIf],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  standalone:false
 })
 export class AppComponent {
   title = 'ab';
