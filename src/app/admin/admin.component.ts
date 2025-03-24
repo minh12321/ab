@@ -17,6 +17,6 @@ export class AdminComponent {
     }
 
     navigateToproduce() {
-      this.router.navigate(['/suasanpham']);
+      this.router.navigate(['/t-s-p']);
     }
 }

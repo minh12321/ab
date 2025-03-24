@@ -1,0 +1,97 @@
+<div>
+  <h2>Product Management</h2>
+<!-- 
+
+  <form (ngSubmit)="addProduct()">
+    <label for="tenSanPham">Product Name:</label>
+    <input id="tenSanPham" [(ngModel)]="newProduct.tenSanPham" name="tenSanPham" required />
+
+    <label for="gia">Price:</label>
+    <input id="gia" [(ngModel)]="newProduct.gia" name="gia" type="number" required />
+
+    <label for="soLuong">Quantity:</label>
+    <input id="soLuong" [(ngModel)]="newProduct.soLuong" name="soLuong" type="number" required />
+
+    <label for="mauSac">Color:</label>
+    <input id="mauSac" [(ngModel)]="newProduct.mauSac" name="mauSac" required />
+
+    <label for="size">Size:</label>
+    <input id="size" [(ngModel)]="newProduct.size" name="size" required />
+
+    <label for="moTa">Description:</label>
+    <textarea id="moTa" [(ngModel)]="newProduct.moTa" name="moTa"></textarea>
+
+    <label for="file">Image:</label>
+    <input type="file" id="file" (change)="onFileChange($event)" />
+
+    <button type="submit">Add Product</button>
+  </form> -->
+  <div class="container">
+    <h2>Thêm Sản Phẩm</h2>
+  
+    <form (ngSubmit)="submitProduct()">
+      <label for="tenSanPham">Tên Sản Phẩm:</label>
+      <input id="tenSanPham" [(ngModel)]="newProduct.tenSanPham" name="tenSanPham" required>
+  
+      <label for="gia">Giá:</label>
+      <input id="gia" type="number" [(ngModel)]="newProduct.gia" name="gia" required>
+  
+      <label for="soLuong">Số Lượng:</label>
+      <input id="soLuong" type="number" [(ngModel)]="newProduct.soLuong" name="soLuong" required>
+
+      <label for="mauSac">màu</label>
+      <input id="mauSac" type="number" [(ngModel)]="newProduct.mauSac" name="mauSac" required>
+
+      <label for="size">size</label>
+      <input id="size" type="number" [(ngModel)]="newProduct.size" name="size" required>
+
+      <label for="moTa">mô tả </label>
+      <input id="moTa" type="number" [(ngModel)]="newProduct.moTa" name="moTa" required>
+  
+      <label for="file">Chọn ảnh:</label>
+      <input type="file" id="file" (change)="onFileSelected($event)">
+  
+      <div *ngIf="newProduct.hinhAnh">
+        <p>Ảnh sản phẩm:</p>
+        <img [src]="newProduct.hinhAnh" alt="Ảnh sản phẩm" width="100">
+      </div>
+  
+      <button type="submit">Lưu Sản Phẩm</button>
+    </form>
+  </div>
+  
+
+  <!-- Product List -->
+  <h2>Danh sách sản phẩm</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>màu</th>
+        <th>mô tả</th>
+        <th>size</th>
+        <th>số lượng</th>
+        <th>Giá</th>
+        <th>Hình ảnh</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of product">
+        <td>{{ product.maSanPham }}</td>
+        <td>{{ product.tenSanPham }}</td>
+        <td>{{ product.mauSac }}</td>
+        <td>{{ product.moTa }}</td>
+        <td>{{ product.size }}</td>
+        <td>{{ product.soLuong}}</td>
+        <td>{{ product.gia | currency:'VND' }}</td>
+        <td>
+          <img *ngIf="product.hinhAnh" [src]="apiUrl+'/api/upload/' + product.hinhAnh" width="100" alt="Hình ảnh">
+        </td>
+        <td>
+          <button (click)="deleteProduct(product)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
