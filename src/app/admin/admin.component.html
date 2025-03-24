@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Quản lý sản phẩm & tài khoản</h2>
+  
+    <!-- Tabs -->
+    <div class="tabs">
+      <button (click)="tab = 'account'" [class.active]="tab === 'account'">Chỉnh sửa tài khoản</button>
+      <button (click)="tab = 'product'" [class.active]="tab === 'product'">Chỉnh sửa sản phẩm</button>
+    </div>
+  
+    <!-- Chỉnh sửa tài khoản -->
+    <div *ngIf="tab === 'account'"  class="content"  >
+      <button (click)="navigateToaccount()">Chỉnh sửa tài khoản</button>
+    </div>
+  
+    <!-- Chỉnh sửa sản phẩm -->
+    <div *ngIf="tab === 'product'" class="content">
+      <h3>Chỉnh sửa sản phẩm</h3>
+      <button (click)="navigateToproduce()">C</button>
+    </div>
+  </div>
+  

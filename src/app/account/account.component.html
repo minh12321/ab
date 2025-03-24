@@ -1,0 +1,51 @@
+<!-- <form (ngSubmit)="updateUser()">
+    <label for="fullName">Full Name:</label>
+    <input id="fullName" [(ngModel)]="" name="fullName" required>
+  
+    <label for="status">Status:</label>
+    <select id="status" [(ngModel)]="" name="status" required>
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+    </select>
+  
+    <label for="accountType">Account Type:</label>
+    <select id="accountType" [(ngModel)]="" name="accountType" required>
+      <option value="USER">User</option>
+      <option value="ADMIN">Admin</option>
+    </select>
+  
+    <button type="submit">Update</button>
+  </form>
+   -->
+
+   <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FULLNAME</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>STATUS</th>
+            <th>ACCOUNTTYPE</th>
+            <th>EMAIL</th>
+        </tr>
+    </thead>
+<tbody>
+
+
+    <tr  *ngFor="let user of user">
+        <td>{{user.accountId}}</td>
+        <td>{{user.fullName}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.password}}</td>
+        <td>{{user.status}}</td>
+        <td>{{user.accountType}}</td>
+        <td>{{user.email}}</td>
+        <!-- <td><button (click)=""class="btn btn-info">update</button> -->
+        <td><button (click)="deleteUser(user.accountId)" class="btn btn-warning">destroyer</button>
+        </td>
+
+    </tr>
+</tbody>
+   </table>
+  <button (click)="back()">Logout</button>
