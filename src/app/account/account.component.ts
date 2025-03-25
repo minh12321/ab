@@ -15,27 +15,15 @@ export class AccountComponent {
 
   constructor(private userService: UserService, private router: Router) { }
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.getUser();
   }
   public getUser() {
-    this.userService.getList().subscribe({
-      next: (data) => {
-        if (typeof data === 'object') {
-          this.user = data; // JSON hợp lệ
-        } else if (typeof data === 'string' && (data as string).startsWith("<!DOCTYPE html>")) {
-          console.error("API trả về HTML thay vì JSON", data);
-        } else {
-          console.error("Dữ liệu không hợp lệ", data);
-        }
-      },
-      error: (err) => console.error("Lỗi API:", err)
+    this.userService.getList().subscribe((data: User[]) => {
+      this.user = data;
+    }, error => {
+      console.error('Error fetching users:', error);
     });
-  
-  // Hàm chuyển đổi HTML thành JSON (giả sử API trả về một trang lỗi)
   }
-
   updateUser() {
     
   }
