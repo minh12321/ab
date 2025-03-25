@@ -20,7 +20,7 @@ export class AccountComponent {
  
     this.getUser();
   }
-  private getUser(){
+  public getUser(){
     this.userService.getList().subscribe(data=>{
       this.user=data;
     });
