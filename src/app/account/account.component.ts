@@ -17,14 +17,12 @@ export class AccountComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
- 
     this.getUser();
   }
   public getUser(){
     this.userService.getList().subscribe(data=>{
       this.user=data;
     });
-
   }
 
   updateUser() {

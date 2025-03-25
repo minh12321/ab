@@ -54,7 +54,6 @@ export class ThemSanPhamComponent {
     this.productService.getAllProducts().subscribe(data => {
       this.product = data;
     });
-
   }
   deleteProduct(product: Product) {
     if (confirm(`Bạn có chắc muốn xóa sản phẩm "${product.tenSanPham}" không?`)) {
