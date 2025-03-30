@@ -1,12 +1,26 @@
-<p>login works!</p>
-<form (ngSubmit)="login()">
-    <label for="username">Username:</label>
-    <input id="username" [(ngModel)]="username" name="username" required>
-  
-    <label for="password">Password:</label>
-    <input id="password" [(ngModel)]="password" name="password" type="password" required>
-  
-    <button type="submit">Login</button>
-  </form>
-  <p>Don't have an account? <a routerLink="/reg">dang ki tai day</a></p>
-  
+<div class="container">
+  <h2>Đăng nhập</h2>
+  <div class="row">
+    <!-- Phần Đăng nhập -->
+    <div class="col-md-6 box">
+      <h4>Nếu có tài khoản, xin vui lòng đăng nhập</h4>
+      <form (ngSubmit)="login()">
+        <label for="email">Email:</label>
+        <input id="email" [(ngModel)]="username" name="email" type="email" required class="form-control">
+
+        <label for="password">Mật khẩu:</label>
+        <input id="password" [(ngModel)]="password" name="password" type="password" required class="form-control">
+
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+      </form>
+    </div>
+
+    <!-- Phần Khách hàng mới -->
+    <div class="col-md-6 box">
+      <h4>Khách hàng mới</h4>
+      <p>Bằng cách tạo một tài khoản với cửa hàng của chúng tôi, bạn sẽ có thể thực hiện những quy trình mua hàng nhanh hơn, lưu trữ nhiều địa chỉ gửi hàng, xem và theo dõi đơn đặt hàng của bạn.</p>
+      <button class="btn btn-success">Tạo tài khoản mới</button>
+    </div>
+  </div>
+</div>

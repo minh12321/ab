@@ -1,0 +1,73 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    display: flex; /* Add this to layout elements horizontally */
+    justify-content: space-between;
+    background-color: #fff; /* Optional: Add background color to the container */
+    border-radius: 10px; /* Rounded corners for container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.box {
+    background-color: #fdb462; /* Light orange color */
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    flex: 1; /* Allows each box to grow equally */
+    margin-right: 20px; /* Space between the login and signup boxes */
+}
+
+.box:last-child {
+    margin-right: 0; /* Remove right margin for the last box */
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Improved font family */
+    color: #333; /* Darker color for better readability */
+}
+
+h4 {
+    font-weight: bold;
+    color: #000; /* Change header color to black */
+}
+
+.btn-primary {
+    background-color: #e57200; /* Dark orange for login button */
+    border: none;
+    color: #fff; /* Text color on button */
+    padding: 10px 20px; /* Added padding for better button size */
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btn-primary:hover {
+    background-color: #c45a00;
+}
+
+.btn-success {
+    background-color: #ff7043; /* Lighter orange */
+    border: none;
+    color: #fff; /* Text color on button */
+    padding: 10px 20px; /* Added padding for better button size */
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.btn-success:hover {
+    background-color: #e55b30;
+}
+
+.forgot-password {
+    margin-left: 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px; /* Slightly increase font size */
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
