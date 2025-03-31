@@ -36,4 +36,14 @@ export class AccountComponent {
   back(){
     this.router.navigate(['/']);
   }
+  getuserby(id:number){
+    this.userService.getUserById(id).subscribe((data:User)=>
+    {
+      this.getUser;
+      console.log(data);
+    }
+    )
+    ;
+
+  }
 }
