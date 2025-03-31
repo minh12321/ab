@@ -16,6 +16,7 @@ export class AccountComponent {
   constructor(private userService: UserService, private router: Router) { }
   ngOnInit(): void {
     this.getUser();
+    this.getuserby(1);
   }
   public getUser() {
     this.userService.getList().subscribe((data: User[]) => {
