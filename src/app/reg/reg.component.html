@@ -1,16 +1,43 @@
-<form (ngSubmit)="register()">
-    <label for="username">Username:</label>
-    <input id="username" [(ngModel)]="username" name="username" required>
-  
-    <label for="password">Password:</label>
-    <input id="password" [(ngModel)]="password" name="password" type="password" required>
-  
-    <label for="fullName">Full Name:</label>
-    <input id="fullName" [(ngModel)]="fullName" name="fullName" required>
-  
-    <label for="email">Full Name:</label>
-    <input id="email" [(ngModel)]="email" name="email" required>
-  
-    <button type="submit">Register</button>
-  </form>
-  
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cập nhật Hồ sơ</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Xin chào Tuấn Long</h1>
+        <p>Cập nhật thông tin tài khoán của bạn để hưởng các chính sách của cửa hàng vào chế độ bảo mật tốt nhất</p>
+        <div class="form-container">
+            <h2>Hồ sơ</h2>
+            <form>
+                <label for="last-name">Họ</label>
+                <input type="text" id="last-name" required>
+
+                <label for="first-name">Tên</label>
+                <input type="text" id="first-name" required>
+
+                <label for="city">Thành phố</label>
+                <input type="text" id="city" required>
+
+                <label for="address">Địa chỉ</label>
+                <input type="text" id="address" required>
+
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" required>
+
+                <div class="checkbox-container">
+                  <input type="checkbox" id="default-address">
+                  <label for="default-address">Đặt làm địa chỉ mặc định</label>
+              </div>
+              
+
+                <button type="submit" class="btn update">Cập nhật</button>
+                <button type="button" class="btn cancel">Hủy</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

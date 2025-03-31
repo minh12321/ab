@@ -1,46 +1,56 @@
 .container {
     max-width: 800px;
     margin: auto;
-    padding: 30px;
-    display: flex; /* Add this to layout elements horizontally */
+    padding: 50px;
+    display: flex;
     justify-content: space-between;
-    background-color: #fff; /* Optional: Add background color to the container */
-    border-radius: 10px; /* Rounded corners for container */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative; 
+
 }
 
 .box {
-    background-color: #fdb462; /* Light orange color */
+    background-color: #f6b060; 
     padding: 20px;
     border-radius: 5px;
     text-align: left;
-    flex: 1; /* Allows each box to grow equally */
-    margin-right: 20px; /* Space between the login and signup boxes */
+    flex: 1; 
+    margin-right: 20px; 
 }
 
 .box:last-child {
-    margin-right: 0; /* Remove right margin for the last box */
+    margin-right: 0; 
 }
 
 h2 {
-    text-align: center;
-    font-family: 'Arial', sans-serif; /* Improved font family */
-    color: #333; /* Darker color for better readability */
+    position: absolute;
+    top: -20px;
+    left: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+p {
+    font-size: 13px; 
+    color: #000000; 
 }
 
 h4 {
     font-weight: bold;
-    color: #000; /* Change header color to black */
+    color: #181111; 
 }
 
 .btn-primary {
-    background-color: #e57200; /* Dark orange for login button */
+    background-color: #e57200; 
     border: none;
-    color: #fff; /* Text color on button */
-    padding: 10px 20px; /* Added padding for better button size */
-    border-radius: 5px; /* Rounded corners for buttons */
-    cursor: pointer; /* Cursor changes to pointer on hover */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    color: #fff; 
+    padding: 10px 20px;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
@@ -48,13 +58,13 @@ h4 {
 }
 
 .btn-success {
-    background-color: #ff7043; /* Lighter orange */
+    background-color: #ff7043; 
     border: none;
-    color: #fff; /* Text color on button */
-    padding: 10px 20px; /* Added padding for better button size */
-    border-radius: 5px; /* Rounded corners for buttons */
-    cursor: pointer; /* Cursor changes to pointer on hover */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    color: #fff; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
 
 .btn-success:hover {
@@ -65,7 +75,7 @@ h4 {
     margin-left: 15px;
     color: #333;
     text-decoration: none;
-    font-size: 14px; /* Slightly increase font size */
+    font-size: 14px; 
 }
 
 .forgot-password:hover {
