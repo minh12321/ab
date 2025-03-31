@@ -16,6 +16,7 @@ export class AccountComponent {
   constructor(private userService: UserService, private router: Router) { }
   ngOnInit(): void {
     this.getUser();
+    this.getuserby(1);
   }
   public getUser() {
     this.userService.getList().subscribe((data: User[]) => {
@@ -35,5 +36,15 @@ export class AccountComponent {
   }
   back(){
     this.router.navigate(['/']);
+  }
+  getuserby(id:number){
+    this.userService.getUserById(id).subscribe((data:User)=>
+    {
+      this.getUser;
+      console.log(data);
+    }
+    )
+    ;
+
   }
 }
