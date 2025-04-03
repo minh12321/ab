@@ -7,6 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AccountComponent } from './account/account.component';
 import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },

@@ -11,6 +11,8 @@ import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { MenuComponent } from './menu/menu.component';
 import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
+import { TabNavigationComponent } from './tab-navigation/tab-navigation.component';
+
 
 @NgModule({ declarations: [
         AppComponent,
@@ -20,7 +22,8 @@ import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
         AccountComponent,
         AdminComponent,
         MenuComponent,
-        ThemSanPhamComponent
+        ThemSanPhamComponent,
+        TabNavigationComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,

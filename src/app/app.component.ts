@@ -22,13 +22,25 @@ export class AppComponent {
   }
 
   menus = [
-    { title: 'Trang Chủ', icon: 'fa-solid fa-house',route:'/home', active: false,submenus: ['Overview', 'Stats']},
-    { title: 'Giày hiệu', icon: 'fa-solid fa-shoe-prints',route:'/home', active: false ,submenus: ['Overview', 'Stats']},
-    { title: 'Giày đinh', icon: 'fa-solid fa-shoe-prints',route:'/home', active: false,submenus: ['Overview', 'Stats'] },
-    { title: 'Găng tay', icon: 'fa-solid fa-hand',route:'/home', active: false,submenus: ['Overview', 'Stats'] },
-    { title: 'Phụ kiện', icon: 'fa-solid fa-toolbox',route:'/home', active: false,submenus: ['Overview', 'Stats'] },
-    { title: 'Danh mục', icon: 'fa-solid fa-list',route:'/home', active: false,submenus: ['Overview', 'Stats'] }
-  ];
+    { title: 'Trang Chủ', icon: 'fa-solid fa-house', route: '/home' },
+    { 
+      title: 'Giày hiệu', icon: 'fa-solid fa-shoe-prints', active: false, 
+      submenus: [
+        { title: 'Overview', route: '/giay-hieu/overview' },
+        { title: 'Stats', route: '/giay-hieu/stats' }
+      ] 
+    },
+    { 
+      title: 'Giày đinh', icon: 'fa-solid fa-shoe-prints', active: false, 
+      submenus: [
+        { title: 'Overview', route: '/log' },
+        { title: 'Stats', route: '/giay-dinh/stats' }
+      ] 
+    },
+    { title: 'Găng tay', icon: 'fa-solid fa-hand', route: '/gang-tay' },
+    { title: 'Phụ kiện', icon: 'fa-solid fa-toolbox', route: '/phu-kien' },
+    { title: 'Danh mục', icon: 'fa-solid fa-list', route: '/danh-muc' }
+  ];      
 
   toggleMenu(selectedMenu: any) {
     console.log("Menu clicked:", selectedMenu);

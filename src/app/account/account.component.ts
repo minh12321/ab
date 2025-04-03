@@ -21,6 +21,7 @@ export class AccountComponent {
   public getUser() {
     this.userService.getList().subscribe((data: User[]) => {
       this.user = data;
+      console.log(data);
     }, error => {
       console.error('Error fetching users:', error);
     });
@@ -38,7 +39,7 @@ export class AccountComponent {
     this.router.navigate(['/']);
   }
   getuserby(id:number){
-    this.userService.getUserById(id).subscribe((data:User)=>
+    this.userService.getUserById(id).subscribe((data)=>
     {
       this.getUser;
       console.log(data);
