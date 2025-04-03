@@ -51,4 +51,7 @@ export class AppComponent {
     });
     selectedMenu.active = !selectedMenu.active;
   }
+  navigateTocart() {
+    this.router.navigate(['/cart']);
+  }
 }

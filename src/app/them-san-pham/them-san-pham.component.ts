@@ -65,28 +65,7 @@ export class ThemSanPhamComponent {
       });
     }
   }
-  // -----------------------
 
-  // products: Product[] = [];
-
-
-  // ngOnInit(): void {
-  //   this.loadProducts();
-  // }
-
-  // loadProducts(): void {
-  //   this.productService.getProducts().subscribe(data => {
-  //     this.products = data;
-  //   });
-  // }
-
-  // deleteProduct(id: string): void {
-  //   if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
-  //     this.productService.deleteProduct(id).subscribe(() => {
-  //       this.loadProducts();
-  //     });
-  //   }
-  // }
 }
 
 

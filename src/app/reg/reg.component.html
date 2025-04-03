@@ -1,25 +1,9 @@
-<<<<<<< HEAD
-
-<head>
-    <title>Cập nhật Hồ sơ</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Xin chào Tuấn Long</h1>
-        <p>Cập nhật thông tin tài khoán của bạn để hưởng các chính sách của cửa hàng vào chế độ bảo mật tốt nhất</p>
-        <div class="form-container">
-            <h2>Hồ sơ</h2>
-            <form>
-                <label for="last-name">Họ</label>
-                <input type="text" id="last-name" required>
-=======
 <form (ngSubmit)="register()">
   <div>
     <label for="username">Họ<span *ngIf="isInvalidUsername" class="error">*</span></label>
     <input type="text" id="username" [(ngModel)]="username" name="username" />
     
   </div>
->>>>>>> 1716aff6257a2d9dbb0f9b426f8209fb6e2eab2a
 
   <div>
     <label for="fullName">Tên<span *ngIf="isInvalidFullName" class="error">*</span></label>
@@ -41,20 +25,5 @@
     <input type="tel" id="phone" [(ngModel)]="phone" name="phone" />
   </div>
 
-<<<<<<< HEAD
-                <div class="checkbox-container">
-                  <input type="checkbox" id="default-address">
-                  <label for="default-address">Đặt làm địa chỉ mặc định</label>
-              </div>
-              
-
-                <button type="submit" class="btn update">Cập nhật</button>
-                <button type="button" class="btn cancel">Hủy</button>
-            </form>
-        </div>
-    </div>
-</body>
-=======
   <button type="submit" class="btn update">Cập nhật</button>
 </form>
->>>>>>> 1716aff6257a2d9dbb0f9b426f8209fb6e2eab2a

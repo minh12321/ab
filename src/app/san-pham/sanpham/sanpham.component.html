@@ -1,0 +1,14 @@
+<!-- Ô nhập giá trị lọc -->
+
+<ngx-slider [(value)]="minPrice" [(highValue)]="maxPrice" 
+  [options]="sliderOptions">
+</ngx-slider>
+
+<p>Khoảng giá: {{ minPrice | number }} - {{ maxPrice | number }}</p>
+  
+<!-- Danh sách sản phẩm -->
+<ul>
+  <li *ngFor="let product of filteredProducts">
+    {{ product.tenSanPham }} - {{ product.gia | number }} VND
+  </li>
+</ul>

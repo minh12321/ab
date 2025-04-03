@@ -22,5 +22,14 @@ export class MenuComponent {
     navigateToadinadin() {
       this.router.navigate(['/admin']);
     }
+    navigateTohomehome() {
+      this.router.navigate(['/home']);
+    }
+    navigateTocart() {
+      this.router.navigate(['/cart']);
+    }
+    navigateTopo() {
+      this.router.navigate(['/prod.exe']);
+    }
   
 }

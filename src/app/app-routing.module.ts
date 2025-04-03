@@ -6,6 +6,8 @@ import { RegComponent } from './reg/reg.component';
 import { AdminComponent } from './admin/admin.component';
 import { AccountComponent } from './account/account.component';
 import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
+import { GioHangComponent } from './gio-hang/gio-hang.component';
+import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
 
 
 const routes: Routes = [
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'log', component: LoginComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'account', component: AccountComponent },
+  { path: 'cart', component: GioHangComponent },
+  { path: 'prod.exe', component: SanphamComponent },
   { path: 't-s-p', component: ThemSanPhamComponent }  // Updated path
 ];
 
