@@ -29,7 +29,7 @@ export class MenuComponent {
       this.router.navigate(['/cart']);
     }
     navigateTopo() {
-      this.router.navigate(['/prod.exe']);
+      this.router.navigate(['/prodexe']);
     }
   
 }

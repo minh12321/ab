@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'account', component: AccountComponent },
   { path: 'cart', component: GioHangComponent },
-  { path: 'prod.exe', component: SanphamComponent },
+  { path: 'prodexe', component: SanphamComponent },
   { path: 't-s-p', component: ThemSanPhamComponent }  // Updated path
 ];
 
