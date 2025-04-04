@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../../../api-sevice/san_pham.model';
 import { ProductService } from '../../../api-sevice/san_pham.service';
-import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-sanpham',
@@ -16,11 +15,6 @@ export class SanphamComponent {
     minPrice: number = 0;
     maxPrice: number = 10000000;
 
-  sliderOptions: Options = {
-    floor: 0,
-    ceil: 10000000,
-    step: 1000,
-  };
     
     constructor(private productService: ProductService) {}
   

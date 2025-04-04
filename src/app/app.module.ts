@@ -13,7 +13,6 @@ import { MenuComponent } from './menu/menu.component';
 import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
 import { TabNavigationComponent } from './tab-navigation/tab-navigation.component';
 import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -30,6 +29,5 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         FormsModule,
-        NgxSliderModule,
         ReactiveFormsModule], providers: [provideHttpClient(withFetch()), provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
