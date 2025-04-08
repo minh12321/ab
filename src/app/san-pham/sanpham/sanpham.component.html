@@ -1,3 +1,36 @@
-<!-- Ô nhập giá trị lọc -->
+<select [(ngModel)]="filter.mauSac" (change)="applyFilters()">
+    <option value="">Tất cả màu</option>
+    <option value="Đỏ">Đỏ</option>
+    <option value="Đen">Đen</option>
+  </select>
+  
+  <input type="checkbox" [(ngModel)]="filter.conHang" (change)="applyFilters()"> Còn hàng
+  
+  <select [(ngModel)]="filter.hang" (change)="applyFilters()">
+    <option value="">Tất cả hãng</option>
+    <option value="Nike">Nike</option>
+    <option value="Adidas">Adidas</option>
+  </select>
+  
+  <select [(ngModel)]="filter.kieuGiay" (change)="applyFilters()">
+    <option value="">Tất cả kiểu</option>
+    <option value="Sneaker">Sneaker</option>
+    <option value="Boot">Boot</option>
+  </select>
+  
+  <select [(ngModel)]="filter.size" (change)="applyFilters()">
+    <option value="">Tất cả size</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+  </select>
 
-<!-- Danh sách sản phẩm -->
+  <input type="number" [(ngModel)]="filter.minPrice" (input)="applyFilters()" placeholder="Giá từ">
+<input type="number" [(ngModel)]="filter.maxPrice" (input)="applyFilters()" placeholder="Giá đến">
+
+  
+  <ul>
+    <li *ngFor="let p of filteredProducts">
+      {{ p.tenSanPham }} - {{ p.mauSac }} - Size: {{ p.size }} - SL: {{ p.soLuong }} - {{ p.moTa }}
+    </li>
+  </ul>
+  

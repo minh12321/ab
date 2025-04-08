@@ -14,7 +14,17 @@ export class SanphamComponent {
     filteredProducts: Product[] = [];
     minPrice: number = 0;
     maxPrice: number = 10000000;
+    
 
+    filter = {
+      mauSac: '',             // VD: "Đỏ"
+      conHang: false,         // true nếu chỉ hiển thị còn hàng
+      hang: '',               // Hãng trong mô tả
+      kieuGiay: '',           // Kiểu giày trong mô tả
+      size: '',               // VD: "42"
+      minPrice: null,         // Giá tối thiểu
+      maxPrice: null          // Giá tối đa
+    };
     
     constructor(private productService: ProductService) {}
   
@@ -25,15 +35,38 @@ export class SanphamComponent {
     getAllProducts() {
       this.productService.getAllProducts().subscribe(data => {
         this.products = data;
-        this.filterProducts();
+        this.applyFilters();
       });
     }
-    filterProducts() {
+    
+///testtest
+    applyFilters() {
       this.filteredProducts = this.products.filter(p => {
-        const min = this.minPrice ?? 0; 
-        const max = this.maxPrice ?? Infinity; 
-        return p.gia >= min && p.gia <= max;
+        const matchMauSac = this.filter.mauSac ? p.mauSac === this.filter.mauSac : true;
+        const matchConHang = this.filter.conHang ? p.soLuong > 0 : true;
+        const matchSize = this.filter.size ? p.size === this.filter.size : true;
+    
+        const matchHang = this.filter.hang ? p.moTa.toLowerCase().includes(this.filter.hang.toLowerCase()) : true;
+        const matchKieuGiay = this.filter.kieuGiay ? p.moTa.toLowerCase().includes(this.filter.kieuGiay.toLowerCase()) : true;
+        const matchMinPrice = this.filter.minPrice != null ? p.gia >= this.filter.minPrice : true;
+        const matchMaxPrice = this.filter.maxPrice != null ? p.gia <= this.filter.maxPrice : true;
+
+
+        return matchMauSac && matchConHang && matchSize && matchHang && matchKieuGiay && matchMinPrice && matchMaxPrice;
       });
     }
+    resetFilter() {
+      this.filter = {
+        mauSac: '',
+        conHang: false,
+        hang: '',
+        kieuGiay: '',
+        size: '',
+        minPrice: null,
+        maxPrice: null
+      };
+      this.applyFilters();
+    }
+    
 
 }
