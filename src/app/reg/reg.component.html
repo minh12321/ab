@@ -1,29 +1,29 @@
-<form (ngSubmit)="register()">
-  <div>
-    <label for="username">Họ<span *ngIf="isInvalidUsername" class="error">*</span></label>
-    <input type="text" id="username" [(ngModel)]="username" name="username" />
-    
+<body>
+  <div class="form-container">
+      <h1>TẠO TÀI KHOẢN</h1>
+      <form id="registrationForm">
+          <div class="form-group">
+              <label for="firstName">Tên*</label>
+              <input id="fisrtname" [(ngModel)]="username" name="fis" type="email" required class="form-control">
+          </div>
+          <div class="form-group">
+              <label for="lastName">Họ*</label>
+              <input type="text" id="lastName" required />
+          </div>
+          <div class="form-group">
+              <label for="password">Mật khẩu*</label>
+              <input type="password" id="password" required />
+          </div>
+          <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" required />
+          </div>
+          <div class="form-footer">
+              <button type="button" class="button"  id="backButton">Quay lại</button>
+              <button type="submit" class="button" (click)="register()">Đăng ký</button>
+          </div>
+          <p class="note">Những trường * là trường bắt buộc</p>
+      </form>
   </div>
-
-  <div>
-    <label for="fullName">Tên<span *ngIf="isInvalidFullName" class="error">*</span></label>
-    <input type="text" id="fullName" [(ngModel)]="fullName" name="fullName" />
-  </div>
-
-  <div>
-    <label for="city">Thành phố <span *ngIf="isInvalidCity" class="error">*</span></label>
-    <input type="text" id="city" [(ngModel)]="city" name="city" />
-  </div>
-
-  <div>
-    <label for="address">Địa chỉ<span *ngIf="isInvalidAddress" class="error">*</span></label>
-    <input type="text" id="address" [(ngModel)]="address" name="address" />
-  </div>
-
-  <div>
-    <label for="phone">Số điện thoại<span *ngIf="isInvalidPhone" class="error">*</span></label>
-    <input type="tel" id="phone" [(ngModel)]="phone" name="phone" />
-  </div>
-
-  <button type="submit" class="btn update">Cập nhật</button>
-</form>
+  <script src="script.ts"></script>
+</body>
