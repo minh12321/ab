@@ -27,7 +27,7 @@
 <ul class="navbar">
   <li *ngFor="let menu of menus" class="menu-item" (click)="toggleMenu(menu)">
     {{ menu.title }} 
-    <span class="arrow" [ngClass]="{'active': menu.active}">></span>
+    <span class="arrow" [ngClass]="{'active': menu.active}"></span>
     <ul class="submenu" *ngIf="menu.active">
       <li *ngFor="let sub of menu.submenus">
         <a href="#">{{ sub }}</a>

@@ -24,7 +24,7 @@ export class AppComponent {
   menus = [
     { title: 'Trang Chủ', icon: 'fa-solid fa-house', route: '/home' },
     { 
-      title: 'Giày hiệu', icon: 'fa-solid fa-shoe-prints', active: false, 
+      title: 'Sản Phẩm', icon: 'fa-solid fa-shoe-prints', active: false, 
       submenus: [
         { title: 'Overview', route: '/giay-hieu/overview' },
         { title: 'Stats', route: '/giay-hieu/stats' }
