@@ -5,6 +5,14 @@
   </select>
   
   <input type="checkbox" [(ngModel)]="filter.conHang" (change)="applyFilters()"> Còn hàng
+
+  <select [(ngModel)]="filter.loaihang" (change)="applyFilters()">
+    <option value="">Tất cả </option>
+    <option value="Nike">Giầy</option>
+    <option value="Adidas">Ba lô</option>
+    <option value="Adidas">Gang tay</option>
+    <option value="Adidas">Bóng</option>
+  </select>
   
   <select [(ngModel)]="filter.hang" (change)="applyFilters()">
     <option value="">Tất cả hãng</option>

@@ -20,6 +20,7 @@ export class SanphamComponent {
       mauSac: '',             // VD: "Đỏ"
       conHang: false,         // true nếu chỉ hiển thị còn hàng
       hang: '',               // Hãng trong mô tả
+      loaihang:'',
       kieuGiay: '',           // Kiểu giày trong mô tả
       size: '',               // VD: "42"
       minPrice: null,         // Giá tối thiểu
@@ -45,14 +46,14 @@ export class SanphamComponent {
         const matchMauSac = this.filter.mauSac ? p.mauSac === this.filter.mauSac : true;
         const matchConHang = this.filter.conHang ? p.soLuong > 0 : true;
         const matchSize = this.filter.size ? p.size === this.filter.size : true;
-    
+        const matchloaiHang = this.filter.loaihang ? p.moTa.toLowerCase().includes(this.filter.loaihang.toLowerCase()) : true;
         const matchHang = this.filter.hang ? p.moTa.toLowerCase().includes(this.filter.hang.toLowerCase()) : true;
         const matchKieuGiay = this.filter.kieuGiay ? p.moTa.toLowerCase().includes(this.filter.kieuGiay.toLowerCase()) : true;
         const matchMinPrice = this.filter.minPrice != null ? p.gia >= this.filter.minPrice : true;
         const matchMaxPrice = this.filter.maxPrice != null ? p.gia <= this.filter.maxPrice : true;
 
 
-        return matchMauSac && matchConHang && matchSize && matchHang && matchKieuGiay && matchMinPrice && matchMaxPrice;
+        return matchMauSac && matchConHang && matchSize && matchHang && matchKieuGiay && matchMinPrice && matchMaxPrice && matchloaiHang;
       });
     }
     resetFilter() {
@@ -61,6 +62,7 @@ export class SanphamComponent {
         conHang: false,
         hang: '',
         kieuGiay: '',
+        loaihang:'',
         size: '',
         minPrice: null,
         maxPrice: null
