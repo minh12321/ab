@@ -1,29 +1,32 @@
-<body>
-  <div class="form-container">
-      <h1>TẠO TÀI KHOẢN</h1>
-      <form id="registrationForm">
-          <div class="form-group">
-              <label for="firstName">Tên đăng nhập*</label>
-              <input id="fisrtname" [(ngModel)]="username" name="fis" type="email" required class="form-control">
-          </div>
-          <div class="form-group">
-              <label for="lastName">Họ*</label>
-              <input type="text" id="lastName" required />
-          </div>
-          <div class="form-group">
-              <label for="password">Mật khẩu*</label>
-              <input type="password" id="password" required />
-          </div>
-          <div class="form-group">
-              <label for="email">Email*</label>
-              <input type="email" id="email" required />
-          </div>
-          <div class="form-footer">
-              <button type="button" class="button"  id="backButton">Quay lại</button>
-              <button type="submit" class="button" (click)="register()">Đăng ký</button>
-          </div>
-          <p class="note">Những trường * là trường bắt buộc</p>
-      </form>
+<div class="form-container">
+    <h1>TẠO TÀI KHOẢN</h1>
+    <form (ngSubmit)="register()" #form="ngForm">
+      <div class="form-group">
+        <label for="username">Tên đăng nhập*</label>
+        <input id="username" [(ngModel)]="username" name="username" type="text" required class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="fullName">Họ*</label>
+        <input id="fullName" [(ngModel)]="fullName" name="fullName" type="text" required class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu*</label>
+        <input id="password" [(ngModel)]="password" name="password" type="password" required class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Xác nhận mật khẩu*</label>
+        <input id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" type="password" required class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input id="email" [(ngModel)]="email" name="email" type="email" required class="form-control">
+      </div>
+      <div class="form-footer">
+        <button type="button" class="button" (click)="goBack()">Quay lại</button>
+        <p class="note">Những trường * là trường bắt buộc</p>
+        <button type="submit" class="button" (click)="register()">Đăng ký</button>
+      
+      </div>
+    </form>
   </div>
-  <script src="script.ts"></script>
-</body>
+  

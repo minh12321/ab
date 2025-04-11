@@ -15,6 +15,7 @@ export class RegComponent {
   ten :string='';
   username: string = '';
   password: string = '';
+  confirmPassword: string = '';
   fullName: string = '';
   email :string='';
 
@@ -22,6 +23,7 @@ export class RegComponent {
   
   isInvalidUsername: boolean = false;
   isInvalidFullName: boolean = false;
+  isValidconfirmPassword: boolean = false;
   isInvalidPassword: boolean = false;
   isInvalidEmail: boolean = false;
 
@@ -29,6 +31,8 @@ export class RegComponent {
     this.isInvalidUsername = this.username.trim() === '';
     this.isInvalidFullName = this.fullName.trim() === '';
     this.isInvalidPassword = this.password.trim() === '';
+    this.isValidconfirmPassword = this.confirmPassword.trim() === '' || this.password !== this.confirmPassword;
+    this.isInvalidPassword = this.password.length < 6 || this.password.length > 20;
     this.isInvalidEmail = this.email.trim() === '' ;
 
     return !(this.isInvalidUsername || this.isInvalidFullName ||this.isInvalidPassword ||this.isInvalidEmail );
@@ -51,6 +55,7 @@ export class RegComponent {
     const params = new HttpParams()
           .set('username', this.username)
           .set('password', this.password)
+          .set('confirmPassword', this.confirmPassword)
           .set('fullName',this.fullName)
           .set('email',this.email);
     this.userService.registerUser(params).subscribe({
@@ -59,10 +64,13 @@ export class RegComponent {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        alert('Đăng ký thất vọng: ' + err.message);
+        alert('Đăng ký thất bạibại: ' + err.message);
       }
     })      
-
+    
+  }
+  goBack() {
+    this.router.navigate(['/home']); // hoặc đường dẫn nào bạn muốn quay lại
   }
 }
 

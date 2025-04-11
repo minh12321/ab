@@ -1,1 +1,16 @@
-<p>gio-hang works!</p>
+<div class="cart-container">
+    <h1 class="cart-title">GIỎ HÀNG</h1>
+    
+    <div class="cart-summary">
+      <h2 class="summary-title">TỔNG TIỀN</h2>
+      <hr class="divider" />
+      <div class="total">
+        <span>Tổng: </span>
+        <span class="total-amount">{{ totalAmount | currency:'VND' }}</span>
+      </div>
+      
+      <button class="confirm-button" (click)="confirmOrder()">
+        <span>✔ Chốt đơn</span>
+      </button>
+    </div>
+  </div>

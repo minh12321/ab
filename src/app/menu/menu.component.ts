@@ -31,5 +31,8 @@ export class MenuComponent {
     navigateTopo() {
       this.router.navigate(['/prodexe']);
     }
-  
+    goToGuide() {
+      this.menuOpen = false; // đóng menu sau khi click
+      this.router.navigate(['/huong-dan']); // điều hướng đến trang hướng dẫn mua hàng
+    }
 }
