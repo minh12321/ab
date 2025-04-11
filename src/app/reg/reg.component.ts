@@ -10,53 +10,59 @@ import { HttpParams } from '@angular/common/http';
   standalone: false
 })
 export class RegComponent {
-  username: string = '';
-  fullName: string = '';
-  city: string = '';
-  address: string = '';
-  phone: string = '';
 
-  // Biến kiểm tra lỗi
+  ho :string='';
+  ten :string='';
+  username: string = '';
+  password: string = '';
+  fullName: string = '';
+  email :string='';
+
+  constructor(private userService: UserService, private router: Router) { }
+  
   isInvalidUsername: boolean = false;
   isInvalidFullName: boolean = false;
-  isInvalidCity: boolean = false;
-  isInvalidAddress: boolean = false;
-  isInvalidPhone: boolean = false;
-
-  constructor(private userService: UserService, private router: Router) {}
+  isInvalidPassword: boolean = false;
+  isInvalidEmail: boolean = false;
 
   validateForm(): boolean {
     this.isInvalidUsername = this.username.trim() === '';
     this.isInvalidFullName = this.fullName.trim() === '';
-    this.isInvalidCity = this.city.trim() === '';
-    this.isInvalidAddress = this.address.trim() === '';
-    this.isInvalidPhone = this.phone.trim() === '';
+    this.isInvalidPassword = this.password.trim() === '';
+    this.isInvalidEmail = this.email.trim() === '' ;
 
-    return !(this.isInvalidUsername || this.isInvalidFullName || this.isInvalidCity || this.isInvalidAddress || this.isInvalidPhone);
+    return !(this.isInvalidUsername || this.isInvalidFullName ||this.isInvalidPassword ||this.isInvalidEmail );
   }
 
-  register(): void {
+  // -----------------------------------------------
+
+  taoUser(): string {
+    const user = this.ho + ' ' + this.ten;
+    return user;
+  }
+
+
+  register() {
     if (!this.validateForm()) {
       alert('Vui lòng điền đầy đủ thông tin!');
       return;
     }
-
-    const params: HttpParams = new HttpParams()
-      .set('username', this.username)
-      .set('fullName', this.fullName)
-      .set('city', this.city)
-      .set('address', this.address)
-      .set('phone', this.phone);
-
+    this.username = this.taoUser();
+    const params = new HttpParams()
+          .set('username', this.username)
+          .set('password', this.password)
+          .set('fullName',this.fullName)
+          .set('email',this.email);
     this.userService.registerUser(params).subscribe({
       next: () => {
-        alert('Đăng ký thành công');
+        alert('Đăng ký thành công ,ok để tiếp tục');
         this.router.navigate(['/']);
       },
-      error: (err: any) => {
-        alert('Đăng ký thất bại: ' + err.message);
+      error: (err) => {
+        alert('Đăng ký thất vọng: ' + err.message);
       }
-    });
+    })      
+
   }
 }
 
