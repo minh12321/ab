@@ -35,7 +35,8 @@ export class LoginComponent {
         this.getuserby(this.username);
       },
       error: (err) => {
-        alert('Login failed: ' );
+        const errorMessage = err.error?.message || 'Đăng nhập thất bại. Vui lòng thử lại.';
+        alert('Login failed: ' + errorMessage);
       }
     });
   }
