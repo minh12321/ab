@@ -11,6 +11,7 @@ import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LienheComponent } from './lienhe/lienhe.component';
 import { ChinhsachComponent } from './chinhsach/chinhsach.component';
+import { RankComponent } from './rank/rank.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 't-s-p', component: ThemSanPhamComponent } ,
   { path: 'chinhsach', component: ChinhsachComponent } ,
   { path: 'lienhe', component: LienheComponent } ,
+  { path: 'rank', component: RankComponent } ,
   
   // { path: 't-s-p', component: ThemSanPhamComponent
   // canActivateChild: [AuthGuard],

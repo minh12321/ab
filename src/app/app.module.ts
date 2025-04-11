@@ -15,6 +15,7 @@ import { TabNavigationComponent } from './tab-navigation/tab-navigation.componen
 import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
 import { LienheComponent } from './lienhe/lienhe.component';
 import { ChinhsachComponent } from './chinhsach/chinhsach.component';
+import { RankComponent } from './rank/rank.component';
 
 
 @NgModule({ declarations: [
@@ -29,7 +30,8 @@ import { ChinhsachComponent } from './chinhsach/chinhsach.component';
         TabNavigationComponent,
         SanphamComponent,
         LienheComponent,
-        ChinhsachComponent
+        ChinhsachComponent,
+        RankComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
