@@ -9,7 +9,8 @@ import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
 import { GioHangComponent } from './gio-hang/gio-hang.component';
 import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
 import { AuthGuard } from './auth/auth.guard';
-
+import { LienheComponent } from './lienhe/lienhe.component';
+import { ChinhsachComponent } from './chinhsach/chinhsach.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'cart', component: GioHangComponent,canActivate: [AuthGuard], },
   { path: 'prodexe', component: SanphamComponent },
   { path: 't-s-p', component: ThemSanPhamComponent } ,
+  { path: 'chinhsach', component: ChinhsachComponent } ,
+  { path: 'lienhe', component: LienheComponent } ,
   
   // { path: 't-s-p', component: ThemSanPhamComponent
   // canActivateChild: [AuthGuard],

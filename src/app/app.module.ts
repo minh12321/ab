@@ -13,6 +13,9 @@ import { MenuComponent } from './menu/menu.component';
 import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
 import { TabNavigationComponent } from './tab-navigation/tab-navigation.component';
 import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
+import { LienheComponent } from './lienhe/lienhe.component';
+import { ChinhsachComponent } from './chinhsach/chinhsach.component';
+
 
 @NgModule({ declarations: [
         AppComponent,
@@ -24,7 +27,9 @@ import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
         MenuComponent,
         ThemSanPhamComponent,
         TabNavigationComponent,
-        SanphamComponent
+        SanphamComponent,
+        LienheComponent,
+        ChinhsachComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
