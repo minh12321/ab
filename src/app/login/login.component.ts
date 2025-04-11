@@ -3,6 +3,7 @@ import { User } from '../../api-sevice/user.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserService } from '../../api-sevice/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -16,12 +17,12 @@ export class LoginComponent {
   username: string="";
   password: string="";
 
-  constructor(private userService: UserService, private router: Router,private http: HttpClient) { }
+  constructor(private authService: AuthService,private userService: UserService, private router: Router,private http: HttpClient) { }
 
-  public loginstatus: boolean=false;
 
   onSubmit(){
     this.login();
+    
   }
   
   login() {
@@ -30,12 +31,25 @@ export class LoginComponent {
       .set('password', this.password);
     this.userService.loginUser(params).subscribe({
       next: () => {
-        alert('Login successful!');
-        !this.loginstatus;
-        this.router.navigate(['/']);
+        this.authService.login(this.username);
+        this.getuserby(this.username);
       },
       error: (err) => {
         alert('Login failed: ' );
+      }
+    });
+  }
+  getuserby(name:string){
+    this.userService.getUserByUsername(name).subscribe({
+      next: (data) => {
+        this.user = data;
+        console.log('User:', this.user);
+        this.authService.login1(data.accountId,data.fullName,data.email,data.accountType,data.status);
+        this.router.navigate(['/']);
+        alert('Login successful!');
+      },
+      error: (err) => {
+        console.error('Không tìm thấy người dùng:', err);
       }
     });
   }

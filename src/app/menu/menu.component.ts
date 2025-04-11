@@ -20,7 +20,11 @@ export class MenuComponent {
       this.menuOpen = false;
     }
     navigateToadinadin() {
-      this.router.navigate(['/admin']);
+        if (sessionStorage.getItem('accountType') === 'ADMIN') {
+            this.router.navigate(['/admin']);
+          } else {
+            alert('lol');
+          }
     }
     navigateTohomehome() {
       this.router.navigate(['/home']);

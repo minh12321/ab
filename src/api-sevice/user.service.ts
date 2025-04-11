@@ -36,6 +36,12 @@ export class UserService {
   getUserById(accountId: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/admin/update/${accountId}`);
   }
+
+  getUserByUsername(accountname: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/admin/user/${accountname}`);
+  }
+
+
   getList():Observable<User[]>{
     return this.http.get<User[]>(`${this.apiUrl}/list`);
   }
