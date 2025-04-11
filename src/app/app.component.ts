@@ -12,7 +12,7 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent {
   title = 'ab';
   username: string = '';
-  loginstatus: boolean = true;
+  loginstatus: boolean = false;
 
   constructor(private authService: AuthService,private router: Router) {}
 
@@ -23,9 +23,9 @@ export class AppComponent {
 
   ngu(): boolean {
     if (this.authService.isLoggedIn()) {
-      return this.loginstatus=false;
-    } else {
       return this.loginstatus=true;
+    } else {
+      return this.loginstatus=false;
     }
   }
   
