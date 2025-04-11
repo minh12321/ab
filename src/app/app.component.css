@@ -102,6 +102,7 @@
     text-align: center;
     border-left: 2px solid black;
     border-right: 2px solid black;
+    cursor: pointer;
   }
   
   .menu-item:hover {
@@ -121,11 +122,13 @@
     font-size: 14px;
     background-color: #222;
     padding: 10px;
-    min-width: 200px;
+    min-width: 430px;
     column-count: 4; 
     column-gap: 0px;
     z-index: 9999; 
     font-weight: 100;
+    text-align: left;
+    cursor: pointer;
   }
   
   .menu-item:hover .submenu {
@@ -144,7 +147,10 @@
   }
   
   .submenu li a:hover {
-    background: #666;
+    color: #FFD366;
+    margin-left: 15px;
+    transition: margin-left 1.3s ease;
+    cursor: pointer;
   }
   /* ------------------------------------- */
   footer {
