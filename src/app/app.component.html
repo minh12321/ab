@@ -8,7 +8,14 @@
         <i class="fas fa-microphone"></i>
       </div>
       <div class="auth-cart">
-        <a href="javascript:void(0)" (click)="goTolog()" class="auth-link">Đăng nhập</a>/<a (click)="goToreg()" class="auth-link">Đăng ký</a>
+        <ng-container *ngIf="!loginstatus; else loggedIn">
+          <a href="javascript:void(0)" (click)="goTolog()" class="auth-link">Đăng nhập</a> /
+          <a (click)="goToreg()" class="auth-link">Đăng ký</a>
+        </ng-container>
+        
+        <ng-template #loggedIn>
+          <span class="auth-link">Xin chào, {{ username }}</span>
+        </ng-template>
         <div class="cart-icon" (click)="navigateTocart()">
           <i class="fas fa-shopping-cart"></i>
         </div>
@@ -76,3 +83,6 @@
         </div>
     </div>
   </footer>
+
+
+  <div id="custom-alert" style="position: fixed; top: 20px; right: 20px; background: #ff4444; color: white; padding: 10px 20px; border-radius: 8px; display: none; z-index: 9999;"></div>

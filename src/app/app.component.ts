@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { NgClass,NgFor,NgIf } from '@angular/common';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,24 @@ import { NgClass,NgFor,NgIf } from '@angular/common';
 })
 export class AppComponent {
   title = 'ab';
+  username: string = '';
+  loginstatus: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService,private router: Router) {}
+
+  ngOnInit(): void { 
+    this.ngu();
+    this.username = this.authService.getUsername()|| ''
+  }
+
+  ngu(): boolean {
+    if (this.authService.isLoggedIn()) {
+      return this.loginstatus=true;
+    } else {
+      return this.loginstatus=false;
+    }
+  }
+  
 
   goToreg() {
     this.router.navigate(['/reg']);

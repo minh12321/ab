@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
     selector: 'app-menu',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent {
   
-  constructor(private router: Router) { }
+  constructor(private router: Router,private authService :AuthService) { }
     menuOpen = false;
   
     toggleMenu() {
@@ -20,7 +21,11 @@ export class MenuComponent {
       this.menuOpen = false;
     }
     navigateToadinadin() {
-      this.router.navigate(['/admin']);
+        if (sessionStorage.getItem('accountType') === 'ADMIN') {
+            this.router.navigate(['/admin']);
+          } else {
+            alert('lol');
+          }
     }
     navigateTohomehome() {
       this.router.navigate(['/home']);
@@ -31,8 +36,15 @@ export class MenuComponent {
     navigateTopo() {
       this.router.navigate(['/prodexe']);
     }
+<<<<<<< HEAD
     goToGuide() {
       this.menuOpen = false; // đóng menu sau khi click
       this.router.navigate(['/huong-dan']); // điều hướng đến trang hướng dẫn mua hàng
     }
+=======
+    logout(){
+      this.authService.logout();
+    }
+  
+>>>>>>> 508defd7be88489b3c66f7782742946279ad9eb6
 }

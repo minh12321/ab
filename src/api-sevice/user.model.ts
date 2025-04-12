@@ -6,4 +6,5 @@ export class User {
   status: string="";
   accountType: string="";
   email: string="";
+  timelog : number=0;
 }

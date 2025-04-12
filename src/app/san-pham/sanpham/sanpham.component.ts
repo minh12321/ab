@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../../../api-sevice/san_pham.model';
 import { ProductService } from '../../../api-sevice/san_pham.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-sanpham',
@@ -9,12 +10,13 @@ import { ProductService } from '../../../api-sevice/san_pham.service';
   standalone: false
 })
 export class SanphamComponent {
-    products: Product[] = [];
+    product: Product[] = [];
     newProduct: Product = new Product();
     filteredProducts: Product[] = [];
     minPrice: number = 0;
     maxPrice: number = 10000000;
-    
+
+    public apiUrl = environment.url;
 
     filter = {
       mauSac: '',             // VD: "Đỏ"
@@ -35,14 +37,14 @@ export class SanphamComponent {
   
     getAllProducts() {
       this.productService.getAllProducts().subscribe(data => {
-        this.products = data;
+        this.product = data;
         this.applyFilters();
       });
     }
     
 ///testtest
     applyFilters() {
-      this.filteredProducts = this.products.filter(p => {
+      this.filteredProducts = this.product.filter(p => {
         const matchMauSac = this.filter.mauSac ? p.mauSac === this.filter.mauSac : true;
         const matchConHang = this.filter.conHang ? p.soLuong > 0 : true;
         const matchSize = this.filter.size ? p.size === this.filter.size : true;
@@ -52,9 +54,10 @@ export class SanphamComponent {
         const matchMinPrice = this.filter.minPrice != null ? p.gia >= this.filter.minPrice : true;
         const matchMaxPrice = this.filter.maxPrice != null ? p.gia <= this.filter.maxPrice : true;
 
-
+        
         return matchMauSac && matchConHang && matchSize && matchHang && matchKieuGiay && matchMinPrice && matchMaxPrice && matchloaiHang;
-      });
+        
+      });this.sortProducts();
     }
     resetFilter() {
       this.filter = {
@@ -69,6 +72,38 @@ export class SanphamComponent {
       };
       this.applyFilters();
     }
+
+    selectedSort = 'price_asc';
     
+    setFilter(a:string){
+      this.filter.size= a;
+      this.applyFilters();
+    }
+    setFilter1(a:string){
+      this.filter.mauSac= a;
+      this.applyFilters();
+    }
+    setFilter2(a:string){
+      this.filter.hang= a;
+      this.applyFilters();
+    }
+    setFilter3(a:string){
+      this.filter.loaihang= a;
+      this.applyFilters();
+    }
+    
+    sortProducts() {
+      switch (this.selectedSort) {
+        case 'price_asc':
+          this.filteredProducts.sort((a, b) => a.gia - b.gia);
+          break;
+        case 'price_desc':
+          this.filteredProducts.sort((a, b) => b.gia - a.gia);
+          break;
+        case 'name':
+          this.filteredProducts.sort((a, b) => a.tenSanPham.localeCompare(b.tenSanPham));
+          break;
+      }
+    }
 
 }

@@ -8,6 +8,7 @@ import { AccountComponent } from './account/account.component';
 import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
 import { GioHangComponent } from './gio-hang/gio-hang.component';
 import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -15,11 +16,17 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'reg', component: RegComponent },
   { path: 'log', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent,canActivate: [AuthGuard], },
   { path: 'account', component: AccountComponent },
-  { path: 'cart', component: GioHangComponent },
+  { path: 'cart', component: GioHangComponent,canActivate: [AuthGuard], },
   { path: 'prodexe', component: SanphamComponent },
-  { path: 't-s-p', component: ThemSanPhamComponent }  // Updated path
+  { path: 't-s-p', component: ThemSanPhamComponent } ,
+  
+  // { path: 't-s-p', component: ThemSanPhamComponent
+  // canActivateChild: [AuthGuard],
+  // children: [
+  //   { path: 'dashboard', component: DashboardComponent },
+  //   { path: 'profile', component: ProfileComponent },// Updated path
 ];
 
 @NgModule({
