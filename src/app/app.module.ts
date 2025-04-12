@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withFetch,  withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +36,7 @@ import { RankComponent } from './rank/rank.component';
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
+        NgChartsModule,
         FormsModule,
         ReactiveFormsModule], providers: [provideHttpClient(withFetch()), provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

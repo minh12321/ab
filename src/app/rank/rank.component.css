@@ -1,0 +1,185 @@
+.container{
+    width: 1400px;
+    justify-content: center;
+}
+
+.rank-wrapper {
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ffe5b4, #ff9966);
+    border-radius: 12px;
+    color: #333;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .rank-bar {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  
+    .rank-dot-container {
+      text-align: center;
+    }
+  
+    .rank-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      margin: auto;
+      transition: 0.3s ease;
+      border: 2px solid white;
+  
+      &.active {
+        background: linear-gradient(to top, #ff6a00, #ffcc70);
+        box-shadow: 0 0 8px orange;
+      }
+    }
+  
+    .rank-label {
+      margin-top: 5px;
+      font-size: 13px;
+    }
+  }
+  
+  .progress-info {
+    text-align: center;
+    margin-top: 10px;
+  
+    .progress-bar {
+      background: #eee;
+      height: 8px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0 20px;
+  
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(to right, #ff6a00, #ffb347);
+        transition: 0.3s;
+      }
+    }
+  
+    span {
+      display: block;
+      margin-top: 5px;
+    }
+  }
+  
+  .boost-button {
+    display: block;
+    margin: 15px auto;
+    background: linear-gradient(to right, #ff6a00, #ffb347);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .missions {
+    margin-top: 20px;
+  
+    .mission {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+  
+      .mission-progress {
+        background: #ddd;
+        height: 6px;
+        border-radius: 10px;
+        position: relative;
+  
+        .fill {
+          background: #ffa500;
+          height: 100%;
+          transition: 0.3s;
+        }
+  
+        span {
+          position: absolute;
+          right: 5px;
+          top: -18px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  /* ------------------------------------------ */
+  
+   
+
+  .modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      min-width: 300px;
+    }
+  
+    button {
+      margin-top: 10px;
+      background: #ff6a00;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+    .lg{
+        display: flex;
+        gap: 30px;
+        justify-content: space-between; 
+        align-items: flex-start; 
+        flex-wrap: wrap;
+    } 
+    .chart-section{
+        margin-top: 10px;
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    }
+   .leaderboard {
+        margin-top: 10px;
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .leaderboard table {
+    width: 800px;
+    border-collapse: collapse;
+  
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f6f6f6;
+    }
+  }
+  
+
+
