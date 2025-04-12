@@ -1,0 +1,85 @@
+<p>rank works!</p>
+<div class="container">
+    <div class="lg">
+        <div class="chart-section">
+            <canvas baseChart width="400" height="400"
+            [type]="'line'"
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend">
+            </canvas>
+        </div>
+        <div class="leaderboard">
+            <h3>🏆 Bảng xếp hạng người dùng</h3>
+            <table>
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Tên</th>
+                <th>Tổng chi tiêu</th>
+                <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of leaderboard; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.total | number }} đ</td>
+                <td>{{ user.rank }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+  <!-- //--------------- -->
+
+  <div class="rank-wrapper">
+    <h2>🌟 Thứ Hạng Người Dùng</h2>
+    
+    <!-- Progress Bar -->
+    <div class="rank-bar">
+      <div *ngFor="let rank of rankLevels; let i = index" class="rank-dot-container">
+        <div class="rank-dot" 
+             [class.active]="isReached(i)"
+             (click)="openReward(rank)" 
+             [title]="rewardsByRank[rank]">
+        </div>
+        <div class="rank-label">{{ rank }}</div>
+      </div>
+    </div>
+  
+    <!-- Tiến độ đến rank tiếp -->
+    <div class="progress-info">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="progressPercent"></div>
+      </div>
+      <span>{{ progressPercent }}% đến {{ rankLevels[rankLevels.indexOf(currentRank) + 1] || 'MAX' }}</span>
+    </div>
+  
+    <!-- Nút Boost -->
+    <button *ngIf="isVip && canBoost" class="boost-button" (click)="boost()">🚀 BOOST</button>
+  
+    <!-- Danh sách nhiệm vụ -->
+    <div class="missions">
+      <h3>📜 Nhiệm vụ nâng hạng</h3>
+      <div *ngFor="let m of missions" class="mission">
+        <b>{{ m.title }}</b>
+        <p>{{ m.description }}</p>
+        <div class="mission-progress">
+          <div class="fill" [style.width.%]="m.progress"></div>
+          <span>{{ m.progress }}%</span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal Ưu Đãi -->
+    <div class="modal" *ngIf="showRewardModal">
+      <div class="modal-content">
+        <h3>🎁 Ưu đãi {{ selectedRewardRank }}</h3>
+        <p>{{ rewardsByRank[selectedRewardRank] }}</p>
+        <button (click)="closeModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,9 +3,9 @@
         <h1>BEN</h1>
       </div>
       <div class="search-bar">
-        <input type="text" placeholder="Search...">
+        <input type="text" [(ngModel)]="text" placeholder="Search...">
         <i class="fas fa-search"></i>
-        <i class="fas fa-microphone"></i>
+        <i (click)="startListening()" class="fas fa-microphone"></i>
       </div>
       <div class="auth-cart">
         <ng-container *ngIf="!loginstatus; else loggedIn">
@@ -32,12 +32,11 @@
 
 
 <ul class="navbar">
-  <li *ngFor="let menu of menus" class="menu-item" (click)="toggleMenu(menu)">
-    {{ menu.title }} 
-    <span class="arrow" [ngClass]="{'active': menu.active}"></span>
-    <ul class="submenu" *ngIf="menu.active">
-      <li *ngFor="let sub of menu.submenus">
-        <a href="#">{{ sub }}</a>
+  <li *ngFor="let menu of menus" class="menu-item" routerLink="{{menu.route}}" >
+    <a routerLink="{{menu.route}}"><i class="{{menu.icon}}"></i>{{ menu.title }} </a>
+    <ul class="submenu" *ngIf="menu.submenus">
+      <li *ngFor="let sub of menu.submenus" routerLink="{{menu.route}}">
+        <a >{{ sub.title }}</a>
       </li>
     </ul>
   </li>

@@ -103,46 +103,55 @@
     text-align: center;
     border-left: 2px solid black;
     border-right: 2px solid black;
+    cursor: pointer;
   }
   
   .menu-item:hover {
     background-color: #000;
     color: #fff;
   }
-  
-  .arrow {
-    margin-left: 5px;
-    transition: transform 0.2s;
-    display: inline-block;
-    font-weight: bold;
-  }
-  
-  .arrow.active {
-    transform: rotate(90deg);
+
+  .menu-item:hover a{
+    color: #fff;
   }
   
   .submenu {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background: #444;
-    min-width: 80px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    list-style: none;
-    padding: 0;
+    font-size: 14px;
+    background-color: #222;
+    padding: 10px;
+    min-width: 430px;
+    column-count: 4; 
+    column-gap: 0px;
+    z-index: 9999; 
+    font-weight: 100;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .menu-item:hover .submenu {
     display: block;
+  }
+  
+  .submenu li {
+    break-inside: avoid; /* Tránh gãy giữa dòng */
   }
   
   .submenu li a {
     display: block;
-    color: white;
-    padding: 10px;
+    padding: 5px;
+    color: #fff;
     text-decoration: none;
-    transition: background 0.3s;
   }
   
   .submenu li a:hover {
-    background: #666;
+    color: #FFD366;
+    margin-left: 15px;
+    transition: margin-left 1.3s ease;
+    cursor: pointer;
   }
   /* ------------------------------------- */
   footer {

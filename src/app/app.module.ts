@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withFetch,  withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +14,10 @@ import { MenuComponent } from './menu/menu.component';
 import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
 import { TabNavigationComponent } from './tab-navigation/tab-navigation.component';
 import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
+import { LienheComponent } from './lienhe/lienhe.component';
+import { ChinhsachComponent } from './chinhsach/chinhsach.component';
+import { RankComponent } from './rank/rank.component';
+
 
 @NgModule({ declarations: [
         AppComponent,
@@ -24,10 +29,14 @@ import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
         MenuComponent,
         ThemSanPhamComponent,
         TabNavigationComponent,
-        SanphamComponent
+        SanphamComponent,
+        LienheComponent,
+        ChinhsachComponent,
+        RankComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
+        NgChartsModule,
         FormsModule,
         ReactiveFormsModule], providers: [provideHttpClient(withFetch()), provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
