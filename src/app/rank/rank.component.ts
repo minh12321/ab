@@ -200,7 +200,10 @@ export class RankComponent {
       ]; 
       this.chart?.update();
     });
-    this.loadplayer();
+    if(this.authService.isLoggedIn()==true){
+      this.loadplayer();
+    }
+    
   }
 
   openReward(rank: string): void {
