@@ -182,14 +182,14 @@ export class RankComponent {
     ]
   };
   public lineChartOptions: ChartOptions<'line'> = {
-    responsive: false
+    responsive: true
   };
   public lineChartLegend = true;
 
   // -----------------------------------------------------------
 
   ngOnInit(): void {
-    
+    this.loadLeaderboard();
     this.hoaDonService.getHoaDonByMaKH(this.authService.getid()).subscribe((hoaDons: HoaDon[]) => {
       this.hoaDonList = hoaDons;
       this.tinhChiTieuTheoThang();
@@ -202,7 +202,7 @@ export class RankComponent {
     });
     if(this.authService.isLoggedIn()==true){
       this.loadplayer();
-      this.loadLeaderboard();
+      
     }
     
   }
