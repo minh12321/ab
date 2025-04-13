@@ -110,49 +110,49 @@ export class RankComponent {
     { title: 'Chia sẻ app', description: 'Chia sẻ cho 3 người', progress: 30 }
   ];
 
-  loadplayer():void{
-    this.khachHangService.getById(this.authService.getid()).subscribe((d: KhachHang)=>
-    {
-      this.currentRank = d.hangKhachHang || '';
-      this.progressPercent = Math.min((d.chiTieu / 10000000) * 100, 100);;
-    })
-  }
+  // loadplayer():void{
+  //   this.khachHangService.getById(this.authService.getid()).subscribe((d: KhachHang)=>
+  //   {
+  //     this.currentRank = d.hangKhachHang || '';
+  //     this.progressPercent = Math.min((d.chiTieu / 10000000) * 100, 100);;
+  //   })
+  // }
 
-  // Bảng xếp hạng
-  allRanks: {
-    maKhachHang: string;
-    tenKhachHang: string;
-    chiTieu: number;
-    hangKhachHang: string;
-    position: number;
-  }[] = [];
+  // // Bảng xếp hạng
+  // allRanks: {
+  //   maKhachHang: string;
+  //   tenKhachHang: string;
+  //   chiTieu: number;
+  //   hangKhachHang: string;
+  //   position: number;
+  // }[] = [];
 
-  leaderboard: typeof this.allRanks = [];
+  // leaderboard: typeof this.allRanks = [];
 
-  loadLeaderboard(): void {
-    this.khachHangService.getAll().subscribe((ds: KhachHang[]) => {
-      const sorted = ds
-        .map((kh) => ({
-          maKhachHang: kh.maKhachHang,
-          tenKhachHang: kh.tenKhachHang,
-          chiTieu: kh.chiTieu,
-          hangKhachHang: kh.hangKhachHang || '',
-        }))
-        .sort((a, b) => b.chiTieu - a.chiTieu)
-        .map((kh, index) => ({
-          ...kh,
-          position: index + 1,
-        }));
+  // loadLeaderboard(): void {
+  //   this.khachHangService.getAll().subscribe((ds: KhachHang[]) => {
+  //     const sorted = ds
+  //       .map((kh) => ({
+  //         maKhachHang: kh.maKhachHang,
+  //         tenKhachHang: kh.tenKhachHang,
+  //         chiTieu: kh.chiTieu,
+  //         hangKhachHang: kh.hangKhachHang || '',
+  //       }))
+  //       .sort((a, b) => b.chiTieu - a.chiTieu)
+  //       .map((kh, index) => ({
+  //         ...kh,
+  //         position: index + 1,
+  //       }));
 
-      this.allRanks = sorted;
-      this.leaderboard = sorted.slice(0, 10);
-      console.log(this.leaderboard)
-    });
-  }
+  //     this.allRanks = sorted;
+  //     this.leaderboard = sorted.slice(0, 10);
+  //     console.log(this.leaderboard)
+  //   });
+  // }
 
-  findMyRank(maKhachHang: string): number | undefined {
-    return this.allRanks.find(kh => kh.maKhachHang === maKhachHang)?.position;
-  }
+  // findMyRank(maKhachHang: string): number | undefined {
+  //   return this.allRanks.find(kh => kh.maKhachHang === maKhachHang)?.position;
+  // }
 
   //________________________________________---------------------
   public lineChartData: ChartConfiguration<'line'>['data'] = {
@@ -201,8 +201,8 @@ export class RankComponent {
       // this.chart?.update();
     });
     if(this.authService.isLoggedIn()==true){
-      this.loadplayer();
-      this.loadLeaderboard();
+      // this.loadplayer();
+      // this.loadLeaderboard();
     }
     
   }
