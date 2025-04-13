@@ -18,7 +18,7 @@ export class HoaDonService {
   }
 
   // Lấy hóa đơn theo mã khách hàng
-  getHoaDonByMaKH(maKH: string): Observable<HoaDon[]> {
+  getHoaDonByMaKH(maKH: number): Observable<HoaDon[]> {
     return this.http.get<HoaDon[]>(`${this.apiUrl}/api/hoadon/makh/${maKH}`);//v
   }
 

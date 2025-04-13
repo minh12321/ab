@@ -14,6 +14,7 @@ export class AuthService {
   }
 
   login1(accountId: number, fullName: string, email: string, accountType: string, status: string): void {
+    this.storageService.setItem('id', accountId.toString());
     this.storageService.setItem('fullName', fullName);
     this.storageService.setItem('email', email);
     this.storageService.setItem('accountType', accountType);
@@ -31,6 +32,14 @@ export class AuthService {
 
   getUsername(): string | null {
     return this.storageService.getItem('username');
+  }
+
+  getid(): number  {
+    const id = this.storageService.getItem('id');
+
+  const idNumber = Number(id);
+
+  return isNaN(idNumber) ? 0 : idNumber;
   }
 
   isAdmin(): boolean {

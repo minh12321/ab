@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject,PLATFORM_ID } from '@angular/core';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+import { HoaDonService } from '../../api-sevice/hoa_don.service';
+import { HoaDon } from '../../api-sevice/hoa_don.model';
+import { AuthService } from '../auth/auth.service';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
@@ -10,14 +14,8 @@ import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 })
 export class RankComponent {
 
-  rankLevels: string[] = ['Vô Hạng', 'Đồng', 'Bạc', 'Vàng', 'Kim Cương'];
-  currentRank: string = 'Bạc';
-  progressPercent: number = 63;
-  isVip: boolean = true;
-  canBoost: boolean = true;
-  selectedRewardRank: string = '';
-  showRewardModal: boolean = false;
-
+  isBrowser: boolean;
+  hoaDonList: HoaDon[] = [];    
   thang1 :number =0;
   thang2 :number =0;
   thang3 :number =0;
@@ -30,6 +28,70 @@ export class RankComponent {
   thang10 :number =0;
   thang11 :number =0;
   thang12 :number =0;
+  constructor(private hoaDonService: HoaDonService,private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object) {this.isBrowser = isPlatformBrowser(this.platformId);}
+
+  tinhChiTieuTheoThang() {
+    this.thang1 = this.thang2 = this.thang3 = this.thang4 = this.thang5 = 
+    this.thang6 = this.thang7 = this.thang8 = this.thang9 = this.thang10 = 
+    this.thang11 = this.thang12 = 0;
+  
+    this.hoaDonList.forEach(hd => {
+      const ngayMua = new Date(hd.ngayMua);
+      const thang = ngayMua.getMonth() + 1;  
+      const tongTien = hd.gia * hd.soLuong;
+  
+      switch (thang) {
+        case 1:
+          this.thang1 += tongTien;
+          break;
+        case 2:
+          this.thang2 += tongTien;
+          break;
+        case 3:
+          this.thang3 += tongTien;
+          break;
+        case 4:
+          this.thang4 += tongTien;
+          break;
+        case 5:
+          this.thang5 += tongTien;
+          break;
+        case 6:
+          this.thang6 += tongTien;
+          break;
+        case 7:
+          this.thang7 += tongTien;
+          break;
+        case 8:
+          this.thang8 += tongTien;
+          break;
+        case 9:
+          this.thang9 += tongTien;
+          break;
+        case 10:
+          this.thang10 += tongTien;
+          break;
+        case 11:
+          this.thang11 += tongTien;
+          break;
+        case 12:
+          this.thang12 += tongTien;
+          break;
+      }
+    });
+  }
+
+
+
+  rankLevels: string[] = ['Vô Hạng', 'Đồng', 'Bạc', 'Vàng', 'Kim Cương'];
+  currentRank: string = 'Bạc';
+  progressPercent: number = 63;
+  isVip: boolean = true;
+  canBoost: boolean = true;
+  selectedRewardRank: string = '';
+  showRewardModal: boolean = false;
+
+
 
   rewardsByRank: { [rank: string]: string } = {
     'Vô Hạng': 'Ưu đãi đặc biệt cho người mới.',
@@ -71,7 +133,7 @@ export class RankComponent {
     ],
     datasets: [
       {
-        data: [  this.thang1, this.thang2, this.thang3, this.thang4, this.thang5, this.thang6,this.thang7,this.thang8,this.thang9,this.thang10,this.thang11,this.thang12 ],
+        data: [],
         label: 'Mức chi têu',
         fill: true,
         tension: 0.5,
@@ -88,6 +150,28 @@ export class RankComponent {
   // -----------------------------------------------------------
 
   ngOnInit(): void {
+    this.hoaDonService.getHoaDonByMaKH(this.authService.getid()).subscribe((hoaDons: HoaDon[]) => {
+      this.hoaDonList = hoaDons;
+      console.log( this.hoaDonList);
+      this.tinhChiTieuTheoThang();
+      console.log('Tháng 1:', this.thang1);
+      console.log('Tháng 2:', this.thang2);
+      console.log('Tháng 3:', this.thang3);
+      console.log('Tháng 4:', this.thang4);
+      console.log('Tháng 5:', this.thang5);
+      console.log('Tháng 6:', this.thang6);
+      console.log('Tháng 7:', this.thang7);
+      console.log('Tháng 8:', this.thang8);
+      console.log('Tháng 9:', this.thang9);
+      console.log('Tháng 10:', this.thang10);
+      console.log('Tháng 11:', this.thang11);
+      console.log('Tháng 12:', this.thang12);
+      this.lineChartData.datasets[0].data = [
+        this.thang1, this.thang2, this.thang3, this.thang4,
+        this.thang5, this.thang6, this.thang7, this.thang8,
+        this.thang9, this.thang10, this.thang11, this.thang12
+      ]; 
+    });
     
   }
 

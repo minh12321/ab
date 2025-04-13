@@ -22,6 +22,7 @@ export class LoginComponent {
 
   onSubmit(){
     this.login();
+    window.location.reload();
     
   }
   

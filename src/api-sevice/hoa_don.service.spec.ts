@@ -9,10 +9,14 @@ describe('HoaDonService', () => {
   const apiUrl = 'http://localhost:8080/shopbogda/api/hoadon';
 
   const mockHoaDon: HoaDon = {
-    maHoaDon: 'HD001',
+    maHoaDon: 1,
     maKhachHang: 'KH001',
     ngayMua: '2025-04-13',
-    tongTien: 500000
+    gia:999999,
+    soLuong:2,
+    tenhang:'giày',
+    trangthai:'đang giao',
+
   };
 
   beforeEach(() => {
@@ -44,9 +48,9 @@ describe('HoaDonService', () => {
   });
 
   it('should get hoa don by maKH', () => {
-    service.getHoaDonByMaKH('KH001').subscribe(res => {
+    service.getHoaDonByMaKH(1).subscribe(res => {
       expect(res.length).toBe(1);
-      expect(res[0].maHoaDon).toBe('HD001');
+      expect(res[0].maHoaDon).toBe(1);
     });
 
     const req = httpMock.expectOne(`${apiUrl}/makh/KH001`);
