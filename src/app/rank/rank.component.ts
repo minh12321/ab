@@ -53,7 +53,7 @@ export class RankComponent {
     { name: 'Phạm D', total: 550000, rank: 'Đồng' }
   ];
 
-  // Biểu đồ chi tiêu
+  //________________________________________---------------------
   public lineChartData: ChartConfiguration<'line'>['data'] = {
     labels: [
       'Tháng 1',
@@ -71,7 +71,7 @@ export class RankComponent {
     ],
     datasets: [
       {
-        data: [ 65, 59, 80, 81, 56, 55, 40 ],
+        data: [  this.thang1, this.thang2, this.thang3, this.thang4, this.thang5, this.thang6,this.thang7,this.thang8,this.thang9,this.thang10,this.thang11,this.thang12 ],
         label: 'Mức chi têu',
         fill: true,
         tension: 0.5,
@@ -87,7 +87,9 @@ export class RankComponent {
 
   // -----------------------------------------------------------
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   openReward(rank: string): void {
     this.selectedRewardRank = rank;

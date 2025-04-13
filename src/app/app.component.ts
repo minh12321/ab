@@ -58,7 +58,7 @@ export class AppComponent {
   menus = [
     { title: 'Trang Chủ', icon: 'fa-solid fa-house', route: '/home' },
     { 
-      title: 'Sản Phẩm', icon: 'fa-solid fa-shoe-prints', active: false, 
+      title: 'Sản Phẩm', icon: 'fa-solid fa-shoe-prints', active: false, route: '/prodexe', 
       submenus: [
         { title: 'Nike', route: '/san-pham?hang=Nike' },
         { title: 'Adidas', route: '/san-pham?hang=Adidas' },

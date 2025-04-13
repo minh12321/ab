@@ -40,22 +40,14 @@ export class RegComponent {
 
   // -----------------------------------------------
 
-  taoUser(): string {
-    const user = this.ho + ' ' + this.ten;
-    return user;
-  }
-
-
   register() {
     if (!this.validateForm()) {
       alert('Vui lòng điền đầy đủ thông tin!');
       return;
     }
-    this.username = this.taoUser();
     const params = new HttpParams()
           .set('username', this.username)
           .set('password', this.password)
-          .set('confirmPassword', this.confirmPassword)
           .set('fullName',this.fullName)
           .set('email',this.email);
     this.userService.registerUser(params).subscribe({
@@ -64,7 +56,7 @@ export class RegComponent {
         this.router.navigate(['/']);
       },
       error: (err) => {
-        alert('Đăng ký thất bạibại: ' + err.message);
+        alert('Đăng ký thất bại: ' + err.message);
       }
     })      
     
