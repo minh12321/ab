@@ -189,7 +189,7 @@ export class RankComponent {
   // -----------------------------------------------------------
 
   ngOnInit(): void {
-    this.loadLeaderboard();
+    
     this.hoaDonService.getHoaDonByMaKH(this.authService.getid()).subscribe((hoaDons: HoaDon[]) => {
       this.hoaDonList = hoaDons;
       this.tinhChiTieuTheoThang();
@@ -202,6 +202,7 @@ export class RankComponent {
     });
     if(this.authService.isLoggedIn()==true){
       this.loadplayer();
+      this.loadLeaderboard();
     }
     
   }
