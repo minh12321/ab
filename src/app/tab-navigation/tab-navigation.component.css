@@ -1,8 +1,9 @@
 .breadcrumb-container {
     padding: 10px;
-    font-size: 16px;
+    font-size: 13px;
     margin-left:80px;
     margin-right: 80px;
+    margin-top: -20px;
   }
   
   .breadcrumb-container a {
@@ -13,4 +14,9 @@
   
   .breadcrumb-container span {
     color: black;
+  }
+
+  .b{
+    border-bottom: 2px solid black;
+    margin-top: -5px;
   }

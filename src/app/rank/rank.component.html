@@ -1,8 +1,9 @@
-<p>rank works!</p>
+
 <div class="container">
     <div class="lg">
         <div *ngIf="isBrowser" class="chart-section">
             <canvas baseChart width="400" height="400"
+            #lineChart
             [type]="'line'"
             [data]="lineChartData"
             [options]="lineChartOptions"
@@ -21,11 +22,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of leaderboard; let i = index">
+                <tr *ngFor="let kh of leaderboard; let i = index">
                 <td>{{ i + 1 }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.total | number }} đ</td>
-                <td>{{ user.rank }}</td>
+                <td>{{ kh.tenKhachHang }}</td>
+                <td>{{ kh.chiTieu | number }}đ</td>
+                <td>{{ kh.hangKhachHang }}</td>
                 </tr>
             </tbody>
             </table>
