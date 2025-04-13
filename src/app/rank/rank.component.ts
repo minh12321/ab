@@ -182,7 +182,7 @@ export class RankComponent {
     ]
   };
   public lineChartOptions: ChartOptions<'line'> = {
-    responsive: true
+    responsive: false
   };
   public lineChartLegend = true;
 
