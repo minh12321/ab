@@ -17,7 +17,7 @@ import { KhachHang } from '../../api-sevice/khach_hang.model';
 })
 export class RankComponent {
 
-  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+  // @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
   isBrowser: boolean;
   hoaDonList: HoaDon[] = [];    
@@ -198,7 +198,7 @@ export class RankComponent {
         this.thang5, this.thang6, this.thang7, this.thang8,
         this.thang9, this.thang10, this.thang11, this.thang12
       ]; 
-      this.chart?.update();
+      // this.chart?.update();
     });
     if(this.authService.isLoggedIn()==true){
       this.loadplayer();
