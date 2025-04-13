@@ -36,12 +36,12 @@ export class AdminComponent {
           this.thang5, this.thang6, this.thang7, this.thang8,
           this.thang9, this.thang10, this.thang11, this.thang12
         ]; 
-
+        this.chart?.update();
         this.tong = this.thang1+ this.thang2+ this.thang3+ this.thang4+this.thang5+ this.thang6+ this.thang7+ this.thang8+this.thang9+ this.thang10+ this.thang11+ this.thang12;
       });
     }
 
-
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   
     isBrowser: boolean;
     hoaDonList: HoaDon[] = [];    
