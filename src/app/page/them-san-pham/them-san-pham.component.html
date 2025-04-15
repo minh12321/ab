@@ -1,73 +1,84 @@
 <div>
-  <h2>Product Management</h2>
-  <div class="container">
+<h2>Product Management</h2>
+<div class="taa">
+<div class="container">
     <h2>Thêm Sản Phẩm</h2>
-  
     <form (ngSubmit)="submitProduct()">
       <label for="tenSanPham">Tên Sản Phẩm:</label>
       <input id="tenSanPham" [(ngModel)]="newProduct.tenSanPham" name="tenSanPham" required>
-  
+
       <label for="gia">Giá:</label>
       <input id="gia" type="number" [(ngModel)]="newProduct.gia" name="gia" required>
-  
+
       <label for="soLuong">Số Lượng:</label>
       <input id="soLuong" type="number" [(ngModel)]="newProduct.soLuong" name="soLuong" required>
 
-      <label for="mauSac">màu</label>
-      <input id="mauSac" type="number" [(ngModel)]="newProduct.mauSac" name="mauSac" required>
+      <label for="mauSac">Màu:</label>
+      <input id="mauSac" type="text" [(ngModel)]="newProduct.mauSac" name="mauSac" required>
 
-      <label for="size">size</label>
-      <input id="size" type="number" [(ngModel)]="newProduct.size" name="size" required>
+      <label for="size">Size:</label>
+      <input id="size" type="text" [(ngModel)]="newProduct.size" name="size" required>
 
-      <label for="moTa">mô tả </label>
-      <input id="moTa" type="number" [(ngModel)]="newProduct.moTa" name="moTa" required>
-  
-      <label for="file">Chọn ảnh:</label>
+      <label for="moTa">Mô Tả:</label>
+      <textarea id="moTa" rows="3" [(ngModel)]="newProduct.moTa" name="moTa" required></textarea>
+
+      <label for="file">Hoặc chọn ảnh:</label>
       <input type="file" id="file" (change)="onFileSelected($event)">
-  
-      <div *ngIf="newProduct.hinhAnh">
+
+      <div *ngIf="newProduct.hinhAnh" class="image-preview">
         <p>Ảnh sản phẩm:</p>
         <img [src]="newProduct.hinhAnh" alt="Ảnh sản phẩm" width="100">
       </div>
-  
+
       <button type="submit">Lưu Sản Phẩm</button>
     </form>
   </div>
-  
-
+    <div 
+    class="drop-area" 
+    (dragover)="onDragOver($event)" 
+    (dragleave)="onDragLeave($event)" 
+    (drop)="onDrop($event)">
+    <p>Kéo ảnh vào đây hoặc chọn ảnh bên dưới</p>
+    <img *ngIf="previewImage" [src]="previewImage" width="100" />
+    </div>
+  </div>
   <!-- Product List -->
   <h2>Danh sách sản phẩm</h2>
-  <table border="1">
+  <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Tên sản phẩm</th>
-        <th>màu</th>
-        <th>mô tả</th>
-        <th>size</th>
-        <th>số lượng</th>
+        <th>Màu</th>
+        <th>Mô tả</th>
+        <th>Size</th>
+        <th>Số lượng</th>
         <th>Giá</th>
         <th>Hình ảnh</th>
         <th>Thao tác</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of product">
+      <tr *ngFor="let product of filteredsp">
         <td>{{ product.maSanPham }}</td>
         <td>{{ product.tenSanPham }}</td>
         <td>{{ product.mauSac }}</td>
         <td>{{ product.moTa }}</td>
         <td>{{ product.size }}</td>
-        <td>{{ product.soLuong}}</td>
+        <td>{{ product.soLuong }}</td>
         <td>{{ product.gia | currency:'VND' }}</td>
         <td>
-          <img *ngIf="product.hinhAnh" [src]="apiUrl+'/api/upload/' + product.hinhAnh" width="100" alt="Hình ảnh">
+          <img *ngIf="product.hinhAnh" [src]="apiUrl + '/api/upload/' + product.hinhAnh" width="80" alt="Hình ảnh">
         </td>
         <td>
-          <button (click)="deleteProduct(product)">Xóa</button>
+          <button (click)="deleteProduct(product)" style="padding: 5px 10px; border: none; background: #f44336; color: white; border-radius: 4px;">Xóa</button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <button (click)="getAllProducts()">refresh</button>
+  <button class="refresh-button" (click)="getAllProducts()">Tải lại danh sách</button>
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="search" (input)="searchsp()" placeholder="Tên sản phẩm hoặc id...">
+</div>
+</div>
