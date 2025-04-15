@@ -3,6 +3,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withFetch,  withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegComponent } from './page/reg/reg.component';
@@ -21,6 +22,7 @@ import { RankComponent } from './page/rank/rank.component';
 
 @NgModule({ declarations: [
         AppComponent,
+        LoadingSpinnerComponent,
         RegComponent,
         LoginComponent,
         HomeComponent,
@@ -38,5 +40,5 @@ import { RankComponent } from './page/rank/rank.component';
         AppRoutingModule,
         NgChartsModule,
         FormsModule,
-        ReactiveFormsModule], providers: [provideHttpClient(withFetch()), provideHttpClient(withInterceptorsFromDi())] })
+        ReactiveFormsModule], providers: [provideHttpClient(withFetch()), provideHttpClient(withInterceptorsFromDi()),] })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, Inject, NgZone, PLATFORM_ID } from '@angular/core';
-import { RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { NgClass,NgFor,NgIf } from '@angular/common';
 import { AuthService } from './auth/auth.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -37,6 +37,16 @@ export class AppComponent {
         console.error('Lỗi nhận giọng nói:', event.error);
       };
     }
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.isLoading = true;  // Bật spinner khi bắt đầu điều hướng
+      }
+
+      if (event instanceof NavigationEnd || event instanceof NavigationError) {
+        this.isLoading = false; // Tắt spinner khi điều hướng hoàn thành hoặc có lỗi
+      }
+    });
   }
 
   ngOnInit(): void { 
@@ -109,4 +119,10 @@ export class AppComponent {
   startListening() {
     this.recognition.start();
   }
+  //--------------------------------------------------
+  isLoading = false;
+
+
+    
+  
 }
