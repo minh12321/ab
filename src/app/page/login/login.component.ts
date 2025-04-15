@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { User } from '../../api-sevice/user.model';
+import { User } from '../../../api-sevice/user.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { UserService } from '../../api-sevice/user.service';
+import { UserService } from '../../../api-sevice/user.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 
 
 @Component({
@@ -19,10 +19,13 @@ export class LoginComponent {
 
   constructor(private authService: AuthService,private userService: UserService, private router: Router,private http: HttpClient) { }
 
+  
 
   onSubmit(){
     this.login();
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
     
   }
   

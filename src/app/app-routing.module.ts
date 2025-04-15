@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegComponent } from './reg/reg.component';
-import { AdminComponent } from './admin/admin.component';
-import { AccountComponent } from './account/account.component';
-import { ThemSanPhamComponent } from './them-san-pham/them-san-pham.component';
-import { GioHangComponent } from './gio-hang/gio-hang.component';
-import { SanphamComponent } from './san-pham/sanpham/sanpham.component';
+import { HomeComponent } from './page/home/home.component';
+import { LoginComponent } from './page/login/login.component';
+import { RegComponent } from './page/reg/reg.component';
+import { AdminComponent } from './page/admin/admin.component';
+import { AccountComponent } from './page/account/account.component';
+import { ThemSanPhamComponent } from './page/them-san-pham/them-san-pham.component';
+import { GioHangComponent } from './page/gio-hang/gio-hang.component';
+import { SanphamComponent } from './page/sanpham/sanpham.component';
 import { AuthGuard } from './auth/auth.guard';
-import { LienheComponent } from './lienhe/lienhe.component';
-import { ChinhsachComponent } from './chinhsach/chinhsach.component';
-import { RankComponent } from './rank/rank.component';
+import { LienheComponent } from './page/lienhe/lienhe.component';
+import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
+import { RankComponent } from './page/rank/rank.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

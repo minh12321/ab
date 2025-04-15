@@ -7,4 +7,5 @@ export class User {
   accountType: string="";
   email: string="";
   timelog : number=0;
+  diachi : string="";
 }

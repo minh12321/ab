@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.model';
 import {environment} from '../environments/environment'
+import { EventEmitterAsyncResource } from 'node:stream';
 
 
 @Injectable({
@@ -10,12 +11,7 @@ import {environment} from '../environments/environment'
 })
 export class UserService {
   private apiUrl = environment.url;
-
-  
-
   constructor(private http: HttpClient) { }
-  
-  
 
   registerUser(params: HttpParams): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/auth/register`, {},{params});
@@ -25,8 +21,18 @@ export class UserService {
     return this.http.post<User>(`${this.apiUrl}/auth/login`, {},{params});
   }
 
-  updateUser(accountId: number, fullName: string, status: string, accountType: string): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/admin/update/${accountId}`, { fullName, status, accountType });
+  // updateUser(accountId : number,params: HttpParams): Observable<User> {
+  //   return this.http.put<User>(`${this.apiUrl}/admin/update/${accountId}`, { params });
+  // }
+
+  updateUser(accountId: number, params: HttpParams): Observable<User> {
+    return this.http.put<User>(
+      `${this.apiUrl}/admin/update/${accountId}`,
+      params.toString(),
+      {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      }
+    );
   }
 
   deleteUser(accountId: number): Observable<any> {

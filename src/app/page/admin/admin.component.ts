@@ -1,13 +1,13 @@
 import { Router } from '@angular/router';
 import { Component, Inject,PLATFORM_ID } from '@angular/core';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
-import { HoaDonService } from '../../api-sevice/hoa_don.service';
-import { HoaDon } from '../../api-sevice/hoa_don.model';
-import { AuthService } from '../auth/auth.service';
+import { HoaDonService } from '../../../api-sevice/hoa_don.service';
+import { HoaDon } from '../../../api-sevice/hoa_don.model';
+import { AuthService } from '../../auth/auth.service';
 import { isPlatformBrowser } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
 import { ViewChild } from '@angular/core';
-import { KhachHangService } from '../../api-sevice/khach_hang.service';
+import { KhachHangService } from '../../../api-sevice/khach_hang.service';
 
 @Component({
     selector: 'app-admin',

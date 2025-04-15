@@ -11,6 +11,10 @@ export class AuthService {
   login(username: string): void {
     this.storageService.setItem('isLoggedIn', 'true');
     this.storageService.setItem('username', username);
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+    
   }
 
   login1(accountId: number, fullName: string, email: string, accountType: string, status: string): void {

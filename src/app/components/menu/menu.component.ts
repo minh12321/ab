@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'app-menu',
@@ -41,6 +41,7 @@ export class MenuComponent {
       this.router.navigate(['/huong-dan']); // điều hướng đến trang hướng dẫn mua hàng
     }
     logout(){
+      this.router.navigate(['/home']);
       this.authService.logout();
       window.location.reload();
     }

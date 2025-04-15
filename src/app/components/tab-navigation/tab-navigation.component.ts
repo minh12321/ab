@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BreadcrumbService } from '../../api-sevice/tab-navigation.service';
+import { BreadcrumbService } from '../../../api-sevice/tab-navigation.service';
 
 @Component({
   selector: 'app-tab-navigation',

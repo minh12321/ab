@@ -1,0 +1,66 @@
+<div class="search-bar">
+    <input type="text" [(ngModel)]="search" (input)="searchUser()" placeholder="Search...">
+</div>
+<div class="account-management-container">
+  <h2>Quản lý tài khoản</h2>
+  
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên đầy đủ</th>
+            <th>Tên đăng nhập</th>
+            <th>Địa chỉ</th>
+            <th>Trạng thái</th>
+            <th>Chức vụ</th>
+            <th>Liên hệ</th>
+        </tr>
+    </thead>
+  <tbody>
+    <tr  *ngFor="let user of filteredUsers">
+        <td>{{user.accountId}}</td>
+        <td>{{user.fullName}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.diachi}}</td>
+        <td>{{user.status}}</td>
+        <td>{{user.accountType}}</td>
+        <td>{{user.email}}</td>
+        <!-- <td><button (click)=""class="btn btn-info">update</button> -->
+        <td>
+          <button (click)="deleteUser(user.accountId)" class="btn btn-warning">xóa</button>
+          <button (click)="fillForm(user)" class="btn btn-warning">sửa</button>
+        </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<h3>Chỉnh sửa tài khoản</h3>
+  <div class="edit-form">
+    <form (ngSubmit)="customus(id)">
+      <label>Họ tên:</label>
+      <input type="text" [(ngModel)]="fullName" name="fullName"><br>
+
+      <label>Tài khoản:</label>
+      <input type="text" [(ngModel)]="username" name="username"><br>
+
+      <label>Email:</label>
+      <input type="text" [(ngModel)]="email" name="email"><br>
+
+      <label>Địa chỉ:</label>
+      <input type="text" [(ngModel)]="diachi" name="diachi"><br>
+
+      <label>Trạng thái:</label>
+      <input type="text" [(ngModel)]="status" name="status"><br>
+
+      <label>Chức vụ (ADMIN/USER) </label>
+      <input type="text" [(ngModel)]="loaitk" name="loaitk"><br>
+
+      <label>Mật khẩu:</label>
+      <input type="password" [(ngModel)]="password" name="password"><br>
+
+      <button type="submit">Cập nhật</button><button class="btn btn-warning" (click)="back()">Quay lại</button>
+    </form>
+    
+  </div>
+</div>
