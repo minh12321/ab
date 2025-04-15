@@ -34,7 +34,7 @@ export class ThongtinsanphamComponent {
   ) {}
 
   ngOnInit(): void {
-    const productId = this.route.snapshot.paramMap.get('id');
+    const productId = this.authService.getProductId();
     if (productId) {
       this.productService.getProductById(productId).subscribe(data => {
         this.product = data;

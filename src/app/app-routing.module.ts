@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'chinhsach', component: ChinhsachComponent } ,
   { path: 'lienhe', component: LienheComponent } ,
   { path: 'rank', component: RankComponent } ,
-  { path: 'product/:id', component: ThongtinsanphamComponent } ,
+  { path: 'product', component: ThongtinsanphamComponent } ,
   
   // { path: 't-s-p', component: ThemSanPhamComponent
   // canActivateChild: [AuthGuard],

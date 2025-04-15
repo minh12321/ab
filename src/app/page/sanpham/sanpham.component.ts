@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from '../../../api-sevice/san_pham.model';
 import { ProductService } from '../../../api-sevice/san_pham.service';
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sanpham',
@@ -29,7 +30,8 @@ export class SanphamComponent {
       maxPrice: null          // Giá tối đa
     };
     
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService,
+      private authService: AuthService) {}
   
     ngOnInit(): void {
       this.getAllProducts(); 
@@ -105,5 +107,9 @@ export class SanphamComponent {
           break;
       }
     }
+    // Hàm này sẽ được gọi khi người dùng chọn sản phẩm
+    selectProduct(productId: string) {
+    this.authService.setProductId(productId); // Lưu id sản phẩm vào AuthService
+  }
 
 }

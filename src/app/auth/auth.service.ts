@@ -6,6 +6,8 @@ import { StorageService } from '../storage.service';
   providedIn: 'root',
 })
 export class AuthService {
+  private productId: string | null = null;
+
   constructor(private storageService: StorageService, private router: Router) {}
 
   login(username: string): void {
@@ -48,5 +50,15 @@ export class AuthService {
 
   isAdmin(): boolean {
     return this.storageService.getItem('accountType') === 'ADMIN';
+  }
+  //--------------------------------
+  setProductId(id: string) {
+    this.productId = id;
+  }
+  getProductId(): string | null {
+    return this.productId;
+  }
+  resetProductId() {
+    this.productId = null;
   }
 }
