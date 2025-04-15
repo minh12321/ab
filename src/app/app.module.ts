@@ -18,6 +18,7 @@ import { SanphamComponent } from './page/sanpham/sanpham.component';
 import { LienheComponent } from './page/lienhe/lienhe.component';
 import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
 import { RankComponent } from './page/rank/rank.component';
+import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
 
 
 @NgModule({ declarations: [
@@ -34,7 +35,8 @@ import { RankComponent } from './page/rank/rank.component';
         SanphamComponent,
         LienheComponent,
         ChinhsachComponent,
-        RankComponent
+        RankComponent,
+        ThongtinsanphamComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,

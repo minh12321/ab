@@ -1,0 +1,9 @@
+<div *ngIf="product">
+    <h2>{{ product.tenSanPham }}</h2>
+    <img *ngIf="product.hinhAnh" [src]="apiUrl + '/api/upload/' + product.hinhAnh" width="200" alt="Hình ảnh sản phẩm">
+    <div class="price">{{ product.gia }}đ</div>    
+    <div><strong>Size:</strong> {{ product.size }}</div>
+    <div><strong>Màu sắc:</strong> {{ product.mauSac }}</div>
+    <p>{{ product.moTa }}</p>
+
+  </div>

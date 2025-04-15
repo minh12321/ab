@@ -57,7 +57,7 @@
         <div style="background: #ffe259;" class="color-box"(click)="setFilter1('31')"></div>
       </div>
     </div>
-    
+    <button (click)="resetFilter()">clear filter</button>
   </div>
   <div class="product-section">
     <!-- Dropdown sort -->
@@ -73,13 +73,14 @@
     <!-- Danh sách sản phẩm -->
     <div class="product-grid">
       <div *ngFor="let p of filteredProducts" class="product-card">
-        <img *ngIf="p.hinhAnh" [src]="apiUrl+'/api/upload/' + p.hinhAnh" width="100" alt="Hình ảnh">
-        <h4>Hàng có sẵn</h4>
-        <div class="price">{{ p.gia }}đ</div>
-        <p>{{ p.tenSanPham }}</p>
+        <!-- Thêm liên kết đến trang chi tiết sản phẩm -->
+        <a [routerLink]="['/product', p.maSanPham]">
+          <img *ngIf="p.hinhAnh" [src]="apiUrl+'/api/upload/' + p.hinhAnh" width="100" alt="Hình ảnh">
+          <h4>Hàng có sẵn</h4>
+          <div class="price">{{ p.gia }}đ</div>
+          <p>{{ p.tenSanPham }}</p>
+        </a>
       </div>
     </div>
-  </div>
 </div>
 
-<button (click)="resetFilter()">clear filter</button>

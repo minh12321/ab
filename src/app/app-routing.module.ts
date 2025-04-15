@@ -12,6 +12,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { LienheComponent } from './page/lienhe/lienhe.component';
 import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
 import { RankComponent } from './page/rank/rank.component';
+import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'chinhsach', component: ChinhsachComponent } ,
   { path: 'lienhe', component: LienheComponent } ,
   { path: 'rank', component: RankComponent } ,
+  { path: 'product/:id', component: ThongtinsanphamComponent } ,
   
   // { path: 't-s-p', component: ThemSanPhamComponent
   // canActivateChild: [AuthGuard],
