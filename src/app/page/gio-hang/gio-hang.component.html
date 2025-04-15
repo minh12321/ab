@@ -1,5 +1,33 @@
 <div class="cart-container">
     <h1 class="cart-title">GIỎ HÀNG</h1>
+
+        <!-- gio-hang.component.html -->
+    <div *ngIf="product.length > 0; else noProducts">
+      <h2>Giỏ hàng của bạn</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng tiền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of product">
+            <td>{{ item.productName }}</td>
+            <td>{{ item.totalPrice | currency }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.totalPrice * item.quantity | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Tổng cộng: {{ totalAmount | currency }}</h3>
+    </div>
+
+    <ng-template #noProducts>
+      <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
+    </ng-template>
     
     <div class="cart-summary">
       <h2 class="summary-title">TỔNG TIỀN</h2>

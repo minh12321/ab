@@ -1,9 +1,56 @@
-<div *ngIf="product">
-    <h2>{{ product.tenSanPham }}</h2>
-    <img *ngIf="product.hinhAnh" [src]="apiUrl + '/api/upload/' + product.hinhAnh" width="200" alt="Hình ảnh sản phẩm">
-    <div class="price">{{ product.gia }}đ</div>    
-    <div><strong>Size:</strong> {{ product.size }}</div>
-    <div><strong>Màu sắc:</strong> {{ product.mauSac }}</div>
-    <p>{{ product.moTa }}</p>
-
+<div class="container" *ngIf="product">
+  <h2>{{ product.tenSanPham }}</h2>
+  <p>Mã sản phẩm: {{ product.maSanPham }}</p>
+  <img
+    *ngIf="product.hinhAnh"
+    [src]="apiUrl + '/api/upload/' + product.hinhAnh"
+    width="200"
+    alt="Hình ảnh sản phẩm"
+  />
+  <div class="price" style="color: red; font-size: 24px; font-weight: bold;">
+    {{ product.gia | number }}đ
   </div>
+  <div class="size-selection">
+    <strong>Chọn size</strong>
+    <div class="size-options">
+      <button
+        *ngFor="let size of availableSizes"
+        [class.selected]="selectedSizeValue === size"
+        (click)="selectSize(size)"
+        [ngClass]="{'selected': selectedSizeValue === size}"
+      >
+        {{ size }}
+      </button>
+    </div>
+  </div>
+  <div class="color-selection">
+  <strong>Chọn màu</strong>
+  <div class="color-options">
+    <button
+      *ngFor="let color of availableColor"
+      (click)="selectColor(color)"  
+      [class.selected]="selectedColor === color"  
+      [style.background]="color.toLowerCase()"  
+    >
+      {{ color }}
+    </button>
+  </div>
+</div>
+  <div class="quantity-selection">
+    <strong>Số lượng</strong>
+    <div class="quantity-controls">
+      <button (click)="decreaseQuantity()">-</button>
+      <input
+        type="number"
+        [(ngModel)]="quantity"
+        min="1"
+        max="99"
+        readonly
+        style="width: 50px; text-align: center;"
+      />
+      <button (click)="increaseQuantity()">+</button>
+    </div>
+  </div>
+  <button class="buy-button" (click)="them()">Thêm vào giỏ hàng</button>
+  <p>{{ product.moTa }}</p>
+</div>

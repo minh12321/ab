@@ -19,6 +19,7 @@ import { LienheComponent } from './page/lienhe/lienhe.component';
 import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
 import { RankComponent } from './page/rank/rank.component';
 import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
+import { GioHangComponent } from './page/gio-hang/gio-hang.component';
 
 
 @NgModule({ declarations: [
@@ -36,7 +37,8 @@ import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham
         LienheComponent,
         ChinhsachComponent,
         RankComponent,
-        ThongtinsanphamComponent
+        ThongtinsanphamComponent,
+        GioHangComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
