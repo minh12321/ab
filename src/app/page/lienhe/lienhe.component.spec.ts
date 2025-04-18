@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LienheComponent } from './lienhe.component';
+import { AppModule } from '../../app.module';
 
 describe('LienheComponent', () => {
   let component: LienheComponent;
@@ -8,7 +9,7 @@ describe('LienheComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LienheComponent]
+      imports: [AppModule]
     })
     .compileComponents();
 

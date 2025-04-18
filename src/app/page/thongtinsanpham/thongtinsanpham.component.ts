@@ -19,7 +19,7 @@ export class ThongtinsanphamComponent {
   quantity: number = 1;
   selectedSizeValue: number | undefined;
   availableSizes=[
-    30,31,32,33,34,35,36,37,38,39,40
+    30,31,32,33,34,35,36,37,38,39,40,41
   ];
   availableColor=['Xanh','Đỏ'];
   selectedColor: string ='Xanh';

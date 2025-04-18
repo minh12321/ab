@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TabNavigationComponent } from './tab-navigation.component';
+import { AppModule } from '../../app.module';
 
 describe('TabNavigationComponent', () => {
   let component: TabNavigationComponent;
@@ -8,7 +9,7 @@ describe('TabNavigationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TabNavigationComponent]
+      imports: [AppModule]
     })
     .compileComponents();
 

@@ -1,9 +1,9 @@
 export interface HoaDon {
     maHoaDon: number;
     maKhachHang: string;      
-    tenhang:string;
+    tenHang:string;
     gia: number;
     soLuong: number; 
     ngayMua: string; 
-    trangthai:string;
+    trangThai:string;
   }

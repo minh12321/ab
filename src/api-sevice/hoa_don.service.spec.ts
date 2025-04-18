@@ -14,8 +14,8 @@ describe('HoaDonService', () => {
     ngayMua: '2025-04-13',
     gia:999999,
     soLuong:2,
-    tenhang:'giày',
-    trangthai:'đang giao',
+    tenHang:'giày',
+    trangThai:'đang giao',
 
   };
 

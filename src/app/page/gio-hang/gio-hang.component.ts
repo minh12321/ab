@@ -29,12 +29,15 @@ export class GioHangComponent implements OnInit {
       const hoaDon = {
         maHoaDon: 0,
         maKhachHang: username,
-        tenhang: item.productName,
+        tenHang: item.productName,
         gia: item.totalPrice,
         soLuong: item.quantity,
         ngayMua: currentDate,
-        trangthai: 'Chờ xác nhận'
+        trangThai: 'Chờ xác nhận'
       };
+      const khachhang ={
+        
+      }
   
       this.hoaDonService.createHoaDon(hoaDon).subscribe({
         next: () => {

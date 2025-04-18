@@ -100,11 +100,11 @@
     border-radius: 10px;
     margin: 15px auto; 
     margin-top: 150px;
-    margin-left: -330px;
+    margin-left: -300px;
     background: #fafafa;
     transition: background 0.3s ease;
-    width: 500px;
-    height: 500px; /* chỉnh kích thước tùy ý */
+    width: 400px;
+    height: 400px; /* chỉnh kích thước tùy ý */
   }
   
   .drop-area.dragover {

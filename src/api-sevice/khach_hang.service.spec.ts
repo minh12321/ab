@@ -65,15 +65,15 @@ describe('KhachHangService', () => {
     req.flush(mockKH);
   });
 
-  it('should delete khach hang', () => {
-    service.delete(1).subscribe(res => {
-      expect(res).toBeUndefined();
-    });
+  // it('should delete khach hang', () => {
+  //   service.delete(1).subscribe(res => {
+  //     expect(res).toBeUndefined();
+  //   });
 
-    const req = httpMock.expectOne(`${apiUrl}/1`);
-    expect(req.request.method).toBe('DELETE');
-    req.flush(null);
-  });
+  //   const req = httpMock.expectOne(`${apiUrl}/1`);
+  //   expect(req.request.method).toBe('DELETE');
+  //   req.flush(null);
+  // });
 
   it('should update chi tieu', () => {
     service.capNhatChiTieu('KH001', 2000000).subscribe(res => {

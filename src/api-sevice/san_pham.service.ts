@@ -43,6 +43,16 @@ export class ProductService {
     return this.http.delete<void>(`${this.apiUrl}/api/upload/${filename}`);
   }
 
+  
+  capNhatSoLuongMat(productId: string, soLuongMat: number) {
+    return this.http.put<number>(`${this.apiUrl}/api/products/${productId}/mat`, {soLuongMat});
+  }
+
+  suaPhanTramGiamGia(productId: string, giamGia: number) {
+    return this.http.put(`${this.apiUrl}/api/products/${productId}/giam-gia`, { giamGia });
+  }
+  
+
 
   
 
