@@ -1,1 +1,194 @@
-<p>chinhsach works!</p>
+<div class="button-container">
+    <button *ngFor="let item of policyList" 
+            [ngClass]="{active: selectedPolicy === item.key}" 
+            (click)="selectPolicy(item.key)">
+      {{ item.label }}
+    </button>
+  </div>
+  
+  <div class="policy-content" *ngIf="selectedPolicy">
+    <h2>{{ getSelectedLabel() }}</h2>
+  
+    <!-- Nếu là nội dung HTML tĩnh cho 1 mục cụ thể như "Hướng dẫn mua hàng" -->
+    <ng-container *ngIf="selectedPolicy === 'huongdan'; else dynamicContent">
+  
+      <p>Để mua hàng ngay lập tức anh em chỉ cần gọi đến <strong>0963.51.41.31</strong> và cung cấp tên sản phẩm cùng size cần mua.</p>
+  
+      <p>Để mua hàng theo cách bình thường anh em làm theo các bước sau:</p>
+  
+      <p><strong>Bước 1:</strong> Truy cập website và lựa chọn sản phẩm cần mua để mua hàng. Anh em có thể sử dụng bộ lọc size để tìm nhanh hơn mẫu giày phù hợp với anh em nhất. Kết quả bộ lọc size vừa thể hiện chính xác các mẫu giày đáp ứng kích thước lại vừa tránh cho anh em phải lựa chọn quá nhiều mẫu giày trong khi có thể các mẫu đó đã / tạm thời hết hàng, hết size.</p>
+  
+      <p>Nhìn vào danh sách sản phẩm của bộ lọc size, anh em cũng khái quát được những màu sắc hiện có để lựa chọn một cách trực quan nhất.</p>
+  
+      <p><strong>Bước 2:</strong> Click vào sản phẩm muốn mua. Trang chi tiết sản phẩm sẽ hiện ra với các nút <strong>MUA NGAY</strong> màu vàng ở bên cạnh ảnh sản phẩm. Click vào nút MUA NGAY này và không quên chọn 1 trong các size có sẵn được liệt kê ngay bên trên.</p>
+  
+      <p>Hệ thống sẽ lập tức chuyển đến trang giỏ hàng, liệt kê danh sách các sản phẩm anh em đã ngắm mua và đã ấn nút mua. Nếu anh em đã chắc chắn về các sản phẩm đó, ấn nút <strong>THANH TOÁN</strong> để hoàn tất.</p>
+  
+      <p><strong>Bước 3:</strong> Điền các thông tin để nhận đơn hàng. Anh em điền lần lượt các thông tin vào các dòng. Lựa chọn hình thức thanh toán và vận chuyển cho đơn hàng của mình. Thông tin số điện thoại và địa chỉ chi tiết là cực kì quan trọng, nên bạn điền xong cần kiểm tra lại thật kĩ.</p>
+  
+      <p><strong>Bước 4:</strong> Xem lại thông tin đặt hàng, điền chú thích và gửi đơn hàng. Anh em xem lại thông tin đơn hàng, kiểm tra lại tên sản phẩm, giá từng loại sản phẩm và số lượng.</p>
+  
+      <p>Anh em kiểm tra lại thông tin của người nhận hàng (SDT, địa chỉ..). Sau khi nhận được đơn hàng của anh em, <strong>BECK SPORT</strong> thường sẽ gọi điện ngay lập tức nên anh em hãy chú ý điện thoại nhé.</p>
+  
+      <p><em>Trân trọng cảm ơn.</em></p>
+    </ng-container>
+  
+    <ng-container *ngIf="selectedPolicy === 'thanhtoan'; else dynamicContent">
+        <p>Để thanh toán đơn hàng, anh em có thể lựa chọn 1 trong 2 hình thức thanh toán sau:</p>
+    
+        <p><strong>1. Thanh toán khi nhận hàng (COD):</strong></p>
+    
+        <p>Đơn hàng của anh em sẽ được giao tận nơi và anh em sẽ thanh toán cho nhân viên giao hàng khi nhận hàng.</p>
+    
+        <p><strong>2. Thanh toán qua chuyển khoản ngân hàng:</strong></p>
+    
+        <p>Chuyển khoản vào tài khoản ngân hàng của <strong>BEN SPORT</strong>. 
+        <p><strong>Tên tài khoản: Phạm Tuấn Long</strong></p>  
+        <p><strong>Số tài khoản: 731478889999 Techcombank</strong></p>
+        <p><strong>Nội dung chuyển khoản: Họ tên + Số điện thoại + Mã đơn hàng</strong></p>
+             Sau đó gửi tin nhắn xác nhận đã chuyển khoản đến số điện thoại <strong>0963.51.41.31</strong>.
+    </ng-container>
+
+    <ng-container *ngIf="selectedPolicy === 'doitra'; else dynamicContent">
+      <p>  BEN SPORT CHƯA CÓ CHÍNH SÁCH MUA LẠI HÀNG ĐÃ BÁN, HOẶC NHẬN LẠI HÀNG ĐÃ BÁN KÈM HOÀN TIỀN CHO QUÍ KHÁCH. DƯỚI ĐÂY LÀ QUI ĐỊNH ĐỔI HÀNG CỦA CHÚNG TÔI</p>
+
+        <p><strong>1. Đổi hàng theo nhu cầu anh em (đổi trả hàng vì không ưng ý)</strong></p>
+
+        <p>Tất cả mặt hàng đã mua không thể được hoàn trả nhưng có thể dễ dàng được đổi ngang. BEN SPORT chỉ chấp nhận đổi hàng cho các sản phẩm thỏa mãn các điều kiện sau:</p>
+
+
+        <p>- Không phải là hàng giảm giá (đặc điểm phân biệt hàng giảm giá là hàng nằm trong danh mục khuyến mãi https://www.becksport.vn/khuyen-mai của website tại thời điểm KH mua hàng)</p>
+
+        <p>- Còn nguyên trạng như khi nhận được: bề mặt không bị nhăn nhúm, đinh giày không bị xước, mòn, bất kể ae có thi đấu hay chưa thi đấu bởi vì nhiều ae mang giày tới bảo hành trong tình trạng không còn mới nhưng đã xảy ra tranh cãi vì bản thân anh em nói rằng tôi chỉ đi thử, chạy thử hoặc có anh em còn nói tôi chưa làm gì cả...!? tuy nhiên giày đã cũ thì không thể bán lại cho KH khác nên BECK SPORT sẽ từ chối nhận lại giày cũ mà không cần xét lí do mong anh em hết sức thông cảm nhé.</p>
+
+            <p>- Sản phẩm được chọn để đổi cần có giá trị tối thiểu là bằng hoặc lớn hơn sản phẩm đã mua trước đó. Một số đơn vị cũng đưa ra qui định giống hệt nhưng mới mục đích tăng lợi nhuận, còn chúng tôi thì đưa ra qui định này vì qui trình xuất tiền mặt gửi lại quí khách là khá rắc rối cho cả 2 bên, nên để thuận tiện nhất thì quí khách vui lòng thông cảm với chúng tôi.</p>
+
+                <p>- Trong phạm vi 07 ngày từ ngày KH mua hàng tại cửa hàng hoặc nhận hàng qua chuyển phát (tính theo xác nhận của đối tác giao hàng)</p>
+ 
+
+        <p><strong>2. Đổi  không vì lý do chủ quan từ anh em (Hàng giao không mới, không nguyên vẹn, sai nội dung hoặc bị thiếu)</strong></p>
+
+        <p>- BEN SPORT khuyến khích anh em hàng phải kiểm tra tình trạng bên ngoài của gói hàng và sản phẩm trước khi thanh toán để đảm bảo rằng hàng hóa được giao đúng chủng loại, số lượng, màu sắc theo đơn đặt hàng và tình trạng bên ngoài không bị tác động.</p>
+
+            <p>- (Xin lưu ý những bước kiểm tra sâu hơn như xỏ thử giày, lên chân để đánh giá ... chỉ có thể được chấp nhận sau khi đơn hàng được thanh toán đầy đủ, nghĩa là đã chuyển khoản trước cho cửa hàng toàn bộ hoặc một phần giá trị đơn hàng hoặc đã thanh toán xong với bưu tá ngay tại lúc nhận hàng).</p>
+
+                <p>- Trong trường hợp anh em đã thanh toán, nhận hàng và sau đó phát hiện hàng hóa không còn mới nguyên vẹn, sai nội dung hoặc thiếu hàng, xin vui lòng chụp ảnh sản phẩm và liên hệ với với BEN SPORT để chúng tôi được khắc phục thiếu sót (của shop hoặc đối tác vận chuyển) một cách nhanh nhất có thể.</p>
+
+                    <p>- Tuy nhiên với kinh nghiệm tổ chức bán hàng qua nhiều năm và với tác phong chuyên nghiệp của mình, BEN SPORT tự tin sai sót của chúng tôi là dưới 1% và thái độ tiếp nhận khi có sự cố luôn là hợp tác đặt lợi ích của anh em cùng uy tín của cửa hàng lên đầu..</p>
+
+            <p><strong>3. Một số lưu ý khi gửi hàng đổi</strong></p>
+
+            <p>- Đổi hoặc bảo hành cái gì thì gửi cái đó, hầu như bỏ qua việc gửi phụ kiện. Cụ thể nếu giày rộng chật chẳng hạn và cần đổi size khác thì chỉ gửi đôi giày về cho shop thôi. Tất / túi rút, hay bất cứ phần quà tặng hay sản phẩm mua thêm nào khác không gửi về kèm.</p>
+                <p>- Quí khách tự thanh toán chi phí khi gửi hàng, bởi vì nếu quí khách chỉ định shop nhận bưu kiện phải thanh toán chi phí vận chuyển thì shop sẽ luôn phải xác minh đó là bưu kiện nào. Vì một ngày có rất nhiều KH gửi bưu kiện về shop, hầu như các bưu kiện là không cần thanh toán, nếu phát sinh một vài bưu kiện phải thanh toán thì shop phải liên hệ lại KH xem đó là KH nào, vì sao phải phải thanh toán, như thế sẽ rất mất thời gian cho cả KH, shop và bên chuyển phát.</p>
+                    <p>Tuy nhiên các bạn yên tâm vì mọi chi phí phát sinh nếu việc đổi trả hàng có nguyên nhân từ phía shop thì shop sẽ chịu hoàn toàn chi phí và cộng dồn, khấu trừ...vào lần gửi lại hàng cho bạn sau đó.</p>
+
+              <p><strong>4. Phương thức hoàn tiền</strong></p>
+
+              <p>Tùy theo lí do hoàn trả sản phẩm, kết quả đánh giá chất lượng sản phẩm mà anh em gửi lại hoặc qua chụp ảnh , BEN SPORT sẽ có những phương thức hoàn tiền với chi tiết như sau:</p>
+
+                <p>- Đổi sản phẩm mới cùng loại</p>
+
+                    <p> - Chuyển khoản qua ngân hàng theo thông tin của anh em cung cấp</p>
+
+                        <p>- Riêng đối với các đơn hàng thanh toán qua thẻ tín dụng quốc tế, BEN SPORT sẽ áp dụng hình thức hoàn tiền vào tài khoản thanh toán của chủ thẻ.</p>
+
+                            <p>- Hoàn tiền mặt trực tiếp tại cửa hàng</p>
+
+                                <p>- Hoàn tiền qua nạp thẻ cào điện thoại (viettel, vinaphone, mobile) vào 1 số điện thoại mà anh em chỉ định.</p>
+
+           <p>Mọi chi tiết hoặc thắc mắc anh em vui lòng liên hệ với BEN SPORT qua số điện thoại hỗ trợ hoặc để lại lời nhắn tại website.</p>
+
+---------------------------------- 
+            <p><strong>CHÚ Ý: TẤT CẢ SẢN PHẨM TRONG CHƯƠNG TRÌNH SALE / XẢ HÀNG / QUÀ TẶNG SẼ KHÔNG ĐƯỢC PHÉP HOẰN TRẢ CŨNG NHƯ ĐỔI TRẢ. 
+            Xin chân thành cảm ơn.</strong></p>
+
+    </ng-container>
+
+    <ng-container *ngIf="selectedPolicy === 'baohanh'; else dynamicContent">
+        <p>Để bảo hành sản phẩm, anh em vui lòng làm theo các bước sau:</p>
+    
+        <p><strong>Bước 1:</strong> Gọi điện đến số hotline <strong>06375486654</strong> của cửa hàng để thông báo về tình trạng sản phẩm cần bảo hành.</p>
+    
+        <p><strong>Bước 2:</strong> Gửi sản phẩm về địa chỉ của cửa hàng kèm theo hóa đơn mua hàng và thông tin liên lạc của bạn.</p>
+    
+        <p><strong>Bước 3:</strong> Chờ đợi phản hồi từ cửa hàng về tình trạng bảo hành của sản phẩm.</p>
+    
+        <p>Thời gian bảo hành thường từ 7-14 ngày làm việc tùy thuộc vào tình trạng sản phẩm và chính sách của nhà sản xuất.</p>
+    </ng-container>
+
+    <ng-container *ngIf="selectedPolicy === 'giaonhan'; else dynamicContent">
+        <p><strong>NỘI DUNG CHI TIẾT CHÍNH SÁCH GIAO NHẬN</strong></p>
+    <p>Nhằm giúp quý khách an tâm chọn lựa cho mình một đôi giày ưng ý và phục vụ khách hàng chu đáo, BEN SPORT thông báo đến quý khách hàng CHÍNH SÁCH THANH TOÁN, GIAO NHẬN chi tiết sau:</p>
+
+    <p><strong>1. Phí ship và thời gian giao hàng</strong></p>
+
+    <p>- Nội thành Hà Nội: 30.000 VNĐ và nhận hàng trong ngày hoặc theo yêu cầu ngày của quí khách</p>
+
+        <p> - Trung tâm các tỉnh thành miễn Bắc: 30.000 VNĐ và nhận hàng trong 1 đến 2 ngày làm việc</p>
+
+            <p>- Các huyện miền Bắc và trung tâm các tỉnh thành miền Nam: 40.000 VNĐ và nhận hàng trong 2 đến 4 ngày làm việc</p>
+
+                <p>- Các huyện miền Nam: 50.000 VNĐ và nhận hàng trong 3 đến 5 ngày làm việc</p>
+
+    <p><strong>Chú ý:</strong></p>
+    <p>- Ngày làm việc được định nghĩa là các ngày trừ Chủ Nhật và Lễ, Tết trong năm (các hãng vận chuyển thường không làm việc trong những ngày này, tuy nhiên có một vài hãng lại làm tăng ca nên vẫn có trường hợp giao hàng đúng hoặc sớm hơn dự tính).</p>
+    <p>- Tất cả thời gian vận chuyển bên trên chỉ mang tính chất ước chừng, đề xuất được xây dựng trên kinh nghiệm điều hành và bán hàng nhiều năm của chúng tôi. Quí khách hàng không lấy  đó làm cam kết căn cứ cho việc nhận hàng hay không. Nếu qui khách hàng nào đặt hàng mà có suy nghĩ ngày nhận hàng thực tế không may trễ hơn khoảng 1, 2 ngày so với ngày nhận hàng đề xuất thì quí khách thôi không nhận hàng nữa thì quí khách không nên đặt hàng để tránh tốn kém chi phí cho chúng tôi và thời gian chung của 2 bên.</p>
+    <p><Strong>CHÚNG TÔI CHỈ GIAO HÀNG CHO KHÁCH HÀNG CÓ TÂM VÀ THỰC SỰ MUA HÀNG</Strong></p>
+
+    <p><strong>2. Qui trình khi nhận hàng.</strong></p>
+    <p>Chúng tôi hiện làm việc với tất cả các hãng vận chuyển lớn của Việt Nam, và tất cả đều thống nhất theo qui trình phục vụ quí khách như sau:</p>
+    <p>- Tới ngày phát hàng, bưu tá của đối tác sẽ nhận gói hàng của quí khách và phát cho quí khách trong ngày làm việc, và thường là giờ hành chính. Ngay ở lần phát đầu tiên này, thường thì quí khách không có điều kiện để thỏa thuận thời gian phát hàng cùng bưu tá do lịch phát hàng của bưu tá thường rất dày đặc và phải di chuyển nhiều nên quí khách vui lòng chú ý điện thoại sẵn trong suốt ngày hôm đó.</p>
+    <p>- Khi bưu tá gặp và giao gói hàng tới tay quí khách, quí khách có quyền bóc ra và xem xét kĩ lưỡng sản phẩm bên trong xem có đúng kích thước, màu sắc và chủng loại mà quí khách đã đặt hàng hay không. Xin lưu ý là quá trình này chỉ kiểm tra bằng tay và mắt, nó không bao gồm việc xỏ thử hay ướm thử. Tuy nhiên quí khách cũng rất yên tâm vì khi giày đã thuộc về quí khách rồi thì mọi vấn đề rộng chất, BEN SPORT luôn rất quan tâm và bảo vệ lợi ích của quí khách nên quí khách thoải mái trao đổi lại cùng NVBH của BEN SPORT để có thể đổi size, đổi mẫu nếu quí khách muốn.</p>
+    <p>Qui trình đổi size và đổi mẫu, quí khách sẽ được NV CSKH của BEN SPORT hướng dẫn cụ thể và chi tiết hơn.</p>
+    </ng-container>
+
+    <ng-container *ngIf="selectedPolicy === 'napas'; else dynamicContent">
+        <div class="napas-info">
+          <p><strong>Chủ TK:</strong>PHẠM TUẤN LONG</p>
+          <p><strong>Nội dung:</strong> </p>
+          <p><strong>Số tiền:</strong> 0</p>
+      
+          <hr>
+      
+          <ol>
+            <li>
+              <strong>TECHCOMBANK</strong> &nbsp;&nbsp;&nbsp; <strong>73147 888 9999</strong>
+            </li>
+          </ol>
+      
+          <div class="note-box">
+            Vui lòng để nội dung chuyển khoản và số tiền đúng theo MÃ ĐH để thanh toán được tự động ghi nhận.
+          </div>
+      
+          <h3>4. VIETQR</h3>
+          <div class="qr-section">
+            <img src="assets/qr.png" alt="QR Code VietQR" class="qr-image">
+
+            <div class="tip-box">
+              Mẹo: Nếu quét mã này, bạn sẽ không cần nhập bất kì thông tin nào cả.
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      
+      <ng-container *ngIf="selectedPolicy === 'bando'; else dynamicContent">
+        <div class="map-container">
+          <h3>Địa chỉ cửa hàng</h3>
+          <p>Trường Đại học Điện Lực, 235 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</p>
+          <iframe
+            width="100%"
+            height="400"
+            style="border:0; border-radius: 10px;"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.690703493952!2d105.78204367502918!3d21.005219088662048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4f7aa31fd3%3A0x59fcd878c73c2430!2zVHLGsOG7nW5nIMSQ4bqhaSBIw6BvIFF14bqtbiDEkOG7kW4gTOG7sWM!5e0!3m2!1svi!2s!4v1713773243506!5m2!1svi!2s">
+          </iframe>
+        </div>
+      </ng-container>
+      
+    <ng-template #dynamicContent>
+      <p>{{ policyContents[selectedPolicy] }}</p>
+    </ng-template>
+  </div>
+  

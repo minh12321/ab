@@ -1,0 +1,68 @@
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    background-color: #ff914d;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.active {
+    background-color: #ff5c00;
+    box-shadow: 0 0 5px #ff5c00;
+  }
+  
+  .policy-content {
+    background-color: #fff7f0;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #ff914d;
+    max-width: 800px;
+    margin: auto;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .napas-info {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  
+  .note-box,
+  .tip-box {
+    background-color: #facc15; /* màu vàng giống mẫu */
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    max-width: 500px;
+  }
+  
+  .qr-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  
+  .qr-image {
+    width: 120px;
+    height: auto;
+  }
+  .map-container {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  

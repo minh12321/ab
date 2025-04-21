@@ -1,29 +1,32 @@
 <div class="container">
   <div class="sidebar">
-    <h3>size</h3>
+    <div class="box">Size</div>
     <div class="filter-group">
+      <div class="button-size">
       <button (click)="setFilter('31')">31</button>
       <button (click)="setFilter('32')">32</button>
       <button (click)="setFilter('33')">33</button>
       <button (click)="setFilter('34')">34</button>
       <button (click)="setFilter('35')">35</button>
       <button (click)="setFilter('36')">36</button>
-      <button (click)="setFilter('37')">37</button>
+      <button (click)="setFilter('37')">37</button> 
       <button (click)="setFilter('38')">38</button>
       <button (click)="setFilter('39')">39</button>
       <button (click)="setFilter('40')">40</button>
       <button (click)="setFilter('41')">41</button>
       <button (click)="setFilter('42')">42</button>
       <button (click)="setFilter('43')">43</button>
+      </div>
     </div>
 
-    <h3>Hãng</h3>
+    <div class="box">Thương hiệu</div>
     <div class="filter-group">
       <button (click)="setFilter2('Nike')">Nike</button>
       <button (click)="setFilter2('Adidas')">Adidas</button>
+      <button (click)="setFilter2('Adidas')">Winbro</button>
     </div>
 
-    <h3>Loại hàng</h3>
+    <div class="box">Loại hàng</div>
     <div class="filter-group">
       <button (click)="setFilter3('Giầy')">Giầy</button>
       <button (click)="setFilter3('Balo')">Balo</button>
@@ -31,17 +34,16 @@
       <button (click)="setFilter3('Bóng')">Bóng</button>
     </div>
 
-    <div class="filter-group">
-      <h3>Mức giá</h3>
+    <div class="box">Giá</div>
+    <div class="filter-group">      
       <div class="button-grid">
         <input type="number" [(ngModel)]="filter.minPrice" (input)="applyFilters()" placeholder="Giá từ" step="100000">
         <input type="number" [(ngModel)]="filter.maxPrice" (input)="applyFilters()" placeholder="Giá đến" step="100000">
       </div>
     </div>
 
-
+    <div class="box">Màu sắc</div>
     <div class="filter-group">
-      <h3>Màu sắc</h3>
       <div class="color-grid">
         <div style="background: red;" class="color-box" (click)="setFilter1('Đỏ')"></div>
         <div style="background: blue;" class="color-box"(click)="setFilter1('Xanh dương')"></div>
