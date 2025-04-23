@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent,canActivate: [AuthGuard], },
   { path: 'account', component: AccountComponent },
   { path: 'cart', component: GioHangComponent,canActivate: [AuthGuard], },
-  { path: 'prodexe', component: SanphamComponent },
+  { path: 'san-pham', component: SanphamComponent },
   { path: 't-s-p', component: ThemSanPhamComponent } ,
   { path: 'chinhsach', component: ChinhsachComponent } ,
   { path: 'lienhe', component: LienheComponent } ,
