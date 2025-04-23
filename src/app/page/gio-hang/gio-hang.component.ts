@@ -5,6 +5,7 @@ import { ProductService } from '../../../api-sevice/san_pham.service';
 import { CartService } from '../../../api-sevice/cart.service';
 import { CartItem } from '../../../api-sevice/cart-item.model';
 import { HoaDonService } from '../../../api-sevice/hoa_don.service';
+import { HoaDon } from '../../../api-sevice/hoa_don.model';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { HoaDonService } from '../../../api-sevice/hoa_don.service';
 export class GioHangComponent implements OnInit {
   totalAmount: number = 0; 
   product: CartItem[] = [];
+  hoadon: HoaDon[] = [];
 
   confirmOrder() {
     const username = this.authService.getid().toString();
@@ -23,6 +25,10 @@ export class GioHangComponent implements OnInit {
   
     if (!username) {
       alert('Vui lòng đăng nhập trước khi đặt hàng.');
+      return;
+    }
+    if (!this.product || this.product.length === 0) {
+      alert('Giỏ hàng của bạn đang trống.');
       return;
     }
     this.product.forEach(item => {
@@ -47,9 +53,11 @@ export class GioHangComponent implements OnInit {
           console.error('Lỗi khi tạo hóa đơn:', err);
         }
       });
+      this.delettespincart(item.productCode);
+      window.location.reload();
     });
   
-    alert('Đơn hàng đã được chốt!');
+    alert('Đơn hàng đang chờ xác nhận!');
   }
   constructor(
     private hoaDonService: HoaDonService,
@@ -69,7 +77,30 @@ export class GioHangComponent implements OnInit {
     this.totalAmount = this.product.reduce((sum, item) => sum + item.totalPrice * item.quantity, 0);
   }
 
+  delettesp(makh: string,day:string):void{
+    this.hoaDonService.deleteHoaDon(makh,day).subscribe(data=>{
+      console.log(data);
+    });
+  }
+  delettespincart(ma: string):void{
+    this.cartService.removeProductFromCart(ma).subscribe(data=>{
+      console.log(data);
+    });
+  }
+  selectProduct(productId: string) {
+    this.authService.setProductId(productId); 
+  }
+
+  showList = false;
+  toggleList() {
+    const username = this.authService.getid();
+    this.showList = !this.showList;
+    this.hoaDonService.getHoaDonByMaKH(username).subscribe((data) => {
+      this.hoadon = data;
+      this.calculateTotalAmount();
+    });
+  }
     
   
-  
+  //----------------------------------------------------
 }

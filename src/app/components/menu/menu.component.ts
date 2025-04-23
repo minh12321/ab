@@ -26,22 +26,43 @@ export class MenuComponent {
           } else {
             alert('lol');
           }
+          setTimeout(() => {
+            this.toggleMenu();
+          }, 100);
     }
     navigateTohomehome() {
       this.router.navigate(['/home']);
+      setTimeout(() => {
+        this.toggleMenu();
+      }, 10);
+      
     }
     navigateTocart() {
       this.router.navigate(['/cart']);
+      setTimeout(() => {
+        this.toggleMenu();
+      }, 100);
+      
     }
     navigateTopo() {
-      this.router.navigate(['/prodexe']);
+      this.router.navigate(['/san-pham']);
+      setTimeout(() => {
+        this.toggleMenu();
+      }, 100);
+      
     }
     goToGuide() {
-      this.menuOpen = false; // đóng menu sau khi click
-      this.router.navigate(['/huong-dan']); // điều hướng đến trang hướng dẫn mua hàng
+      this.menuOpen = false; 
+      this.router.navigate(['/huong-dan']);
+      setTimeout(() => {
+        this.toggleMenu();
+      }, 100);
     }
     logout(){
       this.router.navigate(['/home']);
+      setTimeout(() => {
+        this.toggleMenu();
+      }, 100);
       this.authService.logout();
       window.location.reload();
     }

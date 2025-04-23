@@ -48,9 +48,21 @@
   }
   .divider {
     height: 2px;
-    length: 100%;
     border-bottom: 2px solid #ccc;
     margin: 8px 0 16px 0;
     width: 100%;
   }
+  
+
+  .popup-list {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 10px;
+    z-index: 1000;
+    top: 50px; /* hoặc vị trí mong muốn */
+    left: 20px;
+  }
+
   

@@ -7,18 +7,24 @@
       <table>
         <thead>
           <tr>
+            <th>mã</th>
             <th>Tên sản phẩm</th>
             <th>Giá</th>
             <th>Số lượng</th>
             <th>Tổng tiền</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of product">
+            <td>{{ item.productCode }}</td>
             <td>{{ item.productName }}</td>
             <td>{{ item.totalPrice | currency }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ item.totalPrice * item.quantity | currency }}</td>
+            <td><button (click)="delettespincart(item.productCode)" style="padding: 5px 10px; border: none; background: #f44336; color: white; border-radius: 4px;">Xóa</button></td>
+            <td><button (click)="selectProduct(item.productCode)" [routerLink]="['/product']">Thông tin sp</button></td>
           </tr>
         </tbody>
       </table>
@@ -35,9 +41,34 @@
         <span>Tổng: </span>
         <span class="total-amount">{{ totalAmount | currency:'VND' }}</span>
       </div>
-      
       <button class="confirm-button" (click)="confirmOrder()">
         <span>✔ Chốt đơn</span>
       </button>
     </div>
   </div>
+  <!-- //---------------------------------------- -->
+<button (click)="toggleList()">Lịch sử giao dịch</button>
+  <ul *ngIf="showList" class="popup-list">
+      <table>
+        <thead>
+          <tr>
+            <th>mã</th>
+            <th>Tên sản phẩm</th>
+            <th>Tổng tiền</th>
+            <th>Số lượng</th>
+            <th>Ngày mua</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of hoadon">
+            <td>{{ item.maHoaDon }}</td>
+            <td>{{ item.tenHang }}</td>
+            <td>{{ item.gia | currency :'VND' }}</td>
+            <td>{{ item.soLuong }}</td>
+            <td>{{ item.ngayMua }}</td>
+            <td>{{ item.trangThai }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </ul>

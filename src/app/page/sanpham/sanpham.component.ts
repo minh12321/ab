@@ -107,8 +107,8 @@ export class SanphamComponent {
           break;
       }
     }
-    // Hàm này sẽ được gọi khi người dùng chọn sản phẩm
-    selectProduct(productId: string) {
+
+  selectProduct(productId: string) {
     this.authService.setProductId(productId); // Lưu id sản phẩm vào AuthService
   }
 
