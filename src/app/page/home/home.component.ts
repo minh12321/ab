@@ -29,5 +29,20 @@ export class HomeComponent {
   navigateToAccount() {
     this.router.navigate(['/account']);
   }
+ 
+    imageList = [
+      'assets\anh\bong1.png',
+      'assets\anh\bong2.png',
+      'assets\anh\bong3.png',
+    ];
   
-}
+    slideConfig = {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      dots: true,
+      arrows: false
+    };
+  }
+

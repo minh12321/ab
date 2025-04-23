@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './lienhe.component.css'
 })
 export class LienheComponent {
-
+  onSubmit() {
+    alert("Cảm ơn bạn đã liên hệ!");
+    // Tại đây bạn có thể xử lý gửi dữ liệu đến server nếu muốn
+  }
 }

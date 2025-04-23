@@ -20,7 +20,7 @@ import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
 import { RankComponent } from './page/rank/rank.component';
 import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
 import { GioHangComponent } from './page/gio-hang/gio-hang.component';
-
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -44,5 +44,6 @@ import { GioHangComponent } from './page/gio-hang/gio-hang.component';
         AppRoutingModule,
         NgChartsModule,
         FormsModule,
+        SlickCarouselModule,
         ReactiveFormsModule], providers: [provideHttpClient(withFetch()), provideHttpClient(withInterceptorsFromDi()),] })
 export class AppModule { }
