@@ -11,13 +11,18 @@
     background: #ff9800;
     padding: 10px;
     border-radius: 5px;
-    color: white;
+    color: rgb(252, 252, 252);
+    top: 20px;          
+    left: 20px;             
+    padding: 10px;
+    border-radius: 6px;
+    position: relative;
   }
   
   .side-menu {
     position: fixed;
     top: 0;
-    left: -250px; /* Ẩn menu khi chưa mở */
+    left: -250px; 
     width: 250px;
     height: 100vh;
     background: #333;
