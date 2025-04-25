@@ -1,38 +1,25 @@
 <div class="cart-container">
-    <h1 class="cart-title">GIỎ HÀNG</h1>
+  <h1 class="cart-title">GIỎ HÀNG</h1>
 
-        <!-- gio-hang.component.html -->
-    <div *ngIf="product.length > 0; else noProducts">
-      <h2>Giỏ hàng của bạn</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>mã</th>
-            <th>Tên sản phẩm</th>
-            <th>Giá</th>
-            <th>Số lượng</th>
-            <th>Tổng tiền</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of product">
-            <td>{{ item.productCode }}</td>
-            <td>{{ item.productName }}</td>
-            <td>{{ item.totalPrice | currency }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.totalPrice * item.quantity | currency }}</td>
-            <td><button (click)="delettespincart(item.productCode)" style="padding: 5px 10px; border: none; background: #f44336; color: white; border-radius: 4px;">Xóa</button></td>
-            <td><button (click)="selectProduct(item.productCode)" [routerLink]="['/product']">Thông tin sp</button></td>
-          </tr>
-        </tbody>
-      </table>
+  <div *ngIf="product.length > 0; else noProducts" class="cart-container">
+    <div class="cart-list">
+      <div class="cart-item" *ngFor="let item of product">
+        <div><strong>Mã:</strong> {{ item.productCode }}</div>
+        <div><strong>Tên sản phẩm:</strong> {{ item.productName }}</div>
+        <div><strong>Giá:</strong> {{ item.totalPrice | currency:'VND' }}</div>
+        <div><strong>Số lượng:</strong> {{ item.quantity }}</div>
+        <div><strong>Tổng tiền:</strong> {{ item.totalPrice * item.quantity | currency:'VND' }}</div>
+        <div class="cart-buttons">
+          <button (click)="delettespincart(item.productCode)" class="btn-delete">Xóa</button>
+          <button (click)="selectProduct(item.productCode)" [routerLink]="['/product']" class="btn-info">Thông tin SP</button>
+        </div>
+      </div>
     </div>
-
-    <ng-template #noProducts>
-      <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
-    </ng-template>
+  </div>
+  
+  <ng-template #noProducts>
+    <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
+  </ng-template>
     
     <div class="cart-summary">
       <h2 class="summary-title">TỔNG TIỀN</h2>
@@ -47,8 +34,8 @@
     </div>
   </div>
   <!-- //---------------------------------------- -->
-  <button (click)="toggleList()">Lịch sử giao dịch</button>
-
+  <button class="confirm-button" (click)="toggleList()">Lịch sử mua hàng</button><br>
+  <h1>Lịch sử giao dịch</h1>
   <ul *ngIf="showList" class="popup-list">
     <li *ngFor="let item of hoadon" class="invoice-item">
       <div><strong>Mã đơn:</strong> {{ item.maHoaDon }}</div>

@@ -54,15 +54,15 @@
   }
   /* /--------------------------------------------------- */
 
-  .popup-list {
+  /* .popup-list {
     background: white;
     border: 1px solid #ccc;
     list-style: none;
     padding: 10px;
     z-index: 1000;
-    top: 50px; /* hoặc vị trí mong muốn */
+    top: 50px; 
     left: 20px;
-  }
+  } */
 
   .popup-list {
     display: grid;
@@ -106,6 +106,72 @@
     color: red;
     font-weight: 600;
   }
-  
 
+
+  .cart-container {
+
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  .cart-item {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    align-items: left;
+  }
+  
+  .cart-item-img img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .cart-item-info {
+    flex: 1;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .product-price,
+  .product-quantity,
+  .product-total {
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  .action-buttons {
+    margin-top: 10px;
+  }
+  
+  .btn-delete {
+    background: #f44336;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    margin-right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-info {
+    background: #2196f3;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-delete:hover,
+  .btn-info:hover {
+    opacity: 0.9;
+  }
   
