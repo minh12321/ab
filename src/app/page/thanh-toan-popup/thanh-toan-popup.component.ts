@@ -1,25 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
-import { ProductService } from '../../../api-sevice/san_pham.service';
-import { CartService } from '../../../api-sevice/cart.service';
+import { Component, Output,EventEmitter } from '@angular/core';
 import { CartItem } from '../../../api-sevice/cart-item.model';
-import { HoaDonService } from '../../../api-sevice/hoa_don.service';
 import { HoaDon } from '../../../api-sevice/hoa_don.model';
-
+import { HoaDonService } from '../../../api-sevice/hoa_don.service';
+import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../../../api-sevice/cart.service';
+import { ProductService } from '../../../api-sevice/san_pham.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
-  selector: 'app-gio-hang',
-  templateUrl: './gio-hang.component.html',
-  styleUrls: ['./gio-hang.component.css'],
-  standalone: false, 
+  selector: 'app-thanh-toan-popup',
+  templateUrl: './thanh-toan-popup.component.html',
+  styleUrl: './thanh-toan-popup.component.css',
+  standalone:false
 })
-export class GioHangComponent implements OnInit {
-  totalAmount: number = 0; 
-  product: CartItem[] = [];
-  hoadon: HoaDon[] = [];
+export class ThanhToanPopupComponent {
+  @Output() closePopup = new EventEmitter<void>();
 
-  confirmOrder() {
+  diaChi = '';
+  email = '';
+  hoTen = '';
+  soDienThoai = '';
+  quanHuyen = '';
+  phuongXa = '';
+  ghiChu = '';
+  selectedMethod = '';
+  paymentMethods = [
+    'Thanh toán qua VNPay-QR',
+    'Thanh toán khi nhận hàng COD',
+    'Chuyển khoản ngân hàng',
+    'Ví MoMo (quét mã QR)'
+  ];
+
+  submitForm() {
+    // if (!this.diaChi || !this.email || !this.hoTen || !this.soDienThoai || !this.selectedMethod) {
+    //   alert('Vui lòng điền đầy đủ thông tin!');
+    //   return;
+    // }
+
+    alert('Đơn hàng đã được xác nhận và đang được xử lý!');
     const username = this.authService.getid().toString();
     const currentDate = new Date().toISOString().slice(0, 10); // yyyy-MM-dd
   
@@ -56,9 +74,18 @@ export class GioHangComponent implements OnInit {
       this.delettespincart(item.productCode);
       window.location.reload();
     });
-  
-    alert('Đơn hàng đang chờ xác nhận!');
   }
+
+  close() {
+    this.closePopup.emit();
+  }
+
+
+//---------------------------------------------
+  totalAmount: number = 0; 
+  product: CartItem[] = [];
+  hoadon: HoaDon[] = [];
+  
   constructor(
     private hoaDonService: HoaDonService,
       private route: ActivatedRoute,
@@ -76,31 +103,10 @@ export class GioHangComponent implements OnInit {
   calculateTotalAmount(): void {
     this.totalAmount = this.product.reduce((sum, item) => sum + item.totalPrice * item.quantity, 0);
   }
-
-  delettesp(makh: string,day:string):void{
-    this.hoaDonService.deleteHoaDon(makh,day).subscribe(data=>{
-      console.log(data);
-    });
-  }
   delettespincart(ma: string):void{
     this.cartService.removeProductFromCart(ma).subscribe(data=>{
       console.log(data);
     });
   }
-  selectProduct(productId: string) {
-    this.authService.setProductId(productId); 
-  }
 
-  showList = false;
-  toggleList() {
-    const username = this.authService.getid();
-    this.showList = !this.showList;
-    this.hoaDonService.getHoaDonByMaKH(username).subscribe((data) => {
-      this.hoadon = data;
-      this.calculateTotalAmount();
-    });
-  }
-  showPopup = false;
-  
-  //----------------------------------------------------
 }

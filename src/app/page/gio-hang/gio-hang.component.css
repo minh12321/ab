@@ -52,10 +52,9 @@
     margin: 8px 0 16px 0;
     width: 100%;
   }
-  
+  /* /--------------------------------------------------- */
 
   .popup-list {
-    position: absolute;
     background: white;
     border: 1px solid #ccc;
     list-style: none;
@@ -64,5 +63,49 @@
     top: 50px; /* hoặc vị trí mong muốn */
     left: 20px;
   }
+
+  .popup-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 0;
+    margin-top: 16px;
+    list-style: none;
+  }
+  
+  .invoice-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .invoice-item:hover {
+    transform: translateY(-2px);
+    background-color: #f0f8ff;
+  }
+  
+  .invoice-item div {
+    margin: 4px 0;
+  }
+  
+  .status-pending {
+    color: orange;
+    font-weight: 600;
+  }
+  
+  .status-success {
+    color: green;
+    font-weight: 600;
+  }
+  
+  .status-cancelled {
+    color: red;
+    font-weight: 600;
+  }
+  
 
   

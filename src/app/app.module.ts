@@ -22,6 +22,7 @@ import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
 import { RankComponent } from './page/rank/rank.component';
 import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
 import { GioHangComponent } from './page/gio-hang/gio-hang.component';
+import { ThanhToanPopupComponent } from './page/thanh-toan-popup/thanh-toan-popup.component';
 
 // MODULE CHO SLIDER
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -29,7 +30,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingSpinnerComponent,
+    ThanhToanPopupComponent,
+
     RegComponent,
     LoginComponent,
     HomeComponent,

@@ -1,0 +1,55 @@
+<div class="popup-overlay" (click)="close()"></div>
+
+<div class="popup-container">
+  <div class="form-section">
+    <h1>BEN - Shop thể thao</h1>
+    <h5>Xác nhận thanh toán</h5>
+    <form (ngSubmit)="submitForm()">
+      <label><input [(ngModel)]="diaChi" name="diaChi" required placeholder="Địa chỉ"/></label>
+      <label><input [(ngModel)]="email" name="email" required placeholder="Email"/></label>
+      <label><input [(ngModel)]="hoTen" name="hoTen" required placeholder="Họ tên"/></label>
+      <label><input [(ngModel)]="soDienThoai" name="soDienThoai" required placeholder="SĐT"/></label>
+      <label><input [(ngModel)]="quanHuyen" name="quanHuyen" placeholder="Quận huyện"/></label>
+      <label><input [(ngModel)]="phuongXa" name="phuongXa" placeholder="Phường xã"/></label>
+      <label><textarea [(ngModel)]="ghiChu" name="ghiChu" placeholder="Ghi chú"></textarea></label>
+    </form>
+    <h4>Phương thức thanh toán:</h4>
+      <div *ngFor="let method of paymentMethods">
+        <label><input type="radio" [(ngModel)]="selectedMethod" name="method" [value]="method" /> {{ method }}</label>
+      </div>
+  </div>
+<nav class="a"></nav>
+  <div class="cart-section">
+    <ng-container *ngIf="product.length > 0; else noProducts">
+        <h2>Giỏ hàng của bạn</h2>
+        <ul class="cart-list">
+          <li *ngFor="let item of product">
+            <div class="item-name">{{ item.productName }}</div>
+            <div class="danh">
+                <div class="item-gia">Giá: {{ item.totalPrice | currency }}</div>
+                <div class="item-so">Số lượng: {{ item.quantity }}</div>
+            </div>
+            <div class="item-tong">Tổng: {{ item.totalPrice * item.quantity | currency }}</div>
+          </li>
+        </ul>
+      </ng-container>
+      
+      <ng-template #noProducts>
+        <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
+      </ng-template>
+      
+
+    <nav class="b"></nav>
+    <div class="total">
+        <span>Tam Tính: </span><span class="total-amount">{{ totalAmount | currency:'VND' }}</span><br>
+        <span>Thuế: </span><br>
+        <span>Ship: </span><br>
+      </div>
+    <nav class="b"></nav>
+    <span>Tổng: </span>
+    <span class="total-amount" (click)="close()">{{ totalAmount | currency:'VND' }}</span><br>
+     
+    <button >Quay lại</button>
+    <button class="c"  (click)="submitForm()">Xác nhận & Thanh toán</button>
+  </div>
+</div>

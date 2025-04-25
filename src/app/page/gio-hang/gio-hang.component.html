@@ -41,34 +41,31 @@
         <span>Tổng: </span>
         <span class="total-amount">{{ totalAmount | currency:'VND' }}</span>
       </div>
-      <button class="confirm-button" (click)="confirmOrder()">
+      <button class="confirm-button" (click)="showPopup = true">
         <span>✔ Chốt đơn</span>
       </button>
     </div>
   </div>
   <!-- //---------------------------------------- -->
-<button (click)="toggleList()">Lịch sử giao dịch</button>
+  <button (click)="toggleList()">Lịch sử giao dịch</button>
+
   <ul *ngIf="showList" class="popup-list">
-      <table>
-        <thead>
-          <tr>
-            <th>mã</th>
-            <th>Tên sản phẩm</th>
-            <th>Tổng tiền</th>
-            <th>Số lượng</th>
-            <th>Ngày mua</th>
-            <th>Trạng thái</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of hoadon">
-            <td>{{ item.maHoaDon }}</td>
-            <td>{{ item.tenHang }}</td>
-            <td>{{ item.gia | currency :'VND' }}</td>
-            <td>{{ item.soLuong }}</td>
-            <td>{{ item.ngayMua }}</td>
-            <td>{{ item.trangThai }}</td>
-          </tr>
-        </tbody>
-      </table>
+    <li *ngFor="let item of hoadon" class="invoice-item">
+      <div><strong>Mã đơn:</strong> {{ item.maHoaDon }}</div>
+      <div><strong>Tên sản phẩm:</strong> {{ item.tenHang }}</div>
+      <div><strong>Giá:</strong> {{ item.gia | currency:'VND' }}</div>
+      <div><strong>Số lượng:</strong> {{ item.soLuong }}</div>
+      <div><strong>Ngày mua:</strong> {{ item.ngayMua }}</div>
+      <div><strong>Trạng thái:</strong> 
+        <span [ngClass]="{
+          'status-pending': item.trangThai === 'Chờ xác nhận',
+          'status-success': item.trangThai === 'Đã thanh toán',
+          'status-cancelled': item.trangThai === 'Đã giao'
+        }">
+          {{ item.trangThai }}
+        </span>
+      </div>
+    </li>
   </ul>
+
+  <app-thanh-toan-popup *ngIf="showPopup" (closePopup)="showPopup = false"></app-thanh-toan-popup>

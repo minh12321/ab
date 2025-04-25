@@ -1,0 +1,167 @@
+/* Overlay mờ nền */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  
+  /* Container chính */
+  .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 2rem;
+    z-index: 1000;
+    border-radius: 10px;
+    width: 900px;
+    max-width: 95%;
+    display: flex;
+    gap: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  
+  /* Form bên trái */
+  form {
+    flex: 1;
+  }
+  
+  form h4 {
+    margin-top: 20px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  
+  form input, form textarea {
+    width: 100%;
+    padding: 6px 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form textarea {
+    resize: vertical;
+  }
+  
+  form button[type="submit"] {
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Bảng giỏ hàng bên phải */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  td:last-child {
+    font-weight: bold;
+  }
+  
+  /* Tựa đề giỏ hàng */
+  h2 {
+    margin-top: 0;
+  }
+  
+  .popup-container > div:last-child {
+    flex: 1;
+    max-height: 700px;
+    overflow-y: auto;
+  }
+  
+
+  .b{
+    border-bottom: 2px solid grey;
+    margin-top: -5px;
+    margin: 10px;
+  }
+  .a{
+    border-right: 2px solid grey;
+    margin-top: -5px;
+  }
+  button {
+    margin-top: 50px;
+    margin-left: 0px;
+    background-color: #d89817;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #c68b14;
+  }
+  .c{
+    
+    margin-left: 30px;
+  }
+  .cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+  }
+  
+  .cart-list li {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    display: inline-flex;
+  }
+  
+  .cart-list .item-name {
+    margin: 10px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .cart-list .item-gia {
+    margin: 10px;
+    margin-bottom: 5px;
+  }
+  .cart-list .item-so {
+    margin: 10px;
+    margin-bottom: 5px;
+  }
+  .cart-list .item-tong {
+    margin: 10px;
+    margin-bottom: 5px;
+  }
+  .danh{
+    display: block;
+  }
+  
