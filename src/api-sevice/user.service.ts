@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from './user.model';
 import {environment} from '../environments/environment'
 import { EventEmitterAsyncResource } from 'node:stream';
+import { AuthResponse } from './auth-response.model';
 
 
 @Injectable({
@@ -17,8 +18,8 @@ export class UserService {
     return this.http.post<User>(`${this.apiUrl}/auth/register`, {},{params});
   }
 
-  loginUser(params: HttpParams): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/auth/login`, {},{params});
+  loginUser(params: HttpParams): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, {},{params});
   }
 
   // updateUser(accountId : number,params: HttpParams): Observable<User> {

@@ -211,3 +211,7 @@
     margin: 5px 0;
   }
   
+  .index{
+    z-index: 9999; 
+
+  }

@@ -1,0 +1,39 @@
+<!-- hoa-don.component.html -->
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Mã KH</th>
+        <th>Tên Hàng</th>
+        <th>Giá</th>
+        <th>Số Lượng</th>
+        <th>Ngày Mua</th>
+        <th>Trạng Thái hiện tại</th>
+        <th>Trạng Thái kế</th>
+        <th>Hành Động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hoaDon of hoaDons">
+        <td>{{ hoaDon.id }}</td>
+        <td>{{ hoaDon.maKhachHang }}</td>
+        <td>{{ hoaDon.tenHang }}</td>
+        <td>{{ hoaDon.gia }}</td>
+        <td>{{ hoaDon.soLuong }}</td>
+        <td>{{ hoaDon.ngayMua }}</td>
+        <td>{{ hoaDon.trangThai}}</td>
+        <td>
+          <select [(ngModel)]="hoaDon.trangThai" (change)="updateTrangThai(hoaDon)">
+            <option value="Chờ xác nhận">Đang chờ</option>
+            <option value="Đã Hủy">Hủy</option>
+            <option value="Đã thanh toán">Đã xác nhận</option>
+            <option value="Đã giao">Đã giao</option>
+          </select>
+        </td>
+        <td>
+          <button (click)="updateTrangThai(hoaDon)">Lưu</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

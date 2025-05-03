@@ -13,6 +13,7 @@ import { LienheComponent } from './page/lienhe/lienhe.component';
 import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
 import { RankComponent } from './page/rank/rank.component';
 import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
+import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'lienhe', component: LienheComponent } ,
   { path: 'rank', component: RankComponent } ,
   { path: 'product', component: ThongtinsanphamComponent } ,
+  { path: 'donhang', component: QlQldonhangComponent },
   
   // { path: 't-s-p', component: ThemSanPhamComponent
   // canActivateChild: [AuthGuard],

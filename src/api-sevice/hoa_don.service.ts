@@ -26,4 +26,8 @@ export class HoaDonService {
       .set('ngayMua', ngayMua);
     return this.http.delete(`${this.apiUrl}/api/hoadon/xoa`, { params, responseType: 'text' });//v
   }
+  updateTrangThai(id: number, trangThai: string): Observable<any> {
+    const url = `${this.apiUrl}/api/hoadon/${id}/trangthai?trangThai=${encodeURIComponent(trangThai)}`;
+    return this.http.put(url, {});
+  }
 }

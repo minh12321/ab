@@ -11,8 +11,8 @@
         <label for="password">Mật khẩu:</label>
         <input id="password" [(ngModel)]="password" name="password" type="password" required class="form-control">
 
-        <button type="submit" class="btn btn-primary">Đăng nhập</button>
-        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+        <button (click)="onSubmit()" class="btn btn-primary">Đăng nhập</button>
+        <a [routerLink]="['/lienhe']" class="forgot-password">Quên mật khẩu?</a>
       </form>
     </div>
 

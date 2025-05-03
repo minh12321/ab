@@ -27,6 +27,10 @@ export class AdminComponent {
       this.router.navigate(['/t-s-p']);
     }
 
+    navigateTodonhang() {
+      this.router.navigate(['/donhang']);
+    }
+
     ngOnInit(): void {
       this.hoaDonService.getAllHoaDon().subscribe((hoaDons: HoaDon[]) => {
         this.hoaDonList = hoaDons;
@@ -129,7 +133,7 @@ export class AdminComponent {
       datasets: [
         {
           data: [],
-          label: 'Mức chi têu',
+          label: 'Doanh thu',
           fill: true,
           tension: 0.5,
           borderColor: 'black',

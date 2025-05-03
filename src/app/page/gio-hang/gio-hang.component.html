@@ -45,9 +45,9 @@
       <div><strong>Ngày mua:</strong> {{ item.ngayMua }}</div>
       <div><strong>Trạng thái:</strong> 
         <span [ngClass]="{
-          'status-pending': item.trangThai === 'Chờ xác nhận',
-          'status-success': item.trangThai === 'Đã thanh toán',
-          'status-cancelled': item.trangThai === 'Đã giao'
+          'status-success': item.trangThai === 'Đã giao',
+          'status-cancelled': item.trangThai === 'Đã Hủy',
+          'status-pending': item.trangThai === 'Chờ xác nhận'||'Đã thanh toán',
         }">
           {{ item.trangThai }}
         </span>

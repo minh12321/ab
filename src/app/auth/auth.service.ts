@@ -61,4 +61,10 @@ export class AuthService {
   resetProductId() {
     this.productId = null;
   }
+  getToken(): string | null {
+    return this.storageService.getItem('token');
+  }
+  setToken(token :string): void {
+    this.storageService.setItem('token',token);
+  }
 }

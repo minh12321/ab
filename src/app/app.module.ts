@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 // COMPONENT
 import { AppComponent } from './app.component';
@@ -23,6 +25,7 @@ import { RankComponent } from './page/rank/rank.component';
 import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
 import { GioHangComponent } from './page/gio-hang/gio-hang.component';
 import { ThanhToanPopupComponent } from './page/thanh-toan-popup/thanh-toan-popup.component';
+import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component';
 
 // MODULE CHO SLIDER
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -45,7 +48,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     ChinhsachComponent,
     RankComponent,
     ThongtinsanphamComponent,
-    GioHangComponent
+    GioHangComponent,
+    QlQldonhangComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,11 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   providers: [
     provideHttpClient(withFetch()),
     provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] 

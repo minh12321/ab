@@ -113,7 +113,7 @@ export class RankComponent {
   loadplayer():void{
     this.khachHangService.getById(this.authService.getid()).subscribe((d: KhachHang)=>
     {
-      this.currentRank = d.hangKhachHang || '';
+      this.currentRank = d.thuHang || '';
       this.progressPercent = Math.min((d.chiTieu / 10000000) * 100, 100);;
     })
   }
@@ -136,7 +136,7 @@ export class RankComponent {
           maKhachHang: kh.maKhachHang,
           tenKhachHang: kh.tenKhachHang,
           chiTieu: kh.chiTieu,
-          hangKhachHang: kh.hangKhachHang || '',
+          hangKhachHang: kh.thuHang || '',
         }))
         .sort((a, b) => b.chiTieu - a.chiTieu)
         .map((kh, index) => ({
@@ -146,7 +146,6 @@ export class RankComponent {
 
       this.allRanks = sorted;
       this.leaderboard = sorted.slice(0, 10);
-      console.log(this.leaderboard)
     });
   }
 

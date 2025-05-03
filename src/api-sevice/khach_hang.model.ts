@@ -3,6 +3,7 @@ export interface KhachHang {
     maKhachHang: string;
     tenKhachHang: string;
     chiTieu: number;
-    hangKhachHang?: string;  
+    thuHang: string;  
+    lanCapNhat:string;
   }
   
