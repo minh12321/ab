@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../api-sevice/cart.service';
 import { ProductService } from '../../../api-sevice/san_pham.service';
 import { AuthService } from '../../auth/auth.service';
+import { KhachHangService } from '../../../api-sevice/khach_hang.service';
 
 @Component({
   selector: 'app-thanh-toan-popup',
@@ -32,14 +33,9 @@ export class ThanhToanPopupComponent {
   ];
 
   submitForm() {
-    // if (!this.diaChi || !this.email || !this.hoTen || !this.soDienThoai || !this.selectedMethod) {
-    //   alert('Vui lòng điền đầy đủ thông tin!');
-    //   return;
-    // }
-
     alert('Đơn hàng đã được xác nhận và đang được xử lý!');
     const username = this.authService.getid().toString();
-    const currentDate = new Date().toISOString().slice(0, 10); // yyyy-MM-dd
+    const currentDate = new Date().toISOString().slice(0, 10); 
   
     if (!username) {
       alert('Vui lòng đăng nhập trước khi đặt hàng.');
@@ -71,6 +67,7 @@ export class ThanhToanPopupComponent {
           console.error('Lỗi khi tạo hóa đơn:', err);
         }
       });
+      this.khachHangService.capNhatChiTieu(username,this.totalAmount);
       this.delettespincart(item.productCode);
       window.location.reload();
     });
@@ -91,7 +88,8 @@ export class ThanhToanPopupComponent {
       private route: ActivatedRoute,
       private cartService: CartService,
       private productService: ProductService,
-      private authService: AuthService
+      private authService: AuthService,
+      private khachHangService: KhachHangService
     ) {}
 
   ngOnInit(): void {

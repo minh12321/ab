@@ -87,6 +87,7 @@
     display: flex;
     justify-content: center;
     border-radius: 8px;
+    z-index: 9999;
   }
   
   .menu-item {
@@ -131,6 +132,7 @@
     font-weight: 100;
     text-align: left;
     cursor: pointer;
+    z-index: 9999;
   }
   
   .menu-item:hover .submenu {

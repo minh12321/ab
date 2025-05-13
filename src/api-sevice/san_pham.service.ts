@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   deleteProduct(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/api/products/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/api/products/admin/${id}`);
   }
 
   updateProduct(id: string, product: Product, file: File | null): Observable<Product> {
@@ -30,26 +30,26 @@ export class ProductService {
     if (file) {
       formData.append('file', file);
     }
-    return this.http.put<Product>(`${this.apiUrl}/api/products/${id}`, formData);
+    return this.http.put<Product>(`${this.apiUrl}/api/products/admin/${id}`, formData);
   }
   addProduct(product: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/products`, product);
+    return this.http.post(`${this.apiUrl}/api/products/admin`, product);
   }
 
   uploadImage(formData: FormData): Observable<string> {
     return this.http.post(`${this.apiUrl}/api/upload`, formData, { responseType: 'text' });
   }
   deleteImage(filename: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/api/upload/${filename}`);
+    return this.http.delete<void>(`${this.apiUrl}/api/upload/admin/${filename}`);
   }
 
   
   capNhatSoLuongMat(productId: string, soLuongMat: number) {
-    return this.http.put<number>(`${this.apiUrl}/api/products/${productId}/mat`, {soLuongMat});
+    return this.http.put<number>(`${this.apiUrl}/api/products/admin/${productId}/mat`, {soLuongMat});
   }
 
   suaPhanTramGiamGia(productId: string, giamGia: number) {
-    return this.http.put(`${this.apiUrl}/api/products/${productId}/giam-gia`, { giamGia });
+    return this.http.put(`${this.apiUrl}/api/products/admin/${productId}/giam-gia`, { giamGia });
   }
   
 

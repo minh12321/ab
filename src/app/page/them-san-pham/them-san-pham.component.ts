@@ -44,6 +44,8 @@ export class ThemSanPhamComponent {
   submitProduct() {
     this.productService.addProduct(this.newProduct).subscribe(response => {
       console.log('Sản phẩm đã lưu:', response);
+      alert('Sản phẩm đã lưu: ');
+      this.getAllProducts(); 
     });
   }
 
@@ -91,14 +93,22 @@ export class ThemSanPhamComponent {
 
   uploadImage() {
     if (!this.selectedFile) return;
-
+  
     const formData = new FormData();
-    formData.append('file', this.selectedFile);
-
+  
+    const originalName = this.selectedFile.name || 'download.jpg';
+    const extension = originalName.substring(originalName.lastIndexOf('.'));
+    const uniqueName = `product_${Date.now()}${extension}`; // VD: product_1715593423450.jpg
+  
+    const renamedFile = new File([this.selectedFile], uniqueName, { type: this.selectedFile.type });
+  
+    formData.append('file', renamedFile);
+  
     this.productService.uploadImage(formData).subscribe((url: string) => {
       this.newProduct.hinhAnh = url;
     });
   }
+  
   //-------------------------------------
   filteredsp:Product[]=[];
   search :string='';

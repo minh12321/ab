@@ -110,13 +110,39 @@ export class RankComponent {
     { title: 'Chia sẻ app', description: 'Chia sẻ cho 3 người', progress: 30 }
   ];
 
-  loadplayer():void{
-    this.khachHangService.getById(this.authService.getid()).subscribe((d: KhachHang)=>
-    {
+  loadplayer(): void {
+  const id = this.authService.getid();
+
+  this.khachHangService.getById(id).subscribe({
+    next: (d: KhachHang) => {
       this.currentRank = d.thuHang || '';
-      this.progressPercent = Math.min((d.chiTieu / 10000000) * 100, 100);;
-    })
-  }
+      this.progressPercent = Math.min((d.chiTieu / 10000000) * 100, 100);
+    },
+    error: (err) => {
+      if (err.status === 403) {
+        const newKhachHang: KhachHang = {      
+          maKhachHang: id.toString(),
+          tenKhachHang: this.authService.getfullname()?? 'Người dùng',
+          chiTieu: 0,
+          thuHang: 'Vô Hạng', 
+          lanCapNhat:'',
+        };
+
+        this.khachHangService.create(newKhachHang).subscribe({
+          next: (created) => {
+            this.currentRank = created.thuHang || '';
+            this.progressPercent = 0;
+          },
+          error: (createErr) => {
+            console.error('Tạo mới Khách Hàng thất bại:', createErr);
+          }
+        });
+      } else {
+        console.error('Lỗi khác khi tải Khách Hàng:', err);
+      }
+    }
+  });
+}
 
   // Bảng xếp hạng
   allRanks: {

@@ -26,6 +26,9 @@ export class AuthService {
     this.storageService.setItem('accountType', accountType);
     this.storageService.setItem('status', status);
   }
+  getfullname(): string | null {
+    return this.storageService.getItem('fullName');
+  }
 
   logout(): void {
     this.storageService.clear();

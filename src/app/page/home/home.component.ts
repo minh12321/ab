@@ -32,9 +32,9 @@ export class HomeComponent {
   }
  
   imageList = [
-    'assets/anh/anh-bong-da-ronaldo.jpg',
-    'assets/anh/hinh-nen-bong-da-2.jpg',
-    'assets/anh/Anh-qua-bong-da.jpg',
+    'assets/anh/download.jpg',
+    'assets/anh/slide-20-extra.jpg',
+    'assets/anh/slide-24-extra(1)(1).png',
     
   ];
   
