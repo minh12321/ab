@@ -1,6 +1,6 @@
 
   .container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 20px auto;
     background: #f9f9f9;
     padding: 25px;
@@ -100,7 +100,7 @@
     border-radius: 10px;
     margin: 15px auto; 
     margin-top: 150px;
-    margin-left: -300px;
+    margin-left: -200px;
     background: #fafafa;
     transition: background 0.3s ease;
     width: 400px;
@@ -126,7 +126,7 @@
     border-radius: 25px;
     padding: 5px 20px;
     margin-bottom: 10px;
-    margin-left: 1500px;
+    margin-left: 150px;
     width: 250px;
   }
   

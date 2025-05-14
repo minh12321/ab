@@ -1,3 +1,10 @@
+<div *ngIf="showTool">
+<app-tool ></app-tool>
+</div>
+
+
+
+<div *ngIf="showLayout">
 <header class="header">
     <div class="logo">
         <h1>BEN</h1>
@@ -21,67 +28,70 @@
         </div>
     </div>
     <div>
-      
       <img src="assets/anh/iconbong3.jpg" alt="Soccer Ball" class="corner-image">
     </div>
   </header>
-
-
 <!-- -------------------------------------------------------------------------------------- -->
+<nav *ngIf="isDesktop">
+  <ul class="navbar">
+    <li *ngFor="let menu of menus" class="menu-item" routerLink="{{menu.route}}" >
+      <a routerLink="{{menu.route}}"><i class="{{menu.icon}}"></i>{{ menu.title }} </a>
+      <ul class="submenu" *ngIf="menu.submenus">
+        <li *ngFor="let sub of menu.submenus" routerLink="{{menu.route}}">
+          <a >{{ sub.title }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
-
-
-<ul class="navbar">
-  <li *ngFor="let menu of menus" class="menu-item" routerLink="{{menu.route}}" >
-    <a routerLink="{{menu.route}}"><i class="{{menu.icon}}"></i>{{ menu.title }} </a>
-    <ul class="submenu" *ngIf="menu.submenus">
-      <li *ngFor="let sub of menu.submenus" routerLink="{{menu.route}}">
-        <a >{{ sub.title }}</a>
-      </li>
-    </ul>
-  </li>
-</ul>
 <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
 <app-tab-navigation></app-tab-navigation> 
+</div>
+
 <app-menu class="index"></app-menu>
+
 
 <router-outlet></router-outlet>
 
 <!-- --------------- -->
-<footer>
-    <div class="footer-container">
-        <!-- Về chúng tôi -->
-        <div class="about">
-            <h3>Về chúng tôi</h3>
-            <div class="logo1"></div>
-            <div class="social-icons">
-                <a href="#"><img src="assets/anh/Facebook-icon-1.png" alt="Facebook"></a>
-                <a href="#"><img src="../assets/anh/ins.jpg" alt="Instagram"></a>
-                <a href="#"><img src="../assets/anh/yt.png" alt="YouTube"></a>
-            </div>
-        </div>
-  
-        <!-- Thông tin -->
-        <div class="info">
-            <h3>Thông tin</h3>
-            <ul>
-                <li><a href="#">Chính sách thanh toán</a></li>
-                <li><a href="#">Chính sách đổi trả</a></li>
-                <li><a href="#">Chính sách bảo hành</a></li>
-                <li><a href="#">Chính sách giao nhận</a></li>
-                <li><a href="#">Chính sách bảo mật</a></li>
-            </ul>
-        </div>
-  
-        <!-- Liên hệ -->
-        <div class="contact">
-            <h3>Liên hệ</h3>
-            <p><span>📍</span> 180 Hoàng Quốc Việt, Cổ Nhuế, Bắc Từ Liêm, Hà Nội</p>
-            <p><span>📞</span> 06375486654</p>
-            <p>Zalo: 06375486654</p>
-        </div>
-    </div>
-  </footer>
+<div *ngIf="showLayout">
+  <footer>
+      <div class="footer-container">
+          <!-- Về chúng tôi -->
+          <div class="about">
+              <h3>Về chúng tôi</h3>
+              <div class="logo1"></div>
+              <div class="social-icons">
+                  <a href="#"><img src="assets/anh/Facebook-icon-1.png" alt="Facebook"></a>
+                  <a href="#"><img src="../assets/anh/ins.jpg" alt="Instagram"></a>
+                  <a href="#"><img src="../assets/anh/yt.png" alt="YouTube"></a>
+              </div>
+          </div>
+    
+          <!-- Thông tin -->
+          <div class="info">
+              <h3>Thông tin</h3>
+              <ul>
+                  <li><a href="#">Chính sách thanh toán</a></li>
+                  <li><a href="#">Chính sách đổi trả</a></li>
+                  <li><a href="#">Chính sách bảo hành</a></li>
+                  <li><a href="#">Chính sách giao nhận</a></li>
+                  <li><a href="#">Chính sách bảo mật</a></li>
+              </ul>
+          </div>
+    
+          <!-- Liên hệ -->
+          <div class="contact">
+              <h3>Liên hệ</h3>
+              <p><span>📍</span> 180 Hoàng Quốc Việt, Cổ Nhuế, Bắc Từ Liêm, Hà Nội</p>
+              <p><span>📞</span> 06375486654</p>
+              <p>Zalo: 06375486654</p>
+          </div>
+      </div>
+    </footer>
+</div>
+
+<div id="custom-alert" style="position: fixed; top: 20px; right: 20px; background: #ff4444; color: white; padding: 10px 20px; border-radius: 8px; display: none; z-index: 9999;"></div>
 
 
-  <div id="custom-alert" style="position: fixed; top: 20px; right: 20px; background: #ff4444; color: white; padding: 10px 20px; border-radius: 8px; display: none; z-index: 9999;"></div>

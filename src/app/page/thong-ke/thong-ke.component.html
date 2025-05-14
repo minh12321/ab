@@ -1,0 +1,15 @@
+<div class="main-content">
+    <h2>Thống kê doanh thu</h2>
+        <div class="chart-container">
+        <div *ngIf="isBrowser" class="chart-section">
+        <canvas baseChart width="400" height="400"
+            #lineChart
+            [type]="'line'"
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend">
+        </canvas>
+    </div>
+        <h3>Tổng doanh thu: {{tong}} Đ</h3>
+    </div>
+</div>

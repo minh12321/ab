@@ -16,19 +16,22 @@ import { KhachHangService } from '../../../api-sevice/khach_hang.service';
     standalone: false
 })
 export class AdminComponent {
-  tab: string = 'account';
+  tab: string = '';
 
-  
+    navigatethongke() {
+      this.router.navigate(['/admin/thongke']);
+    }
+
     navigateToaccount() {
-      this.router.navigate(['/account']);
+      this.router.navigate(['/admin/account']);
     }
 
     navigateToproduce() {
-      this.router.navigate(['/t-s-p']);
+      this.router.navigate(['/admin/t-s-p']);
     }
 
     navigateTodonhang() {
-      this.router.navigate(['/donhang']);
+      this.router.navigate(['/admin/donhang']);
     }
 
     ngOnInit(): void {

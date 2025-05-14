@@ -47,11 +47,22 @@ export class AppComponent {
         this.isLoading = false; // Tắt spinner khi điều hướng hoàn thành hoặc có lỗi
       }
     });
+//ẩn hiện
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Ẩn layout nếu URL chứa '/admin'
+        this.showLayout = !event.urlAfterRedirects.includes('/admin');
+      }
+    });
+
+
   }
 
   ngOnInit(): void { 
     this.ngu();
-    this.username = this.authService.getUsername()|| ''
+    this.username = this.authService.getUsername()|| '';
+    this.isDesktop = window.innerWidth >= 768;
+    this.toolcheck();
   }
 
   ngu(): boolean {
@@ -122,7 +133,20 @@ export class AppComponent {
   //--------------------------------------------------
   isLoading = false;
 
+  isDesktop = false;
+  //ẩn hiện
+  showLayout = true;
+  showTool = false;
 
+  toolcheck(){
+    if (sessionStorage.getItem('accountType') === 'ADMIN') {
+        this.showTool = true;
+      } else {
+        this.showTool = false;
+      }
+  }
+ 
     
+  
   
 }

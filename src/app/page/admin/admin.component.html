@@ -1,44 +1,20 @@
+<div class="navadmin"></div>
+
+
+
 <div class="admin-dashboard">
   <!-- Sidebar -->
   <div class="sidebar">
     <h2>Quản trị</h2>
     <ul>
-      <li [class.active]="tab === 'thongke'" (click)="tab = 'thongke'">📊 Thống kê</li>
-      <li [class.active]="tab === 'product'" (click)="navigateToproduce()">📦 Quản lý sản phẩm</li>
-      <li [class.active]="tab === 'account'" (click)="navigateToaccount()">👤 Quản lý tài khoản</li>
-      <li [class.active]="tab === 'donhang'" (click)="navigateTodonhang()">🧾 Quản lý đơn hàng</li>
+      <li [class.active]="tab === 'thongke'" (click)="tab = 'thongke'" (click)="navigatethongke()">📊 Thống kê</li>
+      <li [class.active]="tab === 'product'" (click)="tab = 'product'" (click)="navigateToproduce()">📦 Quản lý sản phẩm</li>
+      <li [class.active]="tab === 'account'" (click)="tab = 'account'" (click)="navigateToaccount()">👤 Quản lý tài khoản</li>
+      <li [class.active]="tab === 'donhang'" (click)="tab = 'donhang'" (click)="navigateTodonhang()">🧾 Quản lý đơn hàng</li>
     </ul>
   </div>
 
   <div class="main-content">
-    <div *ngIf="tab === 'thongke'">
-      <h2>Thống kê doanh thu</h2>
-      <div class="chart-container">
-      <div *ngIf="isBrowser" class="chart-section">
-        <canvas baseChart width="400" height="400"
-          #lineChart
-          [type]="'line'"
-          [data]="lineChartData"
-          [options]="lineChartOptions"
-          [legend]="lineChartLegend">
-        </canvas>
-      </div></div>
-      <h3>Tổng doanh thu: {{tong}} Đ</h3>
-    </div>
-
-    <div *ngIf="tab === 'product'">
-      <h2>Quản lý sản phẩm</h2>
-      <button (click)="navigateToproduce()">Chỉnh sửa sản phẩm</button>
-    </div>
-
-    <div *ngIf="tab === 'account'">
-      <h2>Quản lý tài khoản</h2>
-      <button (click)="navigateToaccount()">Chỉnh sửa tài khoản</button>
-    </div>
-
-    <div *ngIf="tab === 'donhang'">
-      <h2>Quản lý đơn hàng</h2>
-      <button (click)="navigateTodonhang()">Xem đơn hàng</button>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

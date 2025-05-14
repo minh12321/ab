@@ -14,22 +14,31 @@ import { ChinhsachComponent } from './page/chinhsach/chinhsach.component';
 import { RankComponent } from './page/rank/rank.component';
 import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
 import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component';
+import { ThongKeComponent } from './page/thong-ke/thong-ke.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'reg', component: RegComponent },
   { path: 'log', component: LoginComponent },
-  { path: 'admin', component: AdminComponent,canActivate: [AuthGuard], },
+  { path: 'admin', component: AdminComponent,canActivate: [AuthGuard],
+    children: [
+      { path: '',  redirectTo: 'thongke', pathMatch: 'full' },
+      { path: 'thongke', component: ThongKeComponent , },
+      { path: 't-s-p', component: ThemSanPhamComponent , },
+      { path: 'account', component: AccountComponent },
+      { path: 'donhang', component: QlQldonhangComponent },
+    ]
+   },
   { path: 'account', component: AccountComponent },
   { path: 'cart', component: GioHangComponent,canActivate: [AuthGuard], },
   { path: 'san-pham', component: SanphamComponent },
-  { path: 't-s-p', component: ThemSanPhamComponent } ,
+  { path: 't-s-p', component: ThemSanPhamComponent ,canActivate: [AuthGuard],} ,
   { path: 'chinhsach', component: ChinhsachComponent } ,
   { path: 'lienhe', component: LienheComponent } ,
-  { path: 'rank', component: RankComponent } ,
+  { path: 'rank', component: RankComponent ,canActivate: [AuthGuard]} ,
   { path: 'product', component: ThongtinsanphamComponent } ,
-  { path: 'donhang', component: QlQldonhangComponent },
+  { path: 'donhang', component: QlQldonhangComponent ,canActivate: [AuthGuard],},
   
   // { path: 't-s-p', component: ThemSanPhamComponent
   // canActivateChild: [AuthGuard],
