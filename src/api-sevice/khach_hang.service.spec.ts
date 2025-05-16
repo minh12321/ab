@@ -13,7 +13,9 @@ describe('KhachHangService', () => {
     maKhachHang: 'KH001',
     tenKhachHang: 'Nguyen Van A',
     chiTieu: 1000000,
-    hangKhachHang: 'Vàng'
+    thuHang: 'Vàng',
+    lanCapNhat:''
+
   };
 
   beforeEach(() => {

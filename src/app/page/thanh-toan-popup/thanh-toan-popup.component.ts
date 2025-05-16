@@ -31,12 +31,14 @@ export class ThanhToanPopupComponent {
     'Chuyển khoản ngân hàng',
     'Ví MoMo (quét mã QR)'
   ];
+  
 
   submitForm() {
     alert('Đơn hàng đã được xác nhận và đang được xử lý!');
     const username = this.authService.getid().toString();
     const currentDate = new Date().toISOString().slice(0, 10); 
-  
+    const maDon = 'HD' + Date.now().toString() + username;
+
     if (!username) {
       alert('Vui lòng đăng nhập trước khi đặt hàng.');
       return;
@@ -47,7 +49,7 @@ export class ThanhToanPopupComponent {
     }
     this.product.forEach(item => {
       const hoaDon = {
-        maHoaDon: 0,
+        maHoaDon: maDon,
         maKhachHang: username,
         tenHang: item.productName,
         gia: item.totalPrice,
@@ -67,7 +69,14 @@ export class ThanhToanPopupComponent {
           console.error('Lỗi khi tạo hóa đơn:', err);
         }
       });
-      this.khachHangService.capNhatChiTieu(username,this.totalAmount);
+      this.khachHangService.capNhatChiTieu(username, this.totalAmount).subscribe({
+        next: (res) => {
+          console.log('Cập nhật chi tiêu thành công:', res);
+        },
+        error: (err) => {
+          console.error('Lỗi khi cập nhật chi tiêu:', err);
+        }
+      });
       this.delettespincart(item.productCode);
       window.location.reload();
     });

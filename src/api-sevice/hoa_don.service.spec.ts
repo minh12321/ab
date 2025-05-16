@@ -9,7 +9,8 @@ describe('HoaDonService', () => {
   const apiUrl = 'http://localhost:8080/shopbogda/api/hoadon';
 
   const mockHoaDon: HoaDon = {
-    maHoaDon: 1,
+    id: 0,
+    maHoaDon: '1',
     maKhachHang: 'KH001',
     ngayMua: '2025-04-13',
     gia:999999,
@@ -50,7 +51,7 @@ describe('HoaDonService', () => {
   it('should get hoa don by maKH', () => {
     service.getHoaDonByMaKH(1).subscribe(res => {
       expect(res.length).toBe(1);
-      expect(res[0].maHoaDon).toBe(1);
+      expect(res[0].maHoaDon).toBe('1');
     });
 
     const req = httpMock.expectOne(`${apiUrl}/makh/KH001`);

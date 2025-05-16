@@ -1,5 +1,6 @@
 export interface HoaDon {
-    maHoaDon: number;
+    id?:number;
+    maHoaDon: string;
     maKhachHang: string;      
     tenHang:string;
     gia: number;

@@ -4,6 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { HttpParams } from '@angular/common/http';
 import { User } from './user.model';
 import { environment } from '../environments/environment';
+import { AuthResponse } from '../api-sevice/auth-response.model';
 
 describe('UserService', () => {
   let service: UserService;
@@ -20,6 +21,10 @@ describe('UserService', () => {
     timelog: 123456,
     diachi: '123 Test Street',
   };
+  const dummyAuthResponse : AuthResponse= {
+    jwt: '',
+    user:dummyUser,
+  }
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -59,7 +64,7 @@ describe('UserService', () => {
       .set('username', 'minh')
       .set('password', '123456');
     service.loginUser(params).subscribe((user) => {
-      expect(user).toEqual(dummyUser);
+      expect(user).toEqual(dummyAuthResponse);
     });
 
     const req = httpMock.expectOne(`${environment.url}/auth/login`);

@@ -86,7 +86,7 @@ export class RankComponent {
     });
   }
 //---------------------------------------------------------------------------------------------------------------------
-  rankLevels: string[] = ['Vô Hạng', 'Đồng', 'Bạc', 'Vàng', 'Kim Cương'];
+  rankLevels: string[] = ['Vô Hạng', 'Đồng', 'Bạc', 'Vàng', 'Kim cương'];
   currentRank: string = 'Bạc';
   progressPercent: number = 63;
   isVip: boolean = true;

@@ -33,7 +33,7 @@ export class GioHangComponent implements OnInit {
     }
     this.product.forEach(item => {
       const hoaDon = {
-        maHoaDon: 0,
+        maHoaDon: '',
         maKhachHang: username,
         tenHang: item.productName,
         gia: item.totalPrice,
