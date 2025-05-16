@@ -3,15 +3,30 @@
     class="carousel"
     [config]="slideConfig">
     <div ngxSlickItem *ngFor="let img of imageList" class="slide">
-      <img [src]="img" alt="slide image" style="width: 100%; height: auto;" />
+      <img [src]="img" alt="slide image" class="slide-img" />
     </div>
-  </ngx-slick-carousel></div>
+    
+  </ngx-slick-carousel><div class="about-container">
+  <div class="about-text">
+    <h2>GIỚI THIỆU VỀ BEN SPORT</h2>
+    <p>
+      Với quy mô xưởng trên 100 công nhân luôn đáp ứng đúng tiến độ các đơn hàng cho Khách Hàng từ lớn đến nhỏ. 
+      Không chỉ mang lại cho khách hàng những lựa chọn tuyệt vời nhất mà Xưởng BEN Sport còn đem đến nhiều quyền lợi cực kì hấp dẫn. 
+      BEN Sport có nhiều ưu đãi (miễn phí in ấn, miễn phí ship, quà tặng,..) khi khách đặt đồ cho đội bóng.
+    </p>
+  </div>
+  <div class="about-image">
+    <img src="assets/anh/maymac.png" alt="Xưởng may">
+  </div>
+</div>
+</div>
   <div class="info-section">
     <div class="info-box" *ngFor="let info of infoList">
       <img [src]="info.icon" alt="icon" class="info-icon" />
       <div class="info-text">
         <div class="info-title">{{ info.title }}</div>
         <div class="info-description">{{ info.description }}</div>
+        
       </div>
     </div>
   </div>

@@ -1,19 +1,19 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 10px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
+    gap: 40px;
   }
   
   .logo h1 {
-    
     font-size: 32px;
     margin: 0;
     font-size: 500%;
+    font-family: 'Bebas Neue' , cursive;
   }
-  
   .search-bar {
     display: flex;
     align-items: center;
@@ -53,7 +53,12 @@
   .auth-link:hover {
     color: #c47814;
   }
-  
+  .logo-link {
+    text-decoration: none;
+    color: #E07415; 
+    
+}
+
   .cart-icon {
     background-color: red;
     color: #fff;
@@ -77,8 +82,14 @@
     width: 65px; 
     height: auto;
   } 
-
-
+  .corner-image2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px; 
+    height: auto;
+  }
+ 
 
 /* --------------------------------------------------- */
 .navbar {
@@ -182,16 +193,25 @@
   }
   
   .logo1 {
-    width: 120px;
+    width: 150px;
     height: 120px;
     background-color: #FF8C5A;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 10px;
     margin: 10px 0;
+    margin-bottom: 10px;
+    top: 20px
   }
+  .logo1 img {
+  width: 120%;
+  height: 100%;
+  object-fit: cover;     
+  display: block;
+  border-radius: 10px;     
+}
   
   .social-icons a img {
     width: 40px;
@@ -217,3 +237,61 @@
     z-index: 9999; 
 
   }
+  .contact-icons {
+  position: fixed;
+  top: 35%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  background-color: #f7941e;
+  border-radius: 50%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.icon-circle img {
+  width: 28px;
+  height: 28px;
+}
+
+.icon-facebook {
+  display: flex;
+  align-items: center;
+  background-color: #f7941e;
+  border-radius: 30px 0 0 30px;
+  padding: 10px 15px;
+  margin: 10px 0;
+  color: white;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.icon-facebook span {
+  margin-right: 10px;
+}
+
+.circle-fb {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-fb img {
+  width: 20px;
+  height: 20px;
+}
