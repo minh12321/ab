@@ -32,9 +32,9 @@ export class HomeComponent {
   }
  
   imageList = [
-    'assets/anh/download.jpg',
-    'assets/anh/slide-20-extra.jpg',
-    'assets/anh/slide-24-extra(1)(1).png',
+    'assets/anh/ronaldo7.jpg',
+    'assets/anh/slide-24-extra.jpg',
+    'assets/anh/anhbong.jpg',
     
   ];
   
@@ -46,6 +46,7 @@ export class HomeComponent {
     dots: true,
     arrows: false
   };
+  
   infoList = [
     {
       icon: 'https://cdn-icons-png.flaticon.com/512/5956/5956476.png',

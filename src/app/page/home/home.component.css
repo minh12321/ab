@@ -1,7 +1,8 @@
 .slider-container {
-  margin-top: 20px;
   width: 100%;
-  height: 220px;  
+  position: relative;
+  overflow: hidden;
+
 }
 
 .image-container {
@@ -12,27 +13,23 @@
 
 }
 .slide{
-  width: 80%;
-  height: 2200px; 
-  object-fit: cover;
+   display: flex;
+  justify-content: center;
   align-items: center;
+  height: 750px; 
+  background-color: #000; 
+  width: 500px;
 }
 .carousel {
-  width: 80%;
-  height: 1px; 
-  margin-top: 0;
-  padding-top: 0;
-  margin-left: 80px;
-  margin-right: 80px;
-  z-index: 1; 
+  width: 100%;
+  
 }
 
 .slide img {  
-  max-height: 10%;  
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  display: block;
-  margin: 0;
-  padding: 0;
+  object-position: center;
 }
 .responsive-image {
   width: 100%; 
@@ -55,15 +52,24 @@
 }
 
 .info-box {
-  display: flex;
+ display: flex;
   align-items: center;
-  width: 24%;
+  gap: 12px;
   padding: 10px;
-  border-right: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .info-box:last-child {
   border-right: none;
+}
+
+.info-box:hover .info-icon {
+  filter: brightness(0) saturate(100%) invert(44%) sepia(99%) saturate(1569%) hue-rotate(8deg) brightness(103%) contrast(102%);
+}
+.info-box:hover .info-title,
+.info-box:hover .info-description {
+  color: orange;
 }
 
 .info-icon {
@@ -71,6 +77,7 @@
   height: 40px;
   margin-right: 10px;
   object-fit: contain;
+  transition: filter 0.3s ease;
 }
 
 .info-text {
@@ -87,4 +94,46 @@
 .info-description {
   font-size: 13px;
   color: #666;
+}
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e6e6e6;
+  padding: 40px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }

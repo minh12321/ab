@@ -5,7 +5,7 @@ import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/c
 import { NgChartsModule } from 'ng2-charts';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
-
+import { RouterModule } from '@angular/router';
 // COMPONENT
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,7 @@ import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component
 import { ThongKeComponent } from './page/thong-ke/thong-ke.component';
 import { ToolComponent } from './components/tool/tool.component';
 import { CaNhanComponent } from './page/ca-nhan/ca-nhan.component';
+
 
 // MODULE CHO SLIDER
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -61,6 +62,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     AppRoutingModule,
     NgChartsModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     SlickCarouselModule 
   ],

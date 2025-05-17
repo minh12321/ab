@@ -3,11 +3,16 @@
 </div>
 
 
-
 <div *ngIf="showLayout">
 <header class="header">
+  <div>
+    <img src="assets/anh/cauthu.png" alt=" Cau thu" class="corner-image2">
+  </div>
+
+
     <div class="logo">
-        <h1>BEN</h1>
+      <h1><a routerLink="/" class="logo-link">BEN.</a></h1>
+
       </div>
       <div class="search-bar">
         <input type="text" [(ngModel)]="text" placeholder="Search...">
@@ -61,24 +66,26 @@
           <!-- Về chúng tôi -->
           <div class="about">
               <h3>Về chúng tôi</h3>
-              <div class="logo1"></div>
+              <div class="logo1">
+                <img src="assets/anh/ben.png" alt="BEN logo">
+              </div>
+
               <div class="social-icons">
-                  <a href="#"><img src="assets/anh/Facebook-icon-1.png" alt="Facebook"></a>
-                  <a href="#"><img src="../assets/anh/ins.jpg" alt="Instagram"></a>
-                  <a href="#"><img src="../assets/anh/yt.png" alt="YouTube"></a>
+                  <a href="https://www.facebook.com/congtu.dang.121" target="_blank"><img src="assets/anh/facebook.png" alt="Facebook"></a>
+                  <a href="https://www.instagram.com/tuanlonginblack?igsh=czJlZGlzZW9hczJh&utm_source=qr" target="_blank"><img src="../assets/anh/ins.jpg" alt="Instagram"></a>
+                  <a href="#"><img src="../assets/anh/zalo.png" alt="Zalo"></a>
               </div>
           </div>
     
           <!-- Thông tin -->
-          <div class="info">
-              <h3>Thông tin</h3>
-              <ul>
-                  <li><a href="#">Chính sách thanh toán</a></li>
-                  <li><a href="#">Chính sách đổi trả</a></li>
-                  <li><a href="#">Chính sách bảo hành</a></li>
-                  <li><a href="#">Chính sách giao nhận</a></li>
-                  <li><a href="#">Chính sách bảo mật</a></li>
-              </ul>
+                  <div class="info">
+            <h3>Thông tin</h3>
+            <ul>
+              <li><a routerLink="/chinhsach">Chính sách thanh toán</a></li>
+              <li><a routerLink="/chinhsach">Chính sách đổi trả</a></li>
+              <li><a routerLink="/chinhsach">Chính sách bảo hành</a></li>
+              <li><a routerLink="/chinhsach">Chính sách giao nhận</a></li>
+            </ul>
           </div>
     
           <!-- Liên hệ -->
