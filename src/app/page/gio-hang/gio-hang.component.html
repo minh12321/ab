@@ -1,14 +1,25 @@
 <div class="cart-container">
   <h1 class="cart-title">GIỎ HÀNG</h1>
 
-  <div *ngIf="product.length > 0; else noProducts" class="cart-container">
+  <div *ngIf="product.length > 0; else noProducts" class="cart-list-container">
     <div class="cart-list">
+      <div class="cart-header">
+        <div class="header-item">SẢN PHẨM</div>
+        <div class="header-item">ĐƠN GIÁ</div>
+        <div class="header-item">SỐ LƯỢNG</div>
+        <div class="header-item">THÀNH TIỀN</div>
+        <div class="header-item">THAO TÁC</div>
+      </div>
       <div class="cart-item" *ngFor="let item of product">
-        <div><strong>Mã:</strong> {{ item.productCode }}</div>
-        <div><strong>Tên sản phẩm:</strong> {{ item.productName }}</div>
-        <div><strong>Giá:</strong> {{ item.totalPrice | currency:'VND' }}</div>
-        <div><strong>Số lượng:</strong> {{ item.quantity }}</div>
-        <div><strong>Tổng tiền:</strong> {{ item.totalPrice * item.quantity | currency:'VND' }}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-details">
+            <div class="cart-item-name"><strong>{{ item.productName }}</strong></div>
+            <div class="cart-item-code">Mã: {{ item.productCode }}</div>
+          </div>
+        </div>
+        <div class="cart-item-price">{{ item.totalPrice | currency:'VND' }}</div>
+        <div class="cart-item-quantity">{{ item.quantity }}</div>
+        <div class="cart-item-total">{{ item.totalPrice * item.quantity | currency:'VND' }}</div>
         <div class="cart-buttons">
           <button (click)="delettespincart(item.productCode)" class="btn-delete">Xóa</button>
           <button (click)="selectProduct(item.productCode)" [routerLink]="['/product']" class="btn-info">Thông tin SP</button>
@@ -16,43 +27,53 @@
       </div>
     </div>
   </div>
-  
+
   <ng-template #noProducts>
-    <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
+    <p class="no-products">Giỏ hàng của bạn chưa có sản phẩm nào.</p>
   </ng-template>
-    
-    <div class="cart-summary">
-      <h2 class="summary-title">TỔNG TIỀN</h2>
-      <hr class="divider" />
-      <div class="total">
-        <span>Tổng: </span>
-        <span class="total-amount">{{ totalAmount | currency:'VND' }}</span>
+
+  <div class="cart-summary">
+    <h2 class="summary-title">TỔNG TIỀN</h2>
+    <hr class="divider" />
+    <div class="total">
+      <span>Tổng: </span>
+      <span class="total-amount">{{ totalAmount | currency:'VND' }}</span>
+    </div>
+    <button class="confirm-button" (click)="showPopup = true">
+      <span>✔ Chốt đơn</span>
+    </button>
+  </div>
+
+  <button class="history-toggle-button" (click)="toggleList()">Lịch sử mua hàng</button>
+  <div *ngIf="showList" class="history-section">
+    <h1 class="history-title">LỊCH SỬ GIAO DỊCH</h1>
+    <div class="history-list">
+      <div class="history-header">
+        <div class="header-item">MÃ ĐƠN</div>
+        <div class="header-item">TÊN SẢN PHẨM</div>
+        <div class="header-item">GIÁ</div>
+        <div class="header-item">SỐ LƯỢNG</div>
+        <div class="header-item">NGÀY MUA</div>
+        <div class="header-item">TRẠNG THÁI</div>
       </div>
-      <button class="confirm-button" (click)="showPopup = true">
-        <span>✔ Chốt đơn</span>
-      </button>
+      <div class="invoice-item" *ngFor="let item of hoadon">
+        <div class="invoice-item-code">{{ item.maHoaDon }}</div>
+        <div class="invoice-item-name">{{ item.tenHang }}</div>
+        <div class="invoice-item-price">{{ item.gia | currency:'VND' }}</div>
+        <div class="invoice-item-quantity">{{ item.soLuong }}</div>
+        <div class="invoice-item-date">{{ item.ngayMua }}</div>
+        <div class="invoice-item-status">
+          <span [ngClass]="{
+            'status-success': item.trangThai === 'Đã giao',
+            'status-cancelled': item.trangThai === 'Đã Hủy',
+            'status-pending': item.trangThai === 'Chờ xác nhận' || 'Đã thanh toán'
+          }">
+            {{ item.trangThai }}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- //---------------------------------------- -->
-  <button class="confirm-button" (click)="toggleList()">Lịch sử mua hàng</button><br>
-  <h1>Lịch sử giao dịch</h1>
-  <ul *ngIf="showList" class="popup-list">
-    <li *ngFor="let item of hoadon" class="invoice-item">
-      <div><strong>Mã đơn:</strong> {{ item.maHoaDon }}</div>
-      <div><strong>Tên sản phẩm:</strong> {{ item.tenHang }}</div>
-      <div><strong>Giá:</strong> {{ item.gia | currency:'VND' }}</div>
-      <div><strong>Số lượng:</strong> {{ item.soLuong }}</div>
-      <div><strong>Ngày mua:</strong> {{ item.ngayMua }}</div>
-      <div><strong>Trạng thái:</strong> 
-        <span [ngClass]="{
-          'status-success': item.trangThai === 'Đã giao',
-          'status-cancelled': item.trangThai === 'Đã Hủy',
-          'status-pending': item.trangThai === 'Chờ xác nhận'||'Đã thanh toán',
-        }">
-          {{ item.trangThai }}
-        </span>
-      </div>
-    </li>
-  </ul>
 
   <app-thanh-toan-popup *ngIf="showPopup" (closePopup)="showPopup = false"></app-thanh-toan-popup>
+</div>

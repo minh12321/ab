@@ -112,8 +112,11 @@
 .buy-now-button {
   background-color: orange;
   margin-right: 4%;
-}
 
+}
+.buy-now-button:hover {
+  background-color: #b94116;
+}
 .add-to-cart-button {
   background-color: #ff4500;
 }
