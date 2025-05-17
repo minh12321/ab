@@ -1,88 +1,101 @@
 <div class="container">
   <div class="sidebar">
+    <!-- Size Filter -->
     <div class="box">Size</div>
     <div class="filter-group">
       <div class="button-size">
-      <button (click)="setFilter('31')">31</button>
-      <button (click)="setFilter('32')">32</button>
-      <button (click)="setFilter('33')">33</button>
-      <button (click)="setFilter('34')">34</button>
-      <button (click)="setFilter('35')">35</button>
-      <button (click)="setFilter('36')">36</button>
-      <button (click)="setFilter('37')">37</button> 
-      <button (click)="setFilter('38')">38</button>
-      <button (click)="setFilter('39')">39</button>
-      <button (click)="setFilter('40')">40</button>
-      <button (click)="setFilter('41')">41</button>
-      <button (click)="setFilter('42')">42</button>
-      <button (click)="setFilter('43')">43</button>
+        <label *ngFor="let size of ['31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43']">
+          <input type="checkbox" [checked]="filter.sizes.has(size)" (change)="toggleFilter('sizes', size)" />
+          {{ size }}
+        </label>
       </div>
     </div>
 
+    <!-- Brand Filter -->
     <div class="box">Thương hiệu</div>
     <div class="filter-group">
-      <button (click)="setFilter2('Nike')">Nike</button>
-      <button (click)="setFilter2('Adidas')">Adidas</button>
-      <button (click)="setFilter2('Adidas')">Winbro</button>
+      <label *ngFor="let brand of ['Nike', 'Adidas', 'Winbro']">
+        <input type="checkbox" [checked]="filter.brands.has(brand)" (change)="toggleFilter('brands', brand)" />
+        {{ brand }}
+      </label>
     </div>
 
+    <!-- Type Filter -->
     <div class="box">Loại hàng</div>
     <div class="filter-group">
-      <button (click)="setFilter3('Giầy')">Giầy</button>
-      <button (click)="setFilter3('Balo')">Balo</button>
-      <button (click)="setFilter3('Găng tay')">Găng tay</button>
-      <button (click)="setFilter3('Bóng')">Bóng</button>
+      <label *ngFor="let type of ['Giầy', 'Balo', 'Găng tay', 'Bóng']">
+        <input type="checkbox" [checked]="filter.types.has(type)" (change)="toggleFilter('types', type)" />
+        {{ type }}
+      </label>
     </div>
 
+    <!-- Price Filter -->
     <div class="box">Giá</div>
-    <div class="filter-group">      
+    <div class="filter-group">
       <div class="button-grid">
         <input type="number" [(ngModel)]="filter.minPrice" (input)="applyFilters()" placeholder="Giá từ" step="100000">
         <input type="number" [(ngModel)]="filter.maxPrice" (input)="applyFilters()" placeholder="Giá đến" step="100000">
       </div>
     </div>
 
+    <!-- Color Filter -->
     <div class="box">Màu sắc</div>
     <div class="filter-group">
       <div class="color-grid">
-        <div style="background: red;" class="color-box" (click)="setFilter1('Đỏ')"></div>
-        <div style="background: blue;" class="color-box"(click)="setFilter1('Xanh dương')"></div>
-        <div style="background: yellow;" class="color-box"(click)="setFilter1('Vàng')"></div>
-        <div style="background: cyan;" class="color-box"(click)="setFilter1('Xanh da trời')"></div>
-        <div style="background: black;" class="color-box"(click)="setFilter1('Đen')"></div>
-        <div style="background: gray;" class="color-box"(click)="setFilter1('Xám')"></div>
-        <div style="background: linear-gradient(to right, #36D1DC, #5B86E5);" class="color-box"(click)="setFilter1('31')"></div>
-        <div style="background: linear-gradient(to right, #ff6a00, #ee0979);" class="color-box"(click)="setFilter1('31')"></div>
-        <div style="background: linear-gradient(to right, #a1c4fd, #c2e9fb);" class="color-box"(click)="setFilter1('31')"></div>
-        <div style="background: #ccff66;" class="color-box"(click)="setFilter1('31')"></div>
-        <div style="background: #00bcd4;" class="color-box"(click)="setFilter1('31')"></div>
-        <div style="background: #ffe259;" class="color-box"(click)="setFilter1('31')"></div>
+        <div style="background: red;" class="color-box" (click)="toggleFilter('colors', 'Đỏ')"></div>
+        <div style="background: blue;" class="color-box" (click)="toggleFilter('colors', 'Xanh')"></div>
+        <div style="background: yellow;" class="color-box" (click)="toggleFilter('colors', 'Vàng')"></div>
+        <div style="background: cyan;" class="color-box" (click)="toggleFilter('colors', 'Xanh da trời')"></div>
+        <div style="background: black;" class="color-box" (click)="toggleFilter('colors', 'Đen')"></div>
+        <div style="background: gray;" class="color-box" (click)="toggleFilter('colors', 'Xám')"></div>
+        <div style="background: linear-gradient(to right, #36D1DC, #5B86E5);" class="color-box" (click)="toggleFilter('colors', 'Xanh gradient')"></div>
+        <div style="background: linear-gradient(to right, #ff6a00, #ee0979);" class="color-box" (click)="toggleFilter('colors', 'Cam hồng gradient')"></div>
+        <div style="background: linear-gradient(to right, #a1c4fd, #c2e9fb);" class="color-box" (click)="toggleFilter('colors', 'Xanh nhạt gradient')"></div>
+        <div style="background: #ccff66;" class="color-box" (click)="toggleFilter('colors', 'Xanh lá nhạt')"></div>
+        <div style="background: #00bcd4;" class="color-box" (click)="toggleFilter('colors', 'Xanh lam')"></div>
+        <div style="background: #ffe259;" class="color-box" (click)="toggleFilter('colors', 'Vàng nhạt')"></div>
       </div>
     </div>
-    <button (click)="resetFilter()">clear filter</button>
+
+    <button class="clear-filter" (click)="resetFilter()">Xóa bộ lọc</button>
   </div>
+
   <div class="product-section">
     <!-- Dropdown sort -->
     <div class="sort-dropdown">
-      <label for="sort">Thứ tự</label>
+      <label for="sort">Sắp xếp:</label>
       <select [(ngModel)]="selectedSort" (change)="applyFilters()">
+        <option value="name">Tên A-Z</option>
         <option value="price_asc">Giá tăng dần</option>
         <option value="price_desc">Giá giảm dần</option>
-        <option value="name">Tên A-Z</option>
       </select>
     </div>
-
     <!-- Danh sách sản phẩm -->
     <div class="product-grid">
       <div *ngFor="let p of filteredProducts" class="product-card">
-        <!-- Thêm liên kết đến trang chi tiết sản phẩm -->
         <a (click)="selectProduct(p.maSanPham)" [routerLink]="['/product']">
-          <img *ngIf="p.hinhAnh" [src]="apiUrl+'/api/upload/' + p.hinhAnh" width="100" alt="Hình ảnh">
-          <h4>Hàng có sẵn</h4>
-          <div class="price">{{ p.gia }}đ</div>
-          <p>{{ p.tenSanPham }}</p>
+          <div class="product-image">
+            <img *ngIf="p.hinhAnh" [src]="apiUrl + '/api/upload/' + p.hinhAnh" alt="{{ p.tenSanPham }}" />
+          </div>
+          <div class="product-info">
+            <h4>Hàng có sẵn</h4>
+            <p class="product-name">{{ p.tenSanPham }}</p>
+            <div class="price">{{ p.gia | currency:'VND':'symbol':'1.0-0' }}</div>
+          </div>
         </a>
       </div>
     </div>
+  </div>
 </div>
+<div class="pagination-container">
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Trước</button>
 
+  <button 
+    *ngFor="let page of pageNumbers" 
+    (click)="goToPage(page)" 
+    [class.active]="page === currentPage">
+    {{ page }}
+  </button>
+
+  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Tiếp</button>
+</div>
