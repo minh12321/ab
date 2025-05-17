@@ -8,5 +8,6 @@ export class Product {
   mauSac: string="";
   hinhAnh: string="";
   size: string="";
-  kichThuoc?: number[];     
+  kichThuoc?: number[];
+       
 }

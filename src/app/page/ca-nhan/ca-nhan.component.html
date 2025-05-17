@@ -21,12 +21,12 @@
       <li><strong>Địa chỉ:</strong> {{ user.address }}</li>
       <li><strong>Ngày sinh:</strong> {{ user.birthDate }}</li>
     </ul>
-    <button class="btn-primary">Chỉnh sửa</button>
+    <button class="btn-primary" [class.active]="activeTab === 'fixinfo'" (click)="activeTab = 'fixinfo'" >Chỉnh sửa</button>
   </div>
 
   <!-- Rank Info -->
   <div class="profile-section rank">
-    <h3>Hạng thành viên: {{ user.rank }} ⭐⭐⭐</h3>
+    <h3>Hạng thành viên: {{ user.rank }} ⭐⭐⭐⭐⭐</h3>
     <p>Tiêu xài: {{ user.spent | currency:'VND':'symbol' }}</p>
     <p>Còn {{ user.requiredToNext | currency:'VND':'symbol' }} để lên {{ user.nextRank }}</p>
     <button class="btn-tooltip" (mouseover)="showTooltip = true" (mouseleave)="showTooltip = false">
@@ -53,5 +53,42 @@
     <p *ngIf="activeTab === 'reviews'">Hiển thị đánh giá...</p>
     <p *ngIf="activeTab === 'wishlist'">Hiển thị wishlist...</p>
     <p *ngIf="activeTab === 'address'">Hiển thị địa chỉ giao hàng...</p>
+    <div *ngIf="activeTab === 'fixinfo'">Hiển thị
+
+      <h3>Chỉnh sửa tài khoản</h3>
+      <div class="edit-form">
+        <form (ngSubmit)="customus(id)">
+          <label>Họ tên:</label>
+          <input type="text" [(ngModel)]="fullName" name="fullName"><br>
+
+          <label>Tài khoản:</label>
+          <input type="text" [(ngModel)]="username" name="username"><br>
+
+          <label>Email:</label>
+          <input type="text" [(ngModel)]="email" name="email"><br>
+
+          <label>Địa chỉ:</label>
+          <input type="text" [(ngModel)]="diachi" name="diachi"><br>
+
+          <label>Trạng thái:</label>
+          <input type="text" [(ngModel)]="status" name="status"><br>
+
+          <label>Mật khẩu:</label>
+          <input type="password" [(ngModel)]="password" name="password" [disabled]="!isEditable"><br>
+
+          <button type="submit">Cập nhật</button>
+
+          <h2>Để được đổi mật khẩu cần phải nhập lại mật khẩu cũ</h2>
+
+          <label>Tên Đăng nhập:</label>
+          <input type="text" [(ngModel)]="username1" name="username1"><br>
+
+          <label>Mật khẩu:</label>
+          <input type="password" [(ngModel)]="password1" name="password1" ><br>
+
+          <button (click)="login()">Yêu Cầu đổi mật khẩu</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

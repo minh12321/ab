@@ -117,7 +117,9 @@ export class ThanhToanPopupComponent {
       });
 
       this.delettespincart(item.productCode);
+      setTimeout(() => {
       window.location.reload();
+    }, 10000);
     });
   }
 

@@ -4,6 +4,10 @@ import { KhachHangService } from '../../../api-sevice/khach_hang.service';
 import { HoaDonService } from '../../../api-sevice/hoa_don.service';
 import { AuthService } from '../../auth/auth.service';
 import { KhachHang } from '../../../api-sevice/khach_hang.model';
+import { User } from '../../../api-sevice/user.model';
+import { HttpParams } from '@angular/common/http';
+import { UserService } from '../../../api-sevice/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ca-nhan',
@@ -12,7 +16,7 @@ import { KhachHang } from '../../../api-sevice/khach_hang.model';
   styleUrl: './ca-nhan.component.css'
 })
 export class CaNhanComponent {
-  constructor(private khachHangService: KhachHangService,private hoaDonService: HoaDonService,private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(private userService: UserService, private router: Router,private khachHangService: KhachHangService,private hoaDonService: HoaDonService,private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object) {}
 
   rankLevels: string[] = ['Vô Hạng', 'Đồng', 'Bạc', 'Vàng', 'Kim cương'];
   currentRank: string = '';
@@ -27,7 +31,7 @@ export class CaNhanComponent {
       email: 'a@gmail.com',
       phone: '0909123456',
       address: '123 Lê Lợi, Q1, HCM',
-      birthDate: '1995-06-20',
+      birthDate: '2004-00-00',
       rank: this.currentRank,
       spent: 0,
       requiredToNext: 2000000,
@@ -76,11 +80,73 @@ export class CaNhanComponent {
     this.user.name = this.authService.getfullname() ?? 'Người dùng';
     this.user.email =this.authService.getemail()?? 'email';
     this.user.address =this.authService.getdiachi() ?? 'diachi';
+    this.fillForm();
   }
 
 
   activeTab = 'orders';
   showTooltip = false;
-
   
+  id :number=0;
+  status :string='';
+  username: string = '';
+  password: string = '';
+  diachi: string = '';
+  fullName: string = '';
+  email :string='';
+  loaitk :string='';
+  search :string='';
+  
+  selectedAccount = { id: 0,fullName: '', username: '', email: '', role: 'user' };
+  customus(id: number) {
+    const params = new HttpParams()
+      .set('fullName', this.fullName)
+      .set('status', this.status)
+      .set('username', this.username)
+      .set('accountType', this.loaitk)
+      .set('email', this.email)
+      .set('diachi', this.diachi)
+      .set('matkhau', this.password); 
+
+    this.userService.updateUser(this.id, params).subscribe({
+      next: () => {
+        alert('Cập nhật thành công!');
+      },
+      error: (err) => {
+        alert('Cập nhật thất bại: ' + err.message);
+      }
+    });
+  }
+
+  fillForm() {
+    this.id = this.authService.getid();
+    this.fullName = this.authService.getfullname() ?? 'Người dùng';
+    this.username = this.authService.getUsername() ?? 'username';
+    this.email = this.authService.getemail()?? 'email';
+    this.diachi = this.authService.getdiachi() ?? 'diachi';
+    this.status = this.authService.getstatus()?? 'trạng thái';
+    this.loaitk = this.authService.getaccount() ?? 'loaitk';
+  }
+
+  //đổi mật khẩu 
+  isEditable: boolean = false;
+
+  username1: string="";
+  password1: string="";
+
+  login() {
+    const params = new HttpParams()
+      .set('username', this.username1)
+      .set('password', this.password1);
+    this.userService.loginUser(params).subscribe({
+      next: (res) => {
+        this.isEditable = true;
+      },
+      error: (err) => {
+        const errorMessage = err.error?.message || 'Đăng nhập thất bại. Vui lòng thử lại.';
+        alert('Sai tài khoản hoặc mật khẩu <bản chỉ có 5 lần thử >: ' + errorMessage);
+      }
+    });
+  }
+
 }

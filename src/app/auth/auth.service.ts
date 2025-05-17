@@ -39,6 +39,9 @@ export class AuthService {
   getdiachi(): string | null {
     return this.storageService.getItem('diachi');
   }
+  getstatus(): string | null {
+    return this.storageService.getItem('status');
+  }
 
 
   logout(): void {
