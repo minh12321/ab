@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './san_pham.model';
 import { environment } from '../environments/environment';
@@ -23,15 +23,6 @@ export class ProductService {
   deleteProduct(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/api/products/admin/${id}`);
   }
-
-  // updateProduct(id: string, product: Product, file: File | null): Observable<Product> {
-  //   const formData = new FormData();
-  //   formData.append('product', new Blob([JSON.stringify(product)], { type: 'application/json' }));
-  //   if (file) {
-  //     formData.append('file', file);
-  //   }
-  //   return this.http.put<Product>(`${this.apiUrl}/api/products/admin/${id}`, formData);
-  // }
 
   updateProduct(id: string, product: Product, file?: File | null): Observable<Product> {
     if (file) {
@@ -66,19 +57,16 @@ export class ProductService {
   deleteImage(filename: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/api/upload/admin/${filename}`);
   }
-
   
   capNhatSoLuongMat(productId: string, soLuongMat: number) {
-    return this.http.put<number>(`${this.apiUrl}/api/products/admin/${productId}/mat`, {soLuongMat});
+    const params = new HttpParams().set('soLuongMat', soLuongMat.toString());
+    return this.http.put<number>(`${this.apiUrl}/api/products/admin/${productId}/mat`, null, { params });
   }
 
   suaPhanTramGiamGia(productId: string, giamGia: number) {
-    return this.http.put(`${this.apiUrl}/api/products/admin/${productId}/giam-gia`, { giamGia });
+    return this.http.put(`${this.apiUrl}/api/products/admin/${productId}/giam-gia`, {
+      giamGia: giamGia
+    });
   }
-  
-
-
-  
-
 
 }

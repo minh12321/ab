@@ -86,6 +86,7 @@ export class GioHangComponent implements OnInit {
     this.cartService.removeProductFromCart(ma).subscribe(data=>{
       console.log(data);
     });
+    window.location.reload();
   }
   selectProduct(productId: string) {
     this.authService.setProductId(productId); 

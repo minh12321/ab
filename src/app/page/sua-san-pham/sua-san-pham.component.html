@@ -19,6 +19,11 @@
     </div>
 
     <div class="form-group">
+      <label>Giảm giá</label>
+      <input type="number" class="form-control" [(ngModel)]="selectedProduct.giamGia" name="giamGia">
+    </div>
+
+    <div class="form-group">
       <label>Hình ảnh</label>
       <input type="file" class="form-control" (change)="onFileChange($event)">
     </div>
@@ -38,6 +43,7 @@
         <th>Tên</th>
         <th>Giá</th>
         <th>Số lượng</th>
+        <th>Giảm</th>
         <th>Hành động</th>
       </tr>
     </thead>
@@ -50,6 +56,7 @@
         <td>{{ product.tenSanPham }}</td>
         <td>{{ product.gia | number }}</td>
         <td>{{ product.soLuong }}</td>
+        <td>{{ product.giamGia }}</td>
         <td>
           <button class="btn btn-primary btn-sm" (click)="selectProductToEdit(product)">Sửa</button>
         </td>

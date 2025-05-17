@@ -87,8 +87,8 @@ export class RankComponent {
   }
 //---------------------------------------------------------------------------------------------------------------------
   rankLevels: string[] = ['Vô Hạng', 'Đồng', 'Bạc', 'Vàng', 'Kim cương'];
-  currentRank: string = 'Bạc';
-  progressPercent: number = 63;
+  currentRank: string = '';
+  progressPercent: number = 0;
   isVip: boolean = true;
   canBoost: boolean = true;
   selectedRewardRank: string = '';

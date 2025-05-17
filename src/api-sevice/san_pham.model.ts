@@ -9,5 +9,6 @@ export class Product {
   hinhAnh: string="";
   size: string="";
   kichThuoc?: number[];
-       
+  giamGia:number=0;
+
 }

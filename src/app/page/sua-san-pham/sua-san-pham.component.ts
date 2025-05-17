@@ -55,11 +55,20 @@ export class SuaSanPhamComponent {
       .subscribe({
         next: (res) => {
           alert('Cập nhật thành công');
-          this.loadAllProducts(); // làm mới danh sách
+          this.loadAllProducts(); 
         },
         error: (err) => {
           console.error(err);
           alert('Cập nhật thất bại');
+        }
+      });
+    this.productService.suaPhanTramGiamGia(this.selectedProduct.maSanPham,this.selectedProduct.giamGia)
+    .subscribe({
+        next: (res) => {
+          this.loadAllProducts(); 
+        },
+        error: (err) => {
+          console.error(err);
         }
       });
   }
