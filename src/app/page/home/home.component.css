@@ -300,6 +300,10 @@
   background: linear-gradient(to bottom, #2c3e50, #34495e);
   color: #fff;
   text-align: center;
+  background-image: url('/assets/anh/sanbong1.jpg');
+  background-size: cover;
+  background-position: center;
+ 
 }
 
 .stats-counter-container {
@@ -308,25 +312,27 @@
 }
 
 .stats-title {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgb(0, 0, 0);
 }
 
 .stats-description {
-  font-size: 1rem;
-  color: #ddd;
+  font-size: 2rem;
+  color:rgb(0, 0, 0);
   margin-bottom: 30px;
+  font-weight: bold;
 }
 
 .stats-items {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 100px;
+  gap:  100px;
   height: 150px;
   object-fit: cover;
 }

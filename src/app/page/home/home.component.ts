@@ -120,5 +120,6 @@ export class HomeComponent {
     this.onScroll = () => {};
   }
 }
+
 }
 

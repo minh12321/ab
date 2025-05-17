@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // Thêm OnInit
 import { Product } from '../../../api-sevice/san_pham.model';
 import { ProductService } from '../../../api-sevice/san_pham.service';
 import { environment } from '../../../environments/environment';
@@ -7,109 +7,133 @@ import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-sanpham',
   templateUrl: './sanpham.component.html',
-  styleUrl: './sanpham.component.css',
+  styleUrls: ['./sanpham.component.css'],
   standalone: false
 })
-export class SanphamComponent {
-    product: Product[] = [];
-    newProduct: Product = new Product();
-    filteredProducts: Product[] = [];
-    minPrice: number = 0;
-    maxPrice: number = 10000000;
+export class SanphamComponent implements OnInit {
+  product: Product[] = [];
+  filteredProducts: Product[] = [];
+  public apiUrl = environment.url;
 
-    public apiUrl = environment.url;
+  filter = {
+    sizes: new Set<string>(),       
+    brands: new Set<string>(),      
+    types: new Set<string>(),       
+    colors: new Set<string>(),     
+    conHang: false,               
+    minPrice: null,               
+    maxPrice: null                 
+  };
 
-    filter = {
-      mauSac: '',             // VD: "Đỏ"
-      conHang: false,         // true nếu chỉ hiển thị còn hàng
-      hang: '',               // Hãng trong mô tả
-      loaihang:'',
-      kieuGiay: '',           // Kiểu giày trong mô tả
-      size: '',               // VD: "42"
-      minPrice: null,         // Giá tối thiểu
-      maxPrice: null          // Giá tối đa
-    };
-    
-    constructor(private productService: ProductService,
-      private authService: AuthService) {}
-  
-    ngOnInit(): void {
-      this.getAllProducts(); 
-    }
-  
-    getAllProducts() {
-      this.productService.getAllProducts().subscribe(data => {
-        this.product = data;
-        this.applyFilters();
-      });
-    }
-    
-///testtest
-    applyFilters() {
-      this.filteredProducts = this.product.filter(p => {
-        const matchMauSac = this.filter.mauSac ? p.mauSac === this.filter.mauSac : true;
-        const matchConHang = this.filter.conHang ? p.soLuong > 0 : true;
-        const matchSize = this.filter.size ? p.size === this.filter.size : true;
-        const matchloaiHang = this.filter.loaihang ? p.moTa.toLowerCase().includes(this.filter.loaihang.toLowerCase()) : true;
-        const matchHang = this.filter.hang ? p.moTa.toLowerCase().includes(this.filter.hang.toLowerCase()) : true;
-        const matchKieuGiay = this.filter.kieuGiay ? p.moTa.toLowerCase().includes(this.filter.kieuGiay.toLowerCase()) : true;
-        const matchMinPrice = this.filter.minPrice != null ? p.gia >= this.filter.minPrice : true;
-        const matchMaxPrice = this.filter.maxPrice != null ? p.gia <= this.filter.maxPrice : true;
+  selectedSort: string = 'name'; 
+  currentPage: number = 1;
+  itemsPerPage: number = 12; 
+  totalPages: number = 1;
 
-        
-        return matchMauSac && matchConHang && matchSize && matchHang && matchKieuGiay && matchMinPrice && matchMaxPrice && matchloaiHang;
-        
-      });this.sortProducts();
-    }
-    resetFilter() {
-      this.filter = {
-        mauSac: '',
-        conHang: false,
-        hang: '',
-        kieuGiay: '',
-        loaihang:'',
-        size: '',
-        minPrice: null,
-        maxPrice: null
-      };
-      this.applyFilters();
-    }
 
-    selectedSort = 'price_asc';
-    
-    setFilter(a:string){
-      this.filter.size= a;
-      this.applyFilters();
-    }
-    setFilter1(a:string){
-      this.filter.mauSac= a;
-      this.applyFilters();
-    }
-    setFilter2(a:string){
-      this.filter.hang= a;
-      this.applyFilters();
-    }
-    setFilter3(a:string){
-      this.filter.loaihang= a;
-      this.applyFilters();
-    }
-    
-    sortProducts() {
-      switch (this.selectedSort) {
-        case 'price_asc':
-          this.filteredProducts.sort((a, b) => a.gia - b.gia);
-          break;
-        case 'price_desc':
-          this.filteredProducts.sort((a, b) => b.gia - a.gia);
-          break;
-        case 'name':
-          this.filteredProducts.sort((a, b) => a.tenSanPham.localeCompare(b.tenSanPham));
-          break;
-      }
-    }
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+  ) {}
 
-  selectProduct(productId: string) {
-    this.authService.setProductId(productId); // Lưu id sản phẩm vào AuthService
+  ngOnInit(): void {
+    this.getAllProducts();
   }
 
+  getAllProducts() {
+    this.productService.getAllProducts().subscribe(data => {
+      this.product = data;
+      this.applyFilters();
+    });
+  }
+
+  toggleFilter(type: string, value: string): void {
+    const filterSet = this.filter[type as keyof typeof this.filter];
+    if (filterSet instanceof Set) {
+      if (filterSet.has(value)) {
+        filterSet.delete(value);
+      } else {
+        filterSet.add(value);
+      }
+    } else if (type === 'conHang') {
+      this.filter.conHang = !this.filter.conHang;
+    }
+    this.applyFilters();
+  }
+
+  allFilteredProducts: Product[] = [];
+
+  applyFilters(): void {
+    this.filteredProducts = this.product.filter(p => {
+      const matchSize = this.filter.sizes.size === 0 || this.filter.sizes.has(p.size || '');
+      const matchColor = this.filter.colors.size === 0 || this.filter.colors.has(p.mauSac || '');
+      const matchBrand = this.filter.brands.size === 0 || Array.from(this.filter.brands).some(brand =>
+        p.moTa.toLowerCase().includes(brand.toLowerCase()));
+      const matchConHang = !this.filter.conHang || (p.soLuong && p.soLuong > 0);
+      const matchType = this.filter.types.size === 0 || Array.from(this.filter.types).some(type =>
+        p.moTa.toLowerCase().includes(type.toLowerCase()));
+      const matchMinPrice = this.filter.minPrice == null || p.gia >= this.filter.minPrice;
+      const matchMaxPrice = this.filter.maxPrice == null || p.gia <= this.filter.maxPrice;
+
+      return matchSize && matchBrand && matchType && matchColor && matchConHang && matchMinPrice && matchMaxPrice;
+    });
+
+    this.sortProducts();
+     this.allFilteredProducts = [...this.filteredProducts];
+
+    this.totalPages = Math.ceil(this.allFilteredProducts.length / this.itemsPerPage);
+
+  // Lấy sản phẩm theo trang hiện tại
+    this.updateCurrentPageItems();
+  }
+
+  
+  resetFilter(): void {
+    this.filter = {
+      sizes: new Set<string>(),
+      brands: new Set<string>(),
+      types: new Set<string>(),
+      colors: new Set<string>(),
+      conHang: false,
+      minPrice: null,
+      maxPrice: null
+    };
+    this.selectedSort = 'name';
+    this.currentPage = 1;
+    this.applyFilters();
+  }
+
+  sortProducts(): void {
+    switch (this.selectedSort) {
+      case 'price_asc':
+        this.filteredProducts.sort((a, b) => a.gia - b.gia);
+        break;
+      case 'price_desc':
+        this.filteredProducts.sort((a, b) => b.gia - a.gia);
+        break;
+      case 'name':
+        this.filteredProducts.sort((a, b) => a.tenSanPham.localeCompare(b.tenSanPham));
+        break;
+    }
+  }
+  updateCurrentPageItems(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.filteredProducts = this.allFilteredProducts.slice(startIndex, endIndex);
+}
+
+get pageNumbers(): number[] {
+  return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+}
+
+  goToPage(page: number): void {
+  if (page >= 1 && page <= this.totalPages) {
+    this.currentPage = page;
+    this.updateCurrentPageItems();
+  }
+}
+
+  selectProduct(productId: string): void {
+    this.authService.setProductId(productId);
+  }
 }

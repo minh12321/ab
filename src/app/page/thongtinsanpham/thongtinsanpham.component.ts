@@ -92,7 +92,7 @@ export class ThongtinsanphamComponent {
     );
 
     this.cartService.addProductToCart(cartItem).subscribe((response) => {
-      alert('Product added to cart');
+      alert('Sản phẩm đã được thêm vào giỏ hàng');
     });
 
     
