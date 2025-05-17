@@ -30,8 +30,16 @@ export class AdminComponent {
       this.router.navigate(['/admin/t-s-p']);
     }
 
+    navigateTofixsp() {
+      this.router.navigate(['/admin/suasanpham']);
+    }
+
     navigateTodonhang() {
       this.router.navigate(['/admin/donhang']);
+    }
+
+    navigateToship() {
+      this.router.navigate(['/admin/ship']);
     }
 
     ngOnInit(): void {

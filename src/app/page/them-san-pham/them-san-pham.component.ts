@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ProductService } from '../../../api-sevice/san_pham.service';
 import { Product } from '../../../api-sevice/san_pham.model';
 import { environment } from '../../../environments/environment';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-them-san-pham',
@@ -118,5 +120,19 @@ export class ThemSanPhamComponent {
       u.maSanPham.toLowerCase().includes(keyword) ||
       u.tenSanPham.toLowerCase().includes(keyword)
     );
+  }
+  exportToExcel(): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.filteredsp);
+    const workbook: XLSX.WorkBook = {
+      Sheets: { 'DanhSachSanPham': worksheet },
+      SheetNames: ['DanhSachSanPham']
+    };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    this.saveAsExcelFile(excelBuffer, 'DanhSachSanPham');
+  }
+
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    const data: Blob = new Blob([buffer], { type: 'application/octet-stream' });
+    FileSaver.saveAs(data, `${fileName}.xlsx`);
   }
 }

@@ -35,4 +35,28 @@ export class ToolComponent {
   navigateTohomehome() {
     this.router.navigate(['/home']);
   }
+
+  navigatethongke() {
+      this.router.navigate(['/admin/thongke']);
+    }
+
+    navigateToaccount() {
+      this.router.navigate(['/admin/account']);
+    }
+
+    navigateToproduce() {
+      this.router.navigate(['/admin/t-s-p']);
+    }
+
+    navigateTofixsp() {
+      this.router.navigate(['/admin/suasanpham']);
+    }
+
+    navigateTodonhang() {
+      this.router.navigate(['/admin/donhang']);
+    }
+
+    navigateToship() {
+      this.router.navigate(['/admin/ship']);
+    }
 }

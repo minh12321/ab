@@ -7,6 +7,8 @@ import { CartService } from '../../../api-sevice/cart.service';
 import { ProductService } from '../../../api-sevice/san_pham.service';
 import { AuthService } from '../../auth/auth.service';
 import { KhachHangService } from '../../../api-sevice/khach_hang.service';
+import { OrderService } from '../../../api-sevice/order.service';
+import { Order } from '../../../api-sevice/order.model';
 
 @Component({
   selector: 'app-thanh-toan-popup',
@@ -31,6 +33,19 @@ export class ThanhToanPopupComponent {
     'Chuyển khoản ngân hàng',
     'Ví MoMo (quét mã QR)'
   ];
+  isInvaliddiachi: boolean = false;
+  isInvalidq: boolean = false;
+  isInvalidp: boolean = false;
+  isValidsdt: boolean = false;
+
+  validateForm(): boolean {
+    this.isInvaliddiachi = this.diaChi.trim() === '';
+    this.isInvalidq = this.quanHuyen.trim() === '';
+    this.isInvalidp = this.phuongXa.trim() === '';
+    this.isValidsdt = this.soDienThoai.trim() === '';   
+
+    return !(this.isInvalidp || this.isInvalidq || this.isValidsdt );
+  }
   
 
   submitForm() {
@@ -43,6 +58,11 @@ export class ThanhToanPopupComponent {
       alert('Vui lòng đăng nhập trước khi đặt hàng.');
       return;
     }
+    if (!this.validateForm()) {
+      alert('Vui lòng điền đầy đủ thông tin!');
+      return;
+    }
+    
     if (!this.product || this.product.length === 0) {
       alert('Giỏ hàng của bạn đang trống.');
       return;
@@ -60,6 +80,24 @@ export class ThanhToanPopupComponent {
       const khachhang ={
         
       }
+      const order: Order = {
+        maHoaDon: maDon,
+        tenNguoiDat: this.authService.getfullname()?? 'người dùng' ,
+        soDienThoai: this.soDienThoai,
+        diaChiGiaoHang: this.diaChi+this.phuongXa + this.quanHuyen + 'Ghi chú :'+this.ghiChu,
+        trangThaiGiaoHang: 'Chờ xác nhận'
+      };
+
+        this.orderService.createOrder(order).subscribe({
+          next: (result) => {
+            console.log('Đã tạo hóa đơn:', result);
+            alert('Tạo hóa đơn thành công!');
+          },
+          error: (err) => {
+            console.error('Lỗi tạo hóa đơn:', err);
+            alert('Lỗi tạo hóa đơn!');
+          }
+        });
   
       this.hoaDonService.createHoaDon(hoaDon).subscribe({
         next: () => {
@@ -77,6 +115,7 @@ export class ThanhToanPopupComponent {
           console.error('Lỗi khi cập nhật chi tiêu:', err);
         }
       });
+
       this.delettespincart(item.productCode);
       window.location.reload();
     });
@@ -86,19 +125,19 @@ export class ThanhToanPopupComponent {
     this.closePopup.emit();
   }
 
-
 //---------------------------------------------
   totalAmount: number = 0; 
   product: CartItem[] = [];
   hoadon: HoaDon[] = [];
   
   constructor(
-    private hoaDonService: HoaDonService,
+      private hoaDonService: HoaDonService,
       private route: ActivatedRoute,
       private cartService: CartService,
       private productService: ProductService,
       private authService: AuthService,
-      private khachHangService: KhachHangService
+      private khachHangService: KhachHangService,
+      private orderService: OrderService,
     ) {}
 
   ngOnInit(): void {

@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Quản lý đơn hàng</h2>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Mã hóa đơn</th>
+        <th>Người đặt</th>
+        <th>SĐT</th>
+        <th>Địa chỉ</th>
+        <th>Trạng thái</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.maHoaDon }}</td>
+        <td>{{ order.tenNguoiDat }}</td>
+        <td>{{ order.soDienThoai }}</td>
+        <td>{{ order.diaChiGiaoHang }}</td>
+        <td>
+          <select [(ngModel)]="order.trangThaiGiaoHang" (change)="updateStatus(order)">
+            <option>Chờ xác nhận</option>
+            <option>Đang giao</option>
+            <option>Hoàn thành</option>
+            <option>Hủy</option>
+          </select>
+        </td>
+        <td>
+          <button (click)="exportToWord(order)">🧾 Xuất HĐ</button>
+          <button (click)="deleteOrder(order.id)">🗑 Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button style="margin-top: 10px;" (click)="exportToExcel()">📁 Xuất tất cả ra Excel</button>
+</div>

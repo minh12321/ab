@@ -8,27 +8,27 @@
       <li class="dropdown">
         <span >Sản phẩm ▾</span>
         <ul class="dropdown-content">
-          <li (click)="navigateTo('product')">Danh sách</li>
-          <li (click)="navigateTo('add-product')">Thêm mới</li>
+          <li (click)="navigateToproduce()">Danh sách</li>
+          <li (click)="navigateToproduce()">Thêm mới</li>
         </ul>
       </li>
       <li class="dropdown">
         <span>Tài khoản ▾</span>
         <ul class="dropdown-content">
-          <li (click)="navigateTo('account')">Quản lý</li>
+          <li (click)="navigateToaccount()">Quản lý</li>
         </ul>
       </li>
       <li class="dropdown">
         <span>Đơn hàng ▾</span>
         <ul class="dropdown-content">
-          <li (click)="navigateTo('donhang')">Danh sách</li>
+          <li (click)="navigateTodonhang()">Danh sách</li>
         </ul>
       </li>
     </ul>
   </div>
 
   <div class="right-section">
-    <button class="create-btn" (click)="navigateTo('create')">➕ Tạo mới</button>
+    <button class="create-btn" (click)="navigateToproduce()">➕ Tạo mới</button>
     <div class="dropdown user-dropdown">
       <span>{{ username }} ▾</span>
       <ul class="dropdown-content">

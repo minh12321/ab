@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../api-sevice/user.service';
 import { User } from '../../../api-sevice/user.model';
 import { HttpParams } from '@angular/common/http';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
 
 @Component({
     selector: 'app-account',
@@ -86,6 +88,21 @@ export class AccountComponent {
       u.fullName.toLowerCase().includes(keyword) ||
       u.username.toLowerCase().includes(keyword)
     );
+  }
+
+  exportToExcel(): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.filteredUsers);
+    const workbook: XLSX.WorkBook = {
+      Sheets: { 'Tài Khoản': worksheet },
+      SheetNames: ['Tài Khoản']
+    };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    this.saveAsExcelFile(excelBuffer, 'DanhSachTaiKhoan');
+  }
+
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    const data: Blob = new Blob([buffer], { type: 'application/octet-stream' });
+    FileSaver.saveAs(data, `${fileName}.xlsx`);
   }
 
 }

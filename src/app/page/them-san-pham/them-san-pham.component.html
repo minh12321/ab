@@ -76,9 +76,10 @@
       </tr>
     </tbody>
   </table>
-
+  <button class="refresh-button" (click)="exportToExcel()">📁 Xuất Excel</button>
   <button class="refresh-button" (click)="getAllProducts()">Tải lại danh sách</button>
   <div class="search-bar">
     <input type="text" [(ngModel)]="search" (input)="searchsp()" placeholder="Tên sản phẩm hoặc id...">
 </div>
+
 </div>

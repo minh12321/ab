@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <h3 class="mb-3">Sửa sản phẩm</h3>
+
+  <!-- Form sửa sản phẩm -->
+  <form (ngSubmit)="updateProduct()">
+    <div class="form-group">
+      <label>Tên sản phẩm</label>
+      <input type="text" class="form-control" [(ngModel)]="selectedProduct.tenSanPham" name="tenSanPham">
+    </div>
+
+    <div class="form-group">
+      <label>Giá</label>
+      <input type="number" class="form-control" [(ngModel)]="selectedProduct.gia" name="gia">
+    </div>
+
+    <div class="form-group">
+      <label>Số lượng</label>
+      <input type="number" class="form-control" [(ngModel)]="selectedProduct.soLuong" name="soLuong">
+    </div>
+
+    <div class="form-group">
+      <label>Hình ảnh</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)">
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Cập nhật</button>
+  </form>
+
+  <hr class="my-4">
+
+  <!-- Bảng danh sách sản phẩm -->
+  <h4>Danh sách sản phẩm</h4>
+  <table class="table table-bordered table-hover mt-2">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Ảnh</th>
+        <th>Tên</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          <img *ngIf="product.hinhAnh" [src]="apiUrl + '/api/upload/' + product.hinhAnh" width="80" alt="Hình ảnh">
+        </td>
+        <td>{{ product.tenSanPham }}</td>
+        <td>{{ product.gia | number }}</td>
+        <td>{{ product.soLuong }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="selectProductToEdit(product)">Sửa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

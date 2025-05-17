@@ -9,8 +9,10 @@
     <ul>
       <li [class.active]="tab === 'thongke'" (click)="tab = 'thongke'" (click)="navigatethongke()">📊 Thống kê</li>
       <li [class.active]="tab === 'product'" (click)="tab = 'product'" (click)="navigateToproduce()">📦 Quản lý sản phẩm</li>
+      <li [class.active]="tab === 'suasanpham'" (click)="tab = 'suasanpham'" (click)="navigateTofixsp()">📦 Sửa sản phẩm</li>
       <li [class.active]="tab === 'account'" (click)="tab = 'account'" (click)="navigateToaccount()">👤 Quản lý tài khoản</li>
       <li [class.active]="tab === 'donhang'" (click)="tab = 'donhang'" (click)="navigateTodonhang()">🧾 Quản lý đơn hàng</li>
+      <li [class.active]="tab === 'donship'" (click)="tab = 'donship'" (click)="navigateToship()">🧾 Quản lý đơn ship</li>
     </ul>
   </div>
 

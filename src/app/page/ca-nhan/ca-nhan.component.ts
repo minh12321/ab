@@ -29,7 +29,7 @@ export class CaNhanComponent {
       address: '123 Lê Lợi, Q1, HCM',
       birthDate: '1995-06-20',
       rank: this.currentRank,
-      spent: 8000000,
+      spent: 0,
       requiredToNext: 2000000,
       nextRank: 'Kim Cương'
     };

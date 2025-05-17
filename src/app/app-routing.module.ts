@@ -16,6 +16,8 @@ import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham
 import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component';
 import { ThongKeComponent } from './page/thong-ke/thong-ke.component';
 import { CaNhanComponent } from './page/ca-nhan/ca-nhan.component';
+import { QlShipComponent } from './page/ql-ship/ql-ship.component';
+import { SuaSanPhamComponent } from './page/sua-san-pham/sua-san-pham.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,8 +29,10 @@ const routes: Routes = [
       { path: '',  redirectTo: 'thongke', pathMatch: 'full' },
       { path: 'thongke', component: ThongKeComponent , },
       { path: 't-s-p', component: ThemSanPhamComponent , },
+      { path: 'suasanpham', component: SuaSanPhamComponent },
       { path: 'account', component: AccountComponent },
       { path: 'donhang', component: QlQldonhangComponent },
+      { path: 'ship', component: QlShipComponent },
     ]
    },
   { path: 'account', component: AccountComponent },

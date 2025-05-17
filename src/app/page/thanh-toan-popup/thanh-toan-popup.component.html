@@ -6,8 +6,6 @@
     <h5>Xác nhận thanh toán</h5>
     <form (ngSubmit)="submitForm()">
       <label><input [(ngModel)]="diaChi" name="diaChi" required placeholder="Địa chỉ"/></label>
-      <label><input [(ngModel)]="email" name="email" required placeholder="Email"/></label>
-      <label><input [(ngModel)]="hoTen" name="hoTen" required placeholder="Họ tên"/></label>
       <label><input [(ngModel)]="soDienThoai" name="soDienThoai" required placeholder="SĐT"/></label>
       <label><input [(ngModel)]="quanHuyen" name="quanHuyen" placeholder="Quận huyện"/></label>
       <label><input [(ngModel)]="phuongXa" name="phuongXa" placeholder="Phường xã"/></label>
@@ -47,9 +45,9 @@
       </div>
     <nav class="b"></nav>
     <span>Tổng: </span>
-    <span class="total-amount" (click)="close()">{{ totalAmount | currency:'VND' }}</span><br>
+    <span class="total-amount" >{{ totalAmount | currency:'VND' }}</span><br>
      
-    <button >Quay lại</button>
+    <button (click)="close()">Quay lại</button>
     <button class="c"  (click)="submitForm()">Xác nhận & Thanh toán</button>
   </div>
 </div>

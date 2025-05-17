@@ -29,6 +29,8 @@ import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component
 import { ThongKeComponent } from './page/thong-ke/thong-ke.component';
 import { ToolComponent } from './components/tool/tool.component';
 import { CaNhanComponent } from './page/ca-nhan/ca-nhan.component';
+import { QlShipComponent } from './page/ql-ship/ql-ship.component';
+import { SuaSanPhamComponent } from './page/sua-san-pham/sua-san-pham.component';
 
 
 // MODULE CHO SLIDER
@@ -55,7 +57,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     GioHangComponent,
     QlQldonhangComponent,
     ToolComponent,
-    CaNhanComponent
+    CaNhanComponent,
+    QlShipComponent,
+    SuaSanPhamComponent
   ],
   imports: [
     BrowserModule,
