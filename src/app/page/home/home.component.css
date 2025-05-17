@@ -137,3 +137,240 @@
   border: 5px solid #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+.why-book-section {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+}
+
+.why-book-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  align-items: center;
+}
+
+.why-book-image {
+  flex: 1;
+}
+
+.why-book-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 200px;
+}
+
+.why-book-content {
+  flex: 1;
+}
+
+.why-book-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-circle {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  background-color: #E07415;
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.why-book-title::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, #E07415 50%, #ddd 50%);
+  margin-left: 10px;
+}
+
+.why-book-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.why-book-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.why-book-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  padding: 10px;
+  transition: all 0.1s ease;
+}
+
+.checkmark-circle {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border: 2px solid #E07415;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E07415;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.1s ease;
+}
+
+.why-book-item:hover .checkmark-circle {
+  animation: glow 1s infinite;
+}
+
+@keyframes glow {
+   0% {
+    box-shadow: 0 0 0 0 rgba(246, 120, 24, 0.7);
+    border-color: #E07415;
+  }
+  25% {
+    box-shadow: 0 -8px 12px 0 rgba(246, 120, 24, 0.7);
+    border-top-color: #E07415;
+    border-right-color: #E07415;
+    border-bottom-color: #E07415;
+    border-left-color: transparent;
+  }
+  50% {
+    box-shadow: -8px 0 12px 0 rgba(246, 120, 24, 0.7);
+    border-top-color: transparent;
+    border-right-color: #E07415;
+    border-bottom-color: #E07415;
+    border-left-color: #E07415;
+  }
+  75% {
+    box-shadow: 0 8px 12px 0 rgba(246, 120, 24, 0.7);
+    border-top-color: #E07415;
+    border-right-color: transparent;
+    border-bottom-color: #E07415;
+    border-left-color: #E07415;
+  }
+  100% {
+    box-shadow: 8px 0 12px 0 rgba(246, 120, 24, 0.7);
+    border-top-color: #E07415;
+    border-right-color: #E07415;
+    border-bottom-color: transparent;
+    border-left-color: #E07415;
+  }
+}
+
+.why-book-text {
+  flex: 1;
+}
+
+.why-book-item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.why-book-item-description {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .why-book-container {
+    flex-direction: column;
+  }
+
+  .why-book-items {
+    grid-template-columns: 1fr;
+  }
+}
+.stats-counter-section {
+  padding: 50px 20px;
+  background: linear-gradient(to bottom, #2c3e50, #34495e);
+  color: #fff;
+  text-align: center;
+}
+
+.stats-counter-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-description {
+  font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+.stats-items {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stat-item {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .why-book-container {
+    flex-direction: column;
+  }
+  .why-book-items {
+    grid-template-columns: 1fr;
+  }
+  .stats-items {
+    flex-direction: column;
+    align-items: center;
+  }
+  .stat-item {
+    width: 120px;
+    height: 120px;
+  }
+}

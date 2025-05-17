@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './chinhsach.component.css'
 })
 export class ChinhsachComponent {
-  selectedPolicy: string = ''; //
+  selectedPolicy: string = 'huongdan'; 
 
   policyList = [
     { key: 'huongdan', label: 'Hướng dẫn mua hàng' },

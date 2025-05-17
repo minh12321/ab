@@ -23,7 +23,7 @@ export class LoginComponent {
     this.login();
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 10000);
     console.log('Response:');
     
   }

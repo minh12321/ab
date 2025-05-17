@@ -1,32 +1,103 @@
-  <div class="slider-container">
+<div class="slider-container">
   <ngx-slick-carousel 
     class="carousel"
     [config]="slideConfig">
     <div ngxSlickItem *ngFor="let img of imageList" class="slide">
       <img [src]="img" alt="slide image" class="slide-img" />
     </div>
-    
-  </ngx-slick-carousel><div class="about-container">
-  <div class="about-text">
-    <h2>GIỚI THIỆU VỀ BEN SPORT</h2>
-    <p>
-      Với quy mô xưởng trên 100 công nhân luôn đáp ứng đúng tiến độ các đơn hàng cho Khách Hàng từ lớn đến nhỏ. 
-      Không chỉ mang lại cho khách hàng những lựa chọn tuyệt vời nhất mà Xưởng BEN Sport còn đem đến nhiều quyền lợi cực kì hấp dẫn. 
-      BEN Sport có nhiều ưu đãi (miễn phí in ấn, miễn phí ship, quà tặng,..) khi khách đặt đồ cho đội bóng.
-    </p>
-  </div>
-  <div class="about-image">
-    <img src="assets/anh/maymac.png" alt="Xưởng may">
+  </ngx-slick-carousel>
+  <div class="about-container">
+    <div class="about-text">
+      <h2>GIỚI THIỆU VỀ BEN SPORT</h2>
+      <p>
+        Với quy mô xưởng trên 100 công nhân luôn đáp ứng đúng tiến độ các đơn hàng cho Khách Hàng từ lớn đến nhỏ. 
+        Không chỉ mang lại cho khách hàng những lựa chọn tuyệt vời nhất mà Xưởng BEN Sport còn đem đến nhiều quyền lợi cực kì hấp dẫn. 
+        BEN Sport có nhiều ưu đãi (miễn phí in ấn, miễn phí ship, quà tặng,..) khi khách đặt đồ cho đội bóng.
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="assets/anh/maymac.png" alt="Xưởng may">
+    </div>
   </div>
 </div>
+<div class="info-section">
+  <div class="info-box" *ngFor="let info of infoList">
+    <img [src]="info.icon" alt="icon" class="info-icon" />
+    <div class="info-text">
+      <div class="info-title">{{ info.title }}</div>
+      <div class="info-description">{{ info.description }}</div>
+    </div>
+  </div>
 </div>
-  <div class="info-section">
-    <div class="info-box" *ngFor="let info of infoList">
-      <img [src]="info.icon" alt="icon" class="info-icon" />
-      <div class="info-text">
-        <div class="info-title">{{ info.title }}</div>
-        <div class="info-description">{{ info.description }}</div>
-        
+<div class="why-book-section">
+  <div class="why-book-container">
+    <div class="why-book-image">
+      <img src="assets/anh/shop.png" alt="Ben Sport">
+    </div>
+  
+    <div class="why-book-content">
+      <h2 class="why-book-title">
+        <span class="icon-circle">✓</span> Tại sao lại chọn BEN SPORT?
+      </h2>
+      <p class="why-book-description">
+            BEN Sport không chỉ là nơi cung cấp các sản phẩm thể thao chất lượng, mà còn là người bạn đồng hành đáng tin cậy trong hành trình rèn luyện và chinh phục mục tiêu của bạn. Chúng tôi cam kết mang đến cho khách hàng:
+
+            Sản phẩm chính hãng, giá tốt: Tất cả mặt hàng tại BEN Sport đều được nhập khẩu hoặc phân phối chính hãng, đảm bảo chất lượng với mức giá cạnh tranh nhất.
+
+            Đa dạng lựa chọn: Từ giày thể thao, quần áo, phụ kiện đến thiết bị tập luyện – 
+            <p>BEN Sport luôn có sẵn những gì bạn cần.</p>
+
+            <p>Tư vấn tận tâm: Đội ngũ nhân viên thân thiện, am hiểu sẽ giúp bạn chọn được sản phẩm phù hợp với nhu cầu và mục tiêu luyện tập.</p>
+
+            <p>Chính sách hậu mãi uy tín: Đổi trả dễ dàng, bảo hành rõ ràng, hỗ trợ khách hàng nhanh chóng và chuyên nghiệp.</p>
+
+            <p><strong>BEN Sport – Nơi khơi nguồn đam mê, nâng tầm thể chất!</strong></p>
+                  
+      <div class="why-book-items">
+        <div class="why-book-item" *ngFor="let reason of whyBookReasons">
+          <div class="checkmark-circle">✓</div>
+          <div class="why-book-text">
+            <div class="why-book-item-title">{{ reason.title }}</div>
+            <div class="why-book-item-description">{{ reason.description }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="stats-counter-section">
+  <div class="stats-counter-container">
+    <h2 class="stats-title">
+      <span class="icon-circle">📊</span> Stats Counter
+    </h2>
+    <p class="stats-description">
+      Display most valuable statistics about our company here. You can modify this section from Appearance > Customize > Home Page Settings > Stats Counter
+    </p>
+    <div class="stats-items">
+      <div class="stat-item" data-target="859">
+        <span class="stat-icon">👥</span>
+        <div class="stat-number" data-value="0">0</div>
+        <div class="stat-label">Lượng người mua</div>
+      </div>
+      <div class="stat-item" data-target="1021">
+        <span class="stat-icon">📦</span>
+        <div class="stat-number" data-value="0">0</div>
+        <div class="stat-label">Sản phẩm được bán</div>
+      </div>
+      <div class="stat-item" data-target="225">
+        <span class="stat-icon">🏍️</span>
+        <div class="stat-number" data-value="0">0</div>
+        <div class="stat-label">Số đơn thành công</div>
+      </div>
+      <div class="stat-item" data-target="1020">
+        <span class="stat-icon">⭐</span>
+        <div class="stat-number" data-value="0">0</div>
+        <div class="stat-label">Đánh giá tốt</div>
+      </div>
+    
+
+    </div>
+  </div>
+</div>
+

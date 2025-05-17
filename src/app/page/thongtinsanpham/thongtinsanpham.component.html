@@ -1,56 +1,69 @@
 <div class="container" *ngIf="product">
-  <h2>{{ product.tenSanPham }}</h2>
-  <p>Mã sản phẩm: {{ product.maSanPham }}</p>
-  <img
-    *ngIf="product.hinhAnh"
-    [src]="apiUrl + '/api/upload/' + product.hinhAnh"
-    width="200"
-    alt="Hình ảnh sản phẩm"
-  />
-  <div class="price" style="color: red; font-size: 24px; font-weight: bold;">
-    {{ product.gia | number }}đ
+  <div class="product-header">
+    <h2 class="product-title">{{ product.tenSanPham }}</h2>
+    <p class="product-code">Mã sản phẩm: {{ product.maSanPham }}</p>
   </div>
-  <div class="size-selection">
-    <strong>Chọn size</strong>
-    <div class="size-options">
-      <button
-        *ngFor="let size of availableSizes"
-        [class.selected]="selectedSizeValue === size"
-        (click)="selectSize(size)"
-        [ngClass]="{'selected': selectedSizeValue === size}"
-      >
-        {{ size }}
-      </button>
-    </div>
-  </div>
-  <div class="color-selection">
-  <strong>Chọn màu</strong>
-  <div class="color-options">
-    <button
-      *ngFor="let color of availableColor"
-      (click)="selectColor(color)"  
-      [class.selected]="selectedColor === color"  
-      [style.background]="color.toLowerCase()"  
-    >
-      {{ color }}
-    </button>
-  </div>
-</div>
-  <div class="quantity-selection">
-    <strong>Số lượng</strong>
-    <div class="quantity-controls">
-      <button (click)="decreaseQuantity()">-</button>
-      <input
-        type="number"
-        [(ngModel)]="quantity"
-        min="1"
-        max="99"
-        readonly
-        style="width: 50px; text-align: center;"
+  <div class="product-content">
+    <div class="product-image">
+      <img
+        *ngIf="product.hinhAnh"
+        [src]="apiUrl + '/api/upload/' + product.hinhAnh"
+        width="300"
+        alt="Hình ảnh sản phẩm"
       />
-      <button (click)="increaseQuantity()">+</button>
+    </div>
+    <div class="product-details">
+      <div class="price" style="color: red; font-size: 24px; font-weight: bold;">
+        {{ product.gia | number }}đ
+      </div>
+      <div class="status">HÀNG CÓ SẴN</div>
+      <div class="size-selection">
+        <strong>CHỌN SIZE:</strong>
+        <div class="size-options">
+          <button
+            *ngFor="let size of availableSizes"
+            [class.selected]="selectedSizeValue === size"
+            (click)="selectSize(size)"
+            [ngClass]="{'selected': selectedSizeValue === size}"
+          >
+            {{ size }}
+          </button>
+        </div>
+        <a href="#" class="size-guide">Hướng dẫn chọn size</a>
+      </div>
+      <div class="quantity-selection">
+        <strong>CHỌN SỐ LƯỢNG:</strong>
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity()">-</button>
+          <input
+            type="number"
+            [(ngModel)]="quantity"
+            min="1"
+            max="99"
+            readonly
+            style="width: 50px; text-align: center;"
+          />
+          <button (click)="increaseQuantity()">+</button>
+        </div>
+      </div>
+      <div class="buy-buttons">
+        <button class="buy-now-button">MUA TẠI ĐÂY<br>FREE SHIP</button>
+      </div>
+      
     </div>
   </div>
-  <button class="buy-button" (click)="them()">Thêm vào giỏ hàng</button>
+  <div class="info-icons">
+    <div class="info-icon"><img src="assets/icon/icon1.png" alt="No Size" />Không chọn đúng size? Đổi hàng hoàn tiền</div>
+    <div class="info-icon"><img src="assets/icon/icon2.png" alt="International" />Giao hàng toàn quốc</div>
+    <div class="info-icon"><img src="assets/icon/icon3.png" alt="Cash" />Thanh toán linh hoạt<br>Tiến mãt/CK/vi điện tử/thẻ</div>
+    <div class="info-icon"><img src="assets/icon/icon4.png" alt="Size" />Đổi size thoải mái<br>Đến khi ưng mắt hài lòng</div>
+    <div class="info-icon"><img src="assets/icon/icon5.png" alt="Warranty" />Bảo hành trọn đời<br>Lỗi đến dùng chỉ cần đổi</div>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/chinhsach">CHI TIẾT SẢN PHẨM</a>
+    <a routerLink="/chinhsach">HƯỚNG DẪN MUA HÀNG</a>
+    <a routerLink="/chinhsach">CÁCH CHỌN SIZE</a>
+    <a routerLink="/chinhsach">CHÍNH SÁCH HOÀN TRẢ</a>
+  </div>
   <p>{{ product.moTa }}</p>
 </div>
