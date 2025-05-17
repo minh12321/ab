@@ -7,6 +7,7 @@ import { CartService } from '../../../api-sevice/cart.service';
 import { CartItem } from '../../../api-sevice/cart-item.model';
 import { AuthService } from '../../auth/auth.service';
 
+
 @Component({
   selector: 'app-thongtinsanpham',
   standalone: false,
@@ -33,6 +34,8 @@ export class ThongtinsanphamComponent {
     private authService: AuthService
   ) {}
 
+  
+  
   ngOnInit(): void {
     const productId = this.authService.getProductId();
     if (productId) {
