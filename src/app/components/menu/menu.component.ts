@@ -30,6 +30,12 @@ export class MenuComponent {
             this.toggleMenu();
           }, 100);
     }
+    navigateTocanhan(){
+      this.router.navigate(['/canhan']);
+      setTimeout(() => {
+        this.toggleMenu();
+      }, 10);
+    }
     navigateTohomehome() {
       this.router.navigate(['/home']);
       setTimeout(() => {

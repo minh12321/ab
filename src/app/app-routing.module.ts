@@ -15,6 +15,7 @@ import { RankComponent } from './page/rank/rank.component';
 import { ThongtinsanphamComponent } from './page/thongtinsanpham/thongtinsanpham.component';
 import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component';
 import { ThongKeComponent } from './page/thong-ke/thong-ke.component';
+import { CaNhanComponent } from './page/ca-nhan/ca-nhan.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'rank', component: RankComponent ,canActivate: [AuthGuard]} ,
   { path: 'product', component: ThongtinsanphamComponent } ,
   { path: 'donhang', component: QlQldonhangComponent ,canActivate: [AuthGuard],},
+  { path: 'canhan', component: CaNhanComponent ,canActivate: [AuthGuard],},
   
   // { path: 't-s-p', component: ThemSanPhamComponent
   // canActivateChild: [AuthGuard],

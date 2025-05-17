@@ -1,0 +1,57 @@
+<div class="profile-container">
+  <!-- Header -->
+  <div class="profile-header">
+    <img [src]="user.avatarUrl" alt="Avatar" class="avatar" />
+    <div class="user-info">
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.email }}</p>
+      <p>{{ user.phone }}</p>
+      <p class="vip-rank">Hạng: {{ user.rank }}</p>
+      <button class="btn-secondary">Cập nhật ảnh</button>
+    </div>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="profile-section">
+    <h3>Thông tin cá nhân</h3>
+    <ul>
+      <li><strong>Họ tên:</strong> {{ user.name }}</li>
+      <li><strong>Email:</strong> {{ user.email }}</li>
+      <li><strong>Số điện thoại:</strong> {{ user.phone }}</li>
+      <li><strong>Địa chỉ:</strong> {{ user.address }}</li>
+      <li><strong>Ngày sinh:</strong> {{ user.birthDate }}</li>
+    </ul>
+    <button class="btn-primary">Chỉnh sửa</button>
+  </div>
+
+  <!-- Rank Info -->
+  <div class="profile-section rank">
+    <h3>Hạng thành viên: {{ user.rank }} ⭐⭐⭐</h3>
+    <p>Tiêu xài: {{ user.spent | currency:'VND':'symbol' }}</p>
+    <p>Còn {{ user.requiredToNext | currency:'VND':'symbol' }} để lên {{ user.nextRank }}</p>
+    <button class="btn-tooltip" (mouseover)="showTooltip = true" (mouseleave)="showTooltip = false">
+      Xem quyền lợi
+    </button>
+    <div class="tooltip" *ngIf="showTooltip">
+      <p>✔ Miễn phí vận chuyển</p>
+      <p>✔ Ưu đãi VIP độc quyền</p>
+      <p>✔ Tích điểm nhanh hơn</p>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tab-buttons">
+    <button [class.active]="activeTab === 'orders'" (click)="activeTab = 'orders'">Đơn hàng của tôi</button>
+    <button [class.active]="activeTab === 'reviews'" (click)="activeTab = 'reviews'">Đánh giá của tôi</button>
+    <button [class.active]="activeTab === 'wishlist'" (click)="activeTab = 'wishlist'">Wishlist</button>
+    <button [class.active]="activeTab === 'address'" (click)="activeTab = 'address'">Địa chỉ giao hàng</button>
+  </div>
+
+  <!-- Tab content -->
+  <div class="tab-content">
+    <p *ngIf="activeTab === 'orders'">Hiển thị danh sách đơn hàng...</p>
+    <p *ngIf="activeTab === 'reviews'">Hiển thị đánh giá...</p>
+    <p *ngIf="activeTab === 'wishlist'">Hiển thị wishlist...</p>
+    <p *ngIf="activeTab === 'address'">Hiển thị địa chỉ giao hàng...</p>
+  </div>
+</div>

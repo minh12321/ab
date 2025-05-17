@@ -28,6 +28,7 @@ import { ThanhToanPopupComponent } from './page/thanh-toan-popup/thanh-toan-popu
 import { QlQldonhangComponent } from './page/ql-qldonhang/ql-qldonhang.component';
 import { ThongKeComponent } from './page/thong-ke/thong-ke.component';
 import { ToolComponent } from './components/tool/tool.component';
+import { CaNhanComponent } from './page/ca-nhan/ca-nhan.component';
 
 // MODULE CHO SLIDER
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -52,7 +53,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     ThongtinsanphamComponent,
     GioHangComponent,
     QlQldonhangComponent,
-    ToolComponent
+    ToolComponent,
+    CaNhanComponent
   ],
   imports: [
     BrowserModule,

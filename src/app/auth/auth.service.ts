@@ -19,16 +19,27 @@ export class AuthService {
     
   }
 
-  login1(accountId: number, fullName: string, email: string, accountType: string, status: string): void {
+  login1(accountId: number, fullName: string, email: string, accountType: string, status: string,diachi:string): void {
     this.storageService.setItem('id', accountId.toString());
     this.storageService.setItem('fullName', fullName);
     this.storageService.setItem('email', email);
     this.storageService.setItem('accountType', accountType);
     this.storageService.setItem('status', status);
+    this.storageService.setItem('diachi', diachi);
   }
   getfullname(): string | null {
     return this.storageService.getItem('fullName');
   }
+  getemail(): string | null {
+    return this.storageService.getItem('email');
+  }
+  getaccount(): string | null {
+    return this.storageService.getItem('accountType');
+  }
+  getdiachi(): string | null {
+    return this.storageService.getItem('diachi');
+  }
+
 
   logout(): void {
     this.storageService.clear();

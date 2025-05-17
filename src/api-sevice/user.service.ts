@@ -28,7 +28,7 @@ export class UserService {
 
   updateUser(accountId: number, params: HttpParams): Observable<User> {
     return this.http.put<User>(
-      `${this.apiUrl}/admin/update/${accountId}`,
+      `${this.apiUrl}/update/${accountId}`,
       params.toString(),
       {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }

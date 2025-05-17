@@ -36,7 +36,7 @@ export class LoginComponent {
       next: (res) => {
         this.authService.setToken(res.jwt);
         this.authService.login(this.username);
-        this.authService.login1(res.user.accountId,res.user.fullName,res.user.email,res.user.accountType,res.user.status);
+        this.authService.login1(res.user.accountId,res.user.fullName,res.user.email,res.user.accountType,res.user.status,res.user.diachi);
         this.router.navigate(['/']);
         alert('Login successful!');
       },

@@ -107,7 +107,6 @@ export class AppComponent {
     { title: 'Chính sách', icon: 'fa-solid fa-shoe-prints', route: '/chinhsach'},
     { title: 'Liên Hệ', icon: 'fa-solid fa-hand', route: '/lienhe' },
     { title: '  Hạng  ', icon: 'fa-solid fa-toolbox', route: '/rank' },
-    { title: 'Voucher', icon: 'fa-solid fa-list', route: '/danh-muc' }
   ];      
 
   toggleSubmenu(event: Event) {
