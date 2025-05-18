@@ -22,7 +22,7 @@ export class AppComponent {
     @Inject(PLATFORM_ID) private platformId: Object,
     private authService: AuthService,
     private router: Router,
-    // private socketService: SocketService,
+    private socketService: SocketService,
     private toastr: ToastrService
     ) 
       {
