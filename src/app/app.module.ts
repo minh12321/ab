@@ -6,6 +6,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { RouterModule } from '@angular/router';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 // COMPONENT
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,10 +32,17 @@ import { ToolComponent } from './components/tool/tool.component';
 import { CaNhanComponent } from './page/ca-nhan/ca-nhan.component';
 import { QlShipComponent } from './page/ql-ship/ql-ship.component';
 import { SuaSanPhamComponent } from './page/sua-san-pham/sua-san-pham.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastComponent } from './components/toast/toast.component';
+import { Toast1Component } from './components/toast-1/toast-1.component';
 
 
 // MODULE CHO SLIDER
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+
+const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
 
 @NgModule({
   declarations: [
@@ -59,7 +67,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     ToolComponent,
     CaNhanComponent,
     QlShipComponent,
-    SuaSanPhamComponent
+    SuaSanPhamComponent,
+    ToastComponent,
+    Toast1Component
   ],
   imports: [
     BrowserModule,
@@ -68,7 +78,14 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    SlickCarouselModule 
+    SlickCarouselModule,
+    SocketIoModule.forRoot(config),
+    ToastrModule.forRoot({   
+      timeOut: 3000,
+      positionClass: 'toast-custom-bottom-center',
+      preventDuplicates: true,
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     provideHttpClient(withFetch()),
@@ -77,7 +94,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    // SocketService,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] 

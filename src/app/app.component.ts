@@ -3,6 +3,8 @@ import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationError }
 import { NgClass,NgFor,NgIf } from '@angular/common';
 import { AuthService } from './auth/auth.service';
 import { isPlatformBrowser } from '@angular/common';
+import { SocketService } from '../api-sevice/socket/socket.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -15,53 +17,61 @@ export class AppComponent {
   username: string = '';
   loginstatus: boolean = false;
 
-  constructor(private ngZone: NgZone,@Inject(PLATFORM_ID) private platformId: Object,private authService: AuthService,private router: Router) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
+  constructor(
+    private ngZone: NgZone,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private authService: AuthService,
+    private router: Router,
+    private socketService: SocketService,
+    private toastr: ToastrService
+    ) 
+      {
+      this.isBrowser = isPlatformBrowser(this.platformId);
 
-    if (this.isBrowser) {
-      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-      this.recognition = new SpeechRecognition();
+      if (this.isBrowser) {
+        const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+        this.recognition = new SpeechRecognition();
 
-      this.recognition.lang = 'vi-VN';
-      this.recognition.interimResults = false;
-      this.recognition.maxAlternatives = 1;
+        this.recognition.lang = 'vi-VN';
+        this.recognition.interimResults = false;
+        this.recognition.maxAlternatives = 1;
 
-      this.recognition.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        this.ngZone.run(() => {
-          this.text = transcript;
+        this.recognition.onresult = (event: any) => {
+          const transcript = event.results[0][0].transcript;
+          this.ngZone.run(() => {
+            this.text = transcript;
+          });
+        };
+
+        this.recognition.onerror = (event: any) => {
+          console.error('Lỗi nhận giọng nói:', event.error);
+        };
+        }
+
+        this.router.events.subscribe((event) => {
+          if (event instanceof NavigationStart) {
+            this.isLoading = true;  // Bật spinner khi bắt đầu điều hướng
+          }
+
+          if (event instanceof NavigationEnd || event instanceof NavigationError) {
+            this.isLoading = false; // Tắt spinner khi điều hướng hoàn thành hoặc có lỗi
+          }
         });
-      };
+    //ẩn hiện
+        this.router.events.subscribe(event => {
+          if (event instanceof NavigationEnd) {
+            // Ẩn layout nếu URL chứa '/admin'
+            this.showLayout = !event.urlAfterRedirects.includes('/admin');
+          }
+        });
 
-      this.recognition.onerror = (event: any) => {
-        console.error('Lỗi nhận giọng nói:', event.error);
-      };
-    }
 
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.isLoading = true;  // Bật spinner khi bắt đầu điều hướng
       }
-
-      if (event instanceof NavigationEnd || event instanceof NavigationError) {
-        this.isLoading = false; // Tắt spinner khi điều hướng hoàn thành hoặc có lỗi
-      }
-    });
-//ẩn hiện
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Ẩn layout nếu URL chứa '/admin'
-        this.showLayout = !event.urlAfterRedirects.includes('/admin');
-      }
-    });
-
-
-  }
 
   ngOnInit(): void { 
     this.ngu();
     this.username = this.authService.getUsername()|| '';
-    this.isDesktop = window.innerWidth >= 768;
+    this.isDesktop = window.innerWidth >= 700;
     this.toolcheck();
   }
 
@@ -143,6 +153,11 @@ export class AppComponent {
       } else {
         this.showTool = false;
       }
+  }
+
+  //
+  testToast() {
+    this.toastr.success('🔥 Đang hoạt động!', 'Thông báo');
   }
  
     

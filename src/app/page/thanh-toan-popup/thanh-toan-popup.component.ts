@@ -51,7 +51,6 @@ export class ThanhToanPopupComponent {
   
 
   async submitForm() {
-    alert('Đơn hàng đã được xác nhận và đang được xử lý!');
     const username = this.authService.getid().toString();
     const currentDate = new Date().toISOString().slice(0, 10); 
     const maDon = 'HD' + Date.now().toString() + username;
@@ -115,7 +114,7 @@ export class ThanhToanPopupComponent {
       this.orderService.createOrder(order).subscribe({
         next: (result) => {
           console.log('Đã tạo hóa đơn:', result);
-          alert('Tạo hóa đơn thành công!');
+          // alert('Tạo hóa đơn thành công!');
         },
         error: (err) => {
           console.error('Lỗi tạo hóa đơn:', err);

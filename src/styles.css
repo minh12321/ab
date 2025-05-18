@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+.toast-custom-bottom-center {
+  bottom: 50px !important;       /* khoảng cách từ dưới lên */
+  left: 50% !important;          /* canh giữa chiều ngang */
+  transform: translateX(-50%) !important; /* dịch về giữa */
+  position: fixed !important;
+  z-index: 9999 !important;      /* đảm bảo nằm trên các phần tử khác */
+
+}
+.toast {
+  border: 2px solid white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Optional: chỉnh màu nền và chữ cho đẹp */
+.toast-success {
+  background-color: #bd6a44 !important; /* màu xanh lá dịu */
+  padding: 10px;
+  width: 300px;
+  color: white !important;
+}
+
+.toast-error {
+  background-color: #c62828 !important;
+  color: white !important;
+}
+
+.toast-info {
+  background-color: #0277bd !important;
+  color: white !important;
+}
+
+.toast-warning {
+  background-color: #f9a825 !important;
+  color: black !important;
+}

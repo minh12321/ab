@@ -27,6 +27,18 @@ export class AuthService {
     this.storageService.setItem('status', status);
     this.storageService.setItem('diachi', diachi);
   }
+
+  luuhang( fullName: string, tenhang: string,): void {
+    this.storageService.setItem('Name', fullName);
+    this.storageService.setItem('tenhang', tenhang);
+  }
+  layhang1(): string | null {
+    return this.storageService.getItem('Name');
+  }
+  layhang2(): string | null {
+    return this.storageService.getItem('tenhang');
+  }
+
   getfullname(): string | null {
     return this.storageService.getItem('fullName');
   }

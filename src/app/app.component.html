@@ -1,7 +1,8 @@
 <div *ngIf="showTool">
 <app-tool ></app-tool>
 </div>
-
+<app-toast-1></app-toast-1>
+<app-toast></app-toast>
 
 <div *ngIf="showLayout">
 <header class="header">
@@ -54,10 +55,12 @@
 <app-tab-navigation></app-tab-navigation> 
 </div>
 
+
 <app-menu class="index"></app-menu>
 
 
 <router-outlet></router-outlet>
+
 
 <!-- --------------- -->
 <div *ngIf="showLayout">
@@ -102,5 +105,4 @@
 </div>
 
 <div id="custom-alert" style="position: fixed; top: 20px; right: 20px; background: #ff4444; color: white; padding: 10px 20px; border-radius: 8px; display: none; z-index: 999999;"></div>
-
 

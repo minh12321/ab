@@ -18,7 +18,13 @@ export class LoginComponent {
   password: string="";
   token: string="";
 
-  constructor(private authService: AuthService,private userService: UserService, private router: Router,private http: HttpClient) { }
+  constructor(
+    private authService: AuthService,
+    private userService: UserService, 
+    private router: Router,
+    private http: HttpClient,    
+    // private socketService: SocketService,
+    ) { }
   onSubmit(){
     this.login();
     setTimeout(() => {
