@@ -107,7 +107,7 @@ export class ThanhToanPopupComponent {
         maHoaDon: maDon,
         tenNguoiDat: this.authService.getfullname()?? 'người dùng' ,
         soDienThoai: this.soDienThoai,
-        diaChiGiaoHang: this.diaChi+this.phuongXa + this.quanHuyen + 'Ghi chú :'+this.ghiChu,
+        diaChiGiaoHang: this.diaChi+this.phuongXa + this.quanHuyen + 'Thanh toán bằng : '+this.selectedMethod +'Ghi chú :'+this.ghiChu,
         trangThaiGiaoHang: 'Chờ xác nhận'
       };
 

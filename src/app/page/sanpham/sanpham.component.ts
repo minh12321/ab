@@ -3,6 +3,7 @@ import { Product } from '../../../api-sevice/san_pham.model';
 import { ProductService } from '../../../api-sevice/san_pham.service';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sanpham',
@@ -14,6 +15,7 @@ export class SanphamComponent implements OnInit {
   product: Product[] = [];
   filteredProducts: Product[] = [];
   public apiUrl = environment.url;
+  searchTerm: string = '';
 
   filter = {
     sizes: new Set<string>(),       
@@ -33,17 +35,37 @@ export class SanphamComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.route.queryParams.subscribe(params => {
+    this.searchTerm = params['q'] || '';
+    if (this.searchTerm) {
+      this.filterProducts(this.searchTerm);
+    }
+
+    const hang = params['hang'];
+    const kieuGiay = params['kieuGiay'];
+    const loaihang = params['loaihang'];
+    console.log( 'Hãng:', hang, 'Kiểu:', kieuGiay, 'Loại:', loaihang);
+    if (!hang && !kieuGiay && !loaihang) {
+      return; // Không set gì cả nếu cả 3 đều rỗng
+    } else {
+      if (hang) this.filter.brands.add(hang);
+      if (kieuGiay) this.filter.brands.add(kieuGiay);
+      if (loaihang) this.filter.types.add(loaihang);
+    }
+  });
   }
 
   getAllProducts() {
     this.productService.getAllProducts().subscribe(data => {
       this.product = data;
       this.applyFilters();
+      
     });
   }
 
@@ -67,11 +89,9 @@ export class SanphamComponent implements OnInit {
     this.filteredProducts = this.product.filter(p => {
       const matchSize = this.filter.sizes.size === 0 || this.filter.sizes.has(p.size || '');
       const matchColor = this.filter.colors.size === 0 || this.filter.colors.has(p.mauSac || '');
-      const matchBrand = this.filter.brands.size === 0 || Array.from(this.filter.brands).some(brand =>
-        p.moTa.toLowerCase().includes(brand.toLowerCase()));
+      const matchBrand = this.filter.brands.size === 0 || Array.from(this.filter.brands).some(brand =>p.moTa.toLowerCase().includes(brand.toLowerCase()));
       const matchConHang = !this.filter.conHang || (p.soLuong && p.soLuong > 0);
-      const matchType = this.filter.types.size === 0 || Array.from(this.filter.types).some(type =>
-        p.moTa.toLowerCase().includes(type.toLowerCase()));
+      const matchType = this.filter.types.size === 0 || Array.from(this.filter.types).some(type =>p.moTa.toLowerCase().includes(type.toLowerCase()));
       const matchMinPrice = this.filter.minPrice == null || p.gia >= this.filter.minPrice;
       const matchMaxPrice = this.filter.maxPrice == null || p.gia <= this.filter.maxPrice;
 
@@ -86,6 +106,13 @@ export class SanphamComponent implements OnInit {
   // Lấy sản phẩm theo trang hiện tại
     this.updateCurrentPageItems();
   }
+
+  filterProducts(term: string) {
+
+  this.filteredProducts = this.product.filter(product =>
+    product.tenSanPham.toLowerCase().includes(term.toLowerCase())
+  );
+}
 
   
   resetFilter(): void {

@@ -4,34 +4,47 @@
   left: 50% !important;          /* canh giữa chiều ngang */
   transform: translateX(-50%) !important; /* dịch về giữa */
   position: fixed !important;
-  z-index: 9999 !important;      /* đảm bảo nằm trên các phần tử khác */
-
+  z-index: 999999 !important;      /* đảm bảo nằm trên các phần tử khác */
+  margin: 10px;
 }
 .toast {
   border: 2px solid white !important;
   border-radius: 8px !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  margin: 3px;
+  min-height: 25px;
 }
 
 /* Optional: chỉnh màu nền và chữ cho đẹp */
 .toast-success {
-  background-color: #bd6a44 !important; /* màu xanh lá dịu */
+  background-color: #bd6a449f !important; /* màu xanh lá dịu */
   padding: 10px;
   width: 300px;
   color: white !important;
+  margin: 1px;
+  min-height: 40px;
 }
 
 .toast-error {
-  background-color: #c62828 !important;
+  background-color: #c6282873 !important;
   color: white !important;
+  margin: 1px;
+  min-height: 40px;
+  padding: 10px;
 }
 
 .toast-info {
-  background-color: #0277bd !important;
+  background-color: #0278bc7c !important;
   color: white !important;
+  margin: 1px;
+  min-height: 40px;
+  padding: 10px;
 }
 
 .toast-warning {
-  background-color: #f9a825 !important;
+  background-color: rgba(249, 168, 37, 0.6) !important;
   color: black !important;
+  margin: 1px;
+  min-height: 40px;
+  padding: 10px;
 }

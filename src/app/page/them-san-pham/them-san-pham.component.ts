@@ -34,12 +34,10 @@ export class ThemSanPhamComponent {
 
   deleteProduct(product: Product) {
     if (confirm(`Bạn có chắc muốn xóa sản phẩm "${product.tenSanPham}" không?`)) {
-      this.productService.deleteImage(product.hinhAnh).subscribe(() => {
         this.productService.deleteProduct(product.maSanPham).subscribe(() => {
           alert('Sản phẩm đã bị xóa!');
           this.getAllProducts(); 
         });
-      });
     }
   }
 

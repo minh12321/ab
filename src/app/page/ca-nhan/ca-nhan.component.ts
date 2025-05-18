@@ -16,7 +16,14 @@ import { Router } from '@angular/router';
   styleUrl: './ca-nhan.component.css'
 })
 export class CaNhanComponent {
-  constructor(private userService: UserService, private router: Router,private khachHangService: KhachHangService,private hoaDonService: HoaDonService,private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private khachHangService: KhachHangService,
+    private hoaDonService: HoaDonService,
+    private authService: AuthService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   rankLevels: string[] = ['Vô Hạng', 'Đồng', 'Bạc', 'Vàng', 'Kim cương'];
   currentRank: string = '';

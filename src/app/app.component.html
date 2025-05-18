@@ -1,9 +1,7 @@
 <div *ngIf="showTool">
 <app-tool ></app-tool>
 </div>
-<app-toast-1></app-toast-1>
 <app-toast></app-toast>
-
 <div *ngIf="showLayout">
 <header class="header">
   <div>
@@ -17,7 +15,7 @@
       </div>
       <div class="search-bar">
         <input type="text" [(ngModel)]="text" placeholder="Search...">
-        <i class="fas fa-search"></i>
+        <i (click)="search()" class="fas fa-search"></i>
         <i (click)="startListening()" class="fas fa-microphone"></i>
       </div>
       <div class="auth-cart">
@@ -43,7 +41,7 @@
     <li *ngFor="let menu of menus" class="menu-item" routerLink="{{menu.route}}" >
       <a routerLink="{{menu.route}}"><i class="{{menu.icon}}"></i>{{ menu.title }} </a>
       <ul class="submenu" *ngIf="menu.submenus">
-        <li *ngFor="let sub of menu.submenus" routerLink="{{menu.route}}">
+        <li *ngFor="let sub of menu.submenus" (click)="navigateWithQuery(sub)">
           <a >{{ sub.title }}</a>
         </li>
       </ul>

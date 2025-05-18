@@ -88,36 +88,51 @@ export class AppComponent {
   }
   menus = [
     { title: 'Trang Chủ', icon: 'fa-solid fa-house', route: '/home' },
-    { 
-      title: 'Sản Phẩm', icon: 'fa-solid fa-shoe-prints', active: false, route: '/san-pham', 
-      submenus: [
-        { title: 'Nike', route: '/san-pham?hang=Nike' },
-        { title: 'Adidas', route: '/san-pham?hang=Adidas' },
-        { title: 'Beck', route: '/san-pham?hang=Beck' },
-        { title: 'Kamito', route: '/san-pham?hang=Kamito' },
-        { title: 'Puma', route: '/san-pham?hang=Puma' },
-        { title: 'Giầy đinh', route: '/san-pham?kieuGiay=Giầy đinh' },
-        { title: 'Giầy lười', route: '/san-pham?kieuGiay=Giầy lười' },
-        { title: 'Giầy cổ cao', route: '/san-pham?kieuGiay=Giầy cổ cao' },
-        { title: 'Gang tay', route: '/san-pham?loaihang=Gang tay' },
-        { title: 'Bóng', route: '/san-pham?loaihang=Bóng' },
-        { title: 'Balo', route: '/san-pham?loaihang=Balo' },
-        { title: 'Quần', route: '/san-pham?loaihang=Quần' },
-        { title: 'Áo', route: '/san-pham?loaihang=Áo' },
-        { title: 'Tất', route: '/san-pham?loaihang=Tất' },
-        { title: 'Băng Keo', route: '/san-pham?loaihang=Băng Keo' },
-        { title: 'Bình xịt', route: '/san-pham?loaihang=Bình xịt' },
-        { title: 'Dây giày', route: '/san-pham?loaihang=Dây giày' },
-        { title: 'khác', route: '/giay-hieu/stats' },
-        { title: 'khác', route: '/giay-hieu/stats' },
-        { title: 'khác', route: '/giay-hieu/stats' },
-        { title: 'khác', route: '/giay-hieu/stats' },
-      ] 
-    },
+    {
+    title: 'Sản Phẩm',
+    icon: 'fa-solid fa-shoe-prints',
+    active: false,
+    route: '/san-pham',
+    submenus: [
+      { title: 'Nike', route: '/san-pham', queryParams: { hang: 'Nike' } },
+      { title: 'Adidas', route: '/san-pham', queryParams: { hang: 'Adidas' } },
+      { title: 'Beck', route: '/san-pham', queryParams: { hang: 'Beck' } },
+      { title: 'Mizuno', route: '/san-pham', queryParams: { hang: 'Mizuno' } },
+      { title: 'Puma', route: '/san-pham', queryParams: { hang: 'Puma' } },
+
+      { title: 'Giầy đinh', route: '/san-pham', queryParams: { kieuGiay: 'Giầy đinh' } },
+      { title: 'Giầy lười', route: '/san-pham', queryParams: { kieuGiay: 'Giầy lười' } },
+      { title: 'Giầy cổ cao', route: '/san-pham', queryParams: { kieuGiay: 'Giầy cổ cao' } },
+
+      { title: 'Gang tay', route: '/san-pham', queryParams: { loaihang: 'Gang tay' } },
+      { title: 'Bóng', route: '/san-pham', queryParams: { loaihang: 'Bóng' } },
+      { title: 'Balo', route: '/san-pham', queryParams: { loaihang: 'Balo' } },
+      { title: 'Quần', route: '/san-pham', queryParams: { loaihang: 'Quần' } },
+      { title: 'Áo', route: '/san-pham', queryParams: { loaihang: 'Áo' } },
+      { title: 'Tất', route: '/san-pham', queryParams: { loaihang: 'Tất' } },
+      { title: 'Băng Keo', route: '/san-pham', queryParams: { loaihang: 'Băng Keo' } },
+      { title: 'Bình xịt', route: '/san-pham', queryParams: { loaihang: 'Bình xịt' } },
+      { title: 'Dây giày', route: '/san-pham', queryParams: { loaihang: 'Dây giày' } },
+      
+
+      { title: 'Khác 1', route: '/giay-hieu/stats' },
+      { title: 'Khác 2', route: '/giay-hieu/stats' },
+      { title: 'Khác 3', route: '/giay-hieu/stats' },
+      { title: 'Khác 4', route: '/giay-hieu/stats' },
+    ]
+  },
     { title: 'Chính sách', icon: 'fa-solid fa-shoe-prints', route: '/chinhsach'},
     { title: 'Liên Hệ', icon: 'fa-solid fa-hand', route: '/lienhe' },
     { title: '  Hạng  ', icon: 'fa-solid fa-toolbox', route: '/rank' },
-  ];      
+  ];  
+  
+  navigateWithQuery(sub: any) {
+  if (sub.queryParams) {
+    this.router.navigate([sub.route], { queryParams: sub.queryParams });
+  } else {
+    this.router.navigate([sub.route]);
+  }
+}
 
   toggleSubmenu(event: Event) {
     const parentLi = (event.currentTarget as HTMLElement);
@@ -132,7 +147,7 @@ export class AppComponent {
   }
 
   // ---------------------------------------------------------------------------------------
-  text = '';
+  
   recognition: any;
   isBrowser: boolean;
 
@@ -154,13 +169,12 @@ export class AppComponent {
         this.showTool = false;
       }
   }
+  text = '';
+  search(){
+    console.log(this.text)
+      this.router.navigate(['/san-pham'], {
+      queryParams: { q: this.text } // truyền chuỗi 'term' vào URL
+    });
 
-  //
-  testToast() {
-    this.toastr.success('🔥 Đang hoạt động!', 'Thông báo');
   }
- 
-    
-  
-  
 }

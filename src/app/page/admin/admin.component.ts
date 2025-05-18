@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, Inject,PLATFORM_ID } from '@angular/core';
+import { Component, Inject,PLATFORM_ID,Output,EventEmitter } from '@angular/core';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
 import { HoaDonService } from '../../../api-sevice/hoa_don.service';
 import { HoaDon } from '../../../api-sevice/hoa_don.model';
@@ -8,6 +8,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
 import { ViewChild } from '@angular/core';
 import { KhachHangService } from '../../../api-sevice/khach_hang.service';
+import { ProductService } from '../../../api-sevice/san_pham.service';
+import { Product } from '../../../api-sevice/san_pham.model';
+import { firstValueFrom, forkJoin, map } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-admin',
@@ -17,6 +21,8 @@ import { KhachHangService } from '../../../api-sevice/khach_hang.service';
 })
 export class AdminComponent {
   tab: string = '';
+  product: Product[] = [];
+  newProduct: Product = new Product();
 
     navigatethongke() {
       this.router.navigate(['/admin/thongke']);
@@ -54,6 +60,10 @@ export class AdminComponent {
         this.chart?.update();
         this.tong = this.thang1+ this.thang2+ this.thang3+ this.thang4+this.thang5+ this.thang6+ this.thang7+ this.thang8+this.thang9+ this.thang10+ this.thang11+ this.thang12;
       });
+      // this.getAllProducts();
+      this.checkStockLevels();
+      
+
     }
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
@@ -73,7 +83,16 @@ export class AdminComponent {
     thang11 :number =0;
     thang12 :number =0;
     tong :number =0;
-    constructor(private router: Router,private khachHangService: KhachHangService,private hoaDonService: HoaDonService,private authService: AuthService,@Inject(PLATFORM_ID) private platformId: Object) {this.isBrowser = isPlatformBrowser(this.platformId);}
+    constructor(
+      private router: Router,
+      private khachHangService: KhachHangService,
+      private hoaDonService: HoaDonService,
+      private authService: AuthService,
+      private productService: ProductService,
+      @Inject(PLATFORM_ID) private platformId: Object,
+      private toastService: ToastrService
+    ) 
+    {this.isBrowser = isPlatformBrowser(this.platformId);}
   
     tinhChiTieuTheoThang() {
       this.thang1 = this.thang2 = this.thang3 = this.thang4 = this.thang5 = 
@@ -156,5 +175,23 @@ export class AdminComponent {
       responsive: true
     };
     public lineChartLegend = true;
-  
+
+  checkStockLevels() {
+    this.productService.getAllProducts().subscribe((data: Product[]) => {
+      this.product = data;
+
+      const lowStockItems: Product[] = this.product.filter(p => p.soLuong > 0 && p.soLuong < 10);
+      const outOfStockItems: Product[] = this.product.filter(p => p.soLuong === 0);
+
+      // Cảnh báo sản phẩm hết hàng
+      outOfStockItems.forEach(p => {
+        this.toastService.error(`❌ Sản phẩm "${p.tenSanPham}" đã hết hàng.`);
+      });
+
+      // Cảnh báo sản phẩm gần hết hàng
+      lowStockItems.forEach(p => {
+        this.toastService.warning(`⚠️ Sản phẩm "${p.tenSanPham}" chỉ còn ${p.soLuong} cái trong kho.`);
+      });
+    });
+  }
 }

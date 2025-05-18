@@ -14,7 +14,7 @@
     <!-- Brand Filter -->
     <div class="box">Thương hiệu</div>
     <div class="filter-group">
-      <label *ngFor="let brand of ['Nike', 'Adidas', 'Winbro']">
+      <label *ngFor="let brand of ['Nike', 'Adidas', 'Mizuno']">
         <input type="checkbox" [checked]="filter.brands.has(brand)" (change)="toggleFilter('brands', brand)" />
         {{ brand }}
       </label>

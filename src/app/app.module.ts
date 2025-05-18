@@ -36,8 +36,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastComponent } from './components/toast/toast.component';
-import { Toast1Component } from './components/toast-1/toast-1.component';
-
 
 // MODULE CHO SLIDER
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -69,7 +67,6 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     QlShipComponent,
     SuaSanPhamComponent,
     ToastComponent,
-    Toast1Component
   ],
   imports: [
     BrowserModule,
@@ -81,7 +78,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8080', options: {} };
     SlickCarouselModule,
     SocketIoModule.forRoot(config),
     ToastrModule.forRoot({   
-      timeOut: 3000,
+      timeOut: 7000,
       positionClass: 'toast-custom-bottom-center',
       preventDuplicates: true,
     }),
