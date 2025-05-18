@@ -17,6 +17,16 @@
         {{ product.gia | number }}đ
       </div>
       <div class="status">HÀNG CÓ SẴN</div>
+      <div class="rating-stars">
+        <ng-container *ngFor="let star of fullStars">
+          <i class="fas fa-star"></i>
+        </ng-container>
+        <i *ngIf="hasHalfStar" class="fas fa-star-half-alt"></i>
+        <ng-container *ngFor="let star of emptyStars">
+          <i class="far fa-star"></i>
+        </ng-container>
+        <span class="rating-text">({{ averageRating | number:'1.1-1' }}/5)</span>
+      </div>
       <div class="size-selection">
         <strong>CHỌN SIZE:</strong>
         <div class="size-options">
@@ -66,4 +76,49 @@
     <a routerLink="/chinhsach">CHÍNH SÁCH HOÀN TRẢ</a>
   </div>
   <p>{{ product.moTa }}</p>
+</div>
+<!-- //--------------- -->
+
+<div class="rating-stars">
+  <ng-container *ngFor="let star of fullStars">
+    <i class="fas fa-star"></i>
+  </ng-container>
+
+  <i *ngIf="hasHalfStar" class="fas fa-star-half-alt"></i>
+
+  <ng-container *ngFor="let star of emptyStars">
+    <i class="far fa-star"></i>
+  </ng-container>
+
+  <span class="rating-text">({{ averageRating | number:'1.1-1' }}/5)</span>
+</div>
+
+<div class="review-list">
+  <div *ngFor="let review of reviews" class="review-item">
+    <div>
+      <strong>Đánh giá: {{ review.rating }}/5</strong>
+      <p>{{ review.comment }}</p>
+      <small>Người dùng mã {{ review.userId }} - {{ review.createdAt | date:'short' }}</small>
+    </div>
+
+    <button *ngIf="review.userId === userId" (click)="startEdit(review)">Sửa</button>
+    <button *ngIf="review.userId === userId" (click)="deleteReview(review.id!)">Xóa</button>
+  </div>
+</div>
+
+<hr>
+
+<div class="review-form">
+  <h3>{{ editingReviewId ? 'Sửa đánh giá' : 'Thêm đánh giá mới' }}</h3>
+  
+  <form (ngSubmit)="submitReview()" #reviewForm="ngForm">
+    <label for="rating">Đánh giá (1-5):</label>
+    <input type="number" id="rating" name="rating" [(ngModel)]="newReview.rating" min="1" max="5" required>
+
+    <label for="comment">Bình luận:</label>
+    <textarea id="comment" name="comment" [(ngModel)]="newReview.comment" required></textarea>
+
+    <button type="submit" [disabled]="!reviewForm.form.valid">{{ editingReviewId ? 'Cập nhật' : 'Gửi đánh giá' }}</button>
+    <button type="button" (click)="cancelEdit()">Hủy</button>
+  </form>
 </div>

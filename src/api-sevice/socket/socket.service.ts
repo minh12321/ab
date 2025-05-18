@@ -13,7 +13,7 @@ export class SocketService {
   }
 
   private connect(): void {
-    const wsUrl = 'wss://webbe.onrender.com/ws'; // 🔁 Đổi thành domain thật khi deploy
+    const wsUrl = 'ws://localhost:8080/ws'; // 🔁 Đổi thành domain thật khi deploy
     this.socket = new WebSocket(wsUrl);
 
     this.socket.onopen = () => {
