@@ -7,12 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SocketService {
   private socket: WebSocket | null = null;
-  private static instanceCreated = false;
 
   constructor(private toastService: ToastrService ,) {
-    if (SocketService.instanceCreated) return;
-    SocketService.instanceCreated = true;
-    console.log('🧩 SocketService created');
     this.connect();
   }
 
