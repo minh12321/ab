@@ -163,4 +163,10 @@ get pageNumbers(): number[] {
   selectProduct(productId: string): void {
     this.authService.setProductId(productId);
   }
+  getGiaMoi(p:Product): number {
+  if (p.giamGia && p.giamGia > 0) {
+    return p.gia - p.gia*p.giamGia; // hoặc tùy bạn tính kiểu %
+  }
+  return p.gia;
+}
 }

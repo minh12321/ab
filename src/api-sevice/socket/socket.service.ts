@@ -13,7 +13,7 @@ export class SocketService {
   }
 
   private connect(): void {
-    const wsUrl = 'ws://localhost:8080/ws'; // 🔁 Đổi thành domain thật khi deploy
+    const wsUrl = 'wss://webbe.onrender.com/ws'; // 🔁 Đổi thành domain thật khi deploy
     this.socket = new WebSocket(wsUrl);
 
     this.socket.onopen = () => {
@@ -23,7 +23,7 @@ export class SocketService {
     this.socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       console.log('📦 Đơn hàng mới:', data);
-      this.toastService.success(`🛒 Khách hàng có mã${data.maKhachHang} đã mua ${data.tenHang}`);
+      this.toastService.success(`🛒 Khách hàng có mã${data.maKhachHang} đã mua ${data.tenHang}`, );
     //   alert(`🛒 Đơn hàng mới từ ${data.maKhachHang} - ${data.tenHang}`);
     };
 
