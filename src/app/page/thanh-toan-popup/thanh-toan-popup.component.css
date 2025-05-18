@@ -164,4 +164,19 @@
   .danh{
     display: block;
   }
-  
+  .qr-container {
+  margin-top: 10px;
+  }
+
+  .qr-image {
+    width: 150px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  .cod-note {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+  }
+

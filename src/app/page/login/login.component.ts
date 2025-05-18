@@ -17,6 +17,12 @@ export class LoginComponent {
   username: string="";
   password: string="";
   token: string="";
+// login.component.ts
+showPassword: boolean = false;
+
+togglePasswordVisibility(): void {
+  this.showPassword = !this.showPassword;
+}
 
   constructor(
     private authService: AuthService,
@@ -51,6 +57,7 @@ export class LoginComponent {
         alert('Login failed: ' + errorMessage);
       }
     });
+    
   }
   // getuserby(name:string){
   //   this.userService.getUserByUsername(name).subscribe({

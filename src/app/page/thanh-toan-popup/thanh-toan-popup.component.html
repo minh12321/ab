@@ -12,6 +12,13 @@
       <label><textarea [(ngModel)]="ghiChu" name="ghiChu" placeholder="Ghi chú"></textarea></label>
     </form>
     <h4>Phương thức thanh toán:</h4>
+    <div class="qr-container" *ngIf="qrImage">
+  <img [src]="qrImage" alt="QR code thanh toán" class="qr-image">
+</div>
+
+<div *ngIf="selectedMethod === 'Thanh toán khi nhận hàng COD'" class="cod-note">
+  <p> Vui lòng kiểm tra kỹ thông tin giao hàng.</p>
+</div>
       <div *ngFor="let method of paymentMethods">
         <label><input type="radio" [(ngModel)]="selectedMethod" name="method" [value]="method" /> {{ method }}</label>
       </div>

@@ -23,7 +23,7 @@
     <!-- Type Filter -->
     <div class="box">Loại hàng</div>
     <div class="filter-group">
-      <label *ngFor="let type of ['Giầy', 'Balo', 'Găng tay', 'Bóng']">
+      <label *ngFor="let type of ['Giày', 'Balo', 'Găng tay', 'Bóng', 'Quần áo', 'Phụ kiện']">
         <input type="checkbox" [checked]="filter.types.has(type)" (change)="toggleFilter('types', type)" />
         {{ type }}
       </label>

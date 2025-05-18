@@ -8,12 +8,12 @@
   .menu-icon {
     font-size: 30px;
     cursor: pointer;
-    background: #ff9800;
+    background:orange;
     padding: 10px;
     border-radius: 5px;
     color: rgb(252, 252, 252);
-    top: 30px;          
-    right: -1200px;             
+    top: 116px;          
+    right: -1140px;             
     padding: 10px;
     border-radius: 6px;
     position: relative;
