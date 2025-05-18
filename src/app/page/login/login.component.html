@@ -8,8 +8,17 @@
         <label for="email">Tên đăng nhập:</label>
         <input id="email" [(ngModel)]="username" name="email" type="email" required class="form-control">
 
-        <label for="password">Mật khẩu:</label>
-        <input id="password" [(ngModel)]="password" name="password" type="password" required class="form-control">
+            <label for="password">Mật khẩu:</label>
+        <div class="input-group password-group">
+        <input [type]="showPassword ? 'text' : 'password'" id="password"
+              [(ngModel)]="password" name="password" required class="form-control">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary toggle-password-btn"
+                  (click)="togglePasswordVisibility()">
+            <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
+      </div>
 
         <button (click)="onSubmit()" class="btn btn-primary">Đăng nhập</button>
         <a [routerLink]="['/lienhe']" class="forgot-password">Quên mật khẩu?</a>

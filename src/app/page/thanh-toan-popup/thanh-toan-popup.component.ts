@@ -35,6 +35,18 @@ export class ThanhToanPopupComponent {
     'Chuyển khoản ngân hàng',
     'Ví MoMo (quét mã QR)'
   ];
+get qrImage(): string | null {
+  switch (this.selectedMethod) {
+    case 'Thanh toán qua VNPay-QR':
+      return 'assets/anh/vnpay.png';
+    case 'Chuyển khoản ngân hàng':
+      return 'assets/anh/tech.png';
+    case 'Ví MoMo (quét mã QR)':
+      return 'assets/anh/momo.png';
+    default:
+      return null;
+  }
+}
   isInvaliddiachi: boolean = false;
   isInvalidq: boolean = false;
   isInvalidp: boolean = false;
