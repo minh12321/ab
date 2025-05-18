@@ -6,6 +6,8 @@ import { environment } from '../../../environments/environment';
 import { CartService } from '../../../api-sevice/cart.service';
 import { CartItem } from '../../../api-sevice/cart-item.model';
 import { AuthService } from '../../auth/auth.service';
+import { DanhGiasService } from '../../../api-sevice/danhgias.service';
+import { ProductReview } from '../../../api-sevice/product-review.model';
 
 
 @Component({
@@ -25,25 +27,45 @@ export class ThongtinsanphamComponent {
   availableColor=['Xanh','Đỏ'];
   selectedColor: string ='Xanh';
   loginstatus: boolean = false;
+  productId: string='';
 
+  averageRating: number = 0;
+
+  fullStars: number[] = [];
+  hasHalfStar: boolean = false;
+  emptyStars: number[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private danhGiasService: DanhGiasService
   ) {}
 
   
   
   ngOnInit(): void {
     const productId = this.authService.getProductId();
+    const full = Math.floor(this.averageRating);
+    const hasHalf = this.averageRating - full >= 0.5;
+    const empty = 5 - full - (hasHalf ? 1 : 0);
     if (productId) {
       this.productService.getProductById(productId).subscribe(data => {
         this.product = data;
+        this.loadReviews();
+        this.loadAverageRating();
+        this.fullStars = Array(full).fill(0);
+        this.hasHalfStar = hasHalf;
+        this.emptyStars = Array(empty).fill(0);
       });
     }
     this.ngu();
+    this.loadReviews();
+    this.loadAverageRating();
+    this.productId = productId ?? "is";
+    this.userId = this.authService.getid() ?? "is";
+    
   }
   selectSize(size: number): void {
     this.selectedSizeValue = size;
@@ -101,5 +123,79 @@ export class ThongtinsanphamComponent {
     if (this.authService.isLoggedIn()) {
       return this.loginstatus=true;
     } else {return this.loginstatus=false;}
+  }
+
+  //---------------------------------------------------------------------------
+  
+
+  userId = 123; 
+  reviews: ProductReview[] = [];
+
+  newReview: ProductReview = {
+    productId: '0',
+    userId: 0,
+    rating: 5,
+    comment: ''
+  };
+
+  editingReviewId: number | null = null;
+
+  loadReviews(): void {
+    this.danhGiasService.getReviews(this.productId).subscribe(data => {
+      this.reviews = data;
+    });
+  }
+
+  loadAverageRating(): void {
+    this.danhGiasService.getAverageRating(this.productId).subscribe(avg => {
+      this.averageRating = avg;
+      const full = Math.floor(this.averageRating);
+      const hasHalf = this.averageRating - full >= 0.5;
+      const empty = 5 - full - (hasHalf ? 1 : 0);
+
+      this.fullStars = Array(full).fill(0);
+      this.hasHalfStar = hasHalf;
+      this.emptyStars = Array(empty).fill(0);
+    });
+  }
+
+  startEdit(review: ProductReview): void {
+    this.editingReviewId = review.id || null;
+    this.newReview = { ...review };
+  }
+
+  cancelEdit(): void {
+    this.editingReviewId = null;
+    this.newReview = {
+      productId: '0',
+      userId: 0,
+      rating: 5,
+      comment: ''
+    };
+  }
+
+  submitReview(): void {
+    this.newReview.productId = this.productId;
+    this.newReview.userId = this.userId;
+
+    this.danhGiasService.createOrUpdateReview(this.productId, this.newReview, this.userId)
+      .subscribe(() => {
+        this.loadReviews();
+        this.loadAverageRating();
+        this.cancelEdit();
+      }, err => {
+        alert('Có lỗi xảy ra khi gửi đánh giá');
+      });
+  }
+
+  deleteReview(reviewId: number): void {
+    if (confirm('Bạn có chắc muốn xóa đánh giá này không?')) {
+      this.danhGiasService.deleteReview(reviewId, this.userId).subscribe(() => {
+        this.loadReviews();
+        this.loadAverageRating();
+      }, err => {
+        alert('Xóa đánh giá thất bại');
+      });
+    }
   }
 }

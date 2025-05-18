@@ -62,8 +62,6 @@ export class AdminComponent {
       });
       // this.getAllProducts();
       this.checkStockLevels();
-      
-
     }
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;

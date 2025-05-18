@@ -1,5 +1,9 @@
 import { Component, HostListener, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from '../../../api-sevice/san_pham.model';
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../../auth/auth.service';
+import { ProductService } from '../../../api-sevice/san_pham.service';
 
 @Component({
     selector: 'app-home',
@@ -10,7 +14,11 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private productsv :ProductService,
+  ) { }
 
   navigateToRegister() {
     this.router.navigate(['/reg']);
@@ -120,6 +128,26 @@ export class HomeComponent {
     this.onScroll = () => {};
   }
 }
+//them sp
+    product: Product[] = [];
+    filteredProducts: Product[] = [];
+    public apiUrl = environment.url;
+    searchTerm: string = '';
+
+  selectProduct(productId: string): void {
+    this.authService.setProductId(productId);
+  }
+
+  ngOnInit(): void {
+    this.getAllProducts();
+  }
+
+  getAllProducts() {
+    this.productsv.getAllProducts().subscribe(data => {
+      this.product = data;
+
+    });
+  }
 
 }
 

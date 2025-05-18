@@ -100,3 +100,31 @@
   </div>
 </div>
 
+<div class="product-grid">
+  <div *ngFor="let p of product | slice:0:5 " class="product-card">
+    <a (click)="selectProduct(p.maSanPham)" [routerLink]="['/product']">
+      <div class="product-image">
+        <img *ngIf="p.hinhAnh" [src]="apiUrl + '/api/upload/' + p.hinhAnh" alt="{{ p.tenSanPham }}" />
+      </div>
+      <div class="product-info">
+        <h4>Hàng có sẵn</h4>
+        <p class="product-name">{{ p.tenSanPham }}</p>
+        <div class="price">
+          <ng-container *ngIf="p.giamGia > 0; else noDiscount">
+            <span class="old-price" style="text-decoration: line-through; color: gray;">
+              {{ p.gia | currency:'VND':'symbol':'1.0-0' }}
+            </span>
+            <br />
+            <span class="new-price" style="color: red; font-weight: bold;">
+              {{ (p.gia - p.giamGia*p.gia/100) | currency:'VND':'symbol':'1.0-0' }}
+            </span>
+          </ng-container>
+          <ng-template #noDiscount>
+            {{ p.gia | currency:'VND':'symbol':'1.0-0' }}
+          </ng-template>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<button class="av">Xem thêm sản phẩm</button>

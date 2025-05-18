@@ -87,7 +87,7 @@
                 </span>
                 <br />
                 <span class="new-price" style="color: red; font-weight: bold;">
-                  {{ (p.gia - p.giamGia) | currency:'VND':'symbol':'1.0-0' }}
+                  {{ (p.gia - p.giamGia*p.gia/100) | currency:'VND':'symbol':'1.0-0' }}
                 </span>
               </ng-container>
               <ng-template #noDiscount>
