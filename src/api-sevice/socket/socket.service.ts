@@ -7,13 +7,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SocketService {
   private socket: WebSocket | null = null;
+  private static instanceCreated = false;
 
   constructor(private toastService: ToastrService ,) {
+    if (SocketService.instanceCreated) return;
+    SocketService.instanceCreated = true;
+    console.log('🧩 SocketService created');
     this.connect();
   }
 
   private connect(): void {
-    const wsUrl = 'ws://localhost:8080/ws'; // 🔁 Đổi thành domain thật khi deploy
+    const wsUrl = 'wss://webbe.onrender.com/ws'; // 🔁 Đổi thành domain thật khi deploy
     this.socket = new WebSocket(wsUrl);
 
     this.socket.onopen = () => {

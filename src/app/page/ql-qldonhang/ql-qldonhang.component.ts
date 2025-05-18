@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HoaDonService } from '../../../api-sevice/hoa_don.service';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
+import { HoaDon } from '../../../api-sevice/hoa_don.model';
 
 @Component({
   selector: 'app-ql-qldonhang',
@@ -11,6 +12,17 @@ import * as FileSaver from 'file-saver';
 })
 export class QlQldonhangComponent {
   hoaDons: any[] = [];
+  filteredUsers: HoaDon[] = [];
+  search :string='';
+  
+  searchUser() {
+  const keyword = this.search?.toLowerCase().trim() || '';
+  this.filteredUsers = this.hoaDons.filter(u =>
+    (u.maHoaDon ?? '').toLowerCase().includes(keyword) ||
+    (u.maKhachHang ?? '').toLowerCase().includes(keyword)
+  );
+}
+
 
   constructor(private hoaDonService: HoaDonService) {}
 
@@ -21,6 +33,7 @@ export class QlQldonhangComponent {
   loadHoaDons(): void {
     this.hoaDonService.getAllHoaDon().subscribe(data => {
       this.hoaDons = data;
+      this.filteredUsers = data;
     });
   }
 

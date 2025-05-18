@@ -1,4 +1,7 @@
 <!-- hoa-don.component.html -->
+ <div class="search-bar">
+    <input type="text" [(ngModel)]="search" (input)="searchUser()" placeholder="Search...">
+</div>
 <table border="1" style="width: 100%; text-align: center;">
     <thead>
       <tr>
@@ -14,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let hoaDon of hoaDons">
+      <tr *ngFor="let hoaDon of filteredUsers">
         <td>{{ hoaDon.id }}</td>
         <td>{{ hoaDon.maKhachHang }}</td>
         <td>{{ hoaDon.tenHang }}</td>
