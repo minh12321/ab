@@ -28,6 +28,10 @@ export class HomeComponent {
     this.router.navigate(['/log']);
   }
 
+  navigateTsp() {
+    this.router.navigate(['/log']);
+  }
+
 
   logout() {
     localStorage.removeItem('user');
